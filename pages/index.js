@@ -7,8 +7,8 @@ import Icon from 'public/vercel.svg';
 import withLayout from 'components/layout/Layout';
 import { navigation } from 'data/data';
 import { getLocalNavData } from 'helpers/localize';
-import Section from '../components/reusable/Section';
-import Container from '../components/reusable/Container';
+import Section from 'components/reusable/Section';
+import Container from 'components/reusable/Container';
 
 // const API_KEY = process.env.API_KEY;
 // const BASE_URL = `https://${API_KEY}.mockapi.io/api/`;
