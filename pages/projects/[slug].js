@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { withLayout } from 'components/layout/Layout';
+import withLayout from 'components/layout/Layout';
 
 import { navigation, projects } from 'data/data';
 import { getLocalNavData } from 'helpers/localize';

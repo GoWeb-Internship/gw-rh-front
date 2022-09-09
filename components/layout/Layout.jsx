@@ -12,9 +12,7 @@ const Layout = ({ children, ...props }) => {
   );
 };
 
-export default Layout;
-
-export const withLayout = Component => {
+const withLayout = Component => {
   const withLayoutComponent = props => {
     return (
       <Layout {...props}>
@@ -24,3 +22,5 @@ export const withLayout = Component => {
   };
   return withLayoutComponent;
 };
+
+export default withLayout;

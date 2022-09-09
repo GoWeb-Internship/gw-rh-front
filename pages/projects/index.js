@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { withLayout } from 'components/layout/Layout';
+import withLayout from 'components/layout/Layout';
 
 import { navigation } from 'data/data';
 import { getLocalNavData } from 'helpers/localize';
