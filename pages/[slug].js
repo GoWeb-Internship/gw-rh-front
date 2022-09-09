@@ -4,7 +4,7 @@ import withLayout from 'components/layout/Layout';
 
 import { navigation, pages } from 'data/data';
 import { getLocalNavData } from 'helpers/localize';
-import About from '../components/reusable/pages/About';
+import About from '../components/pages/About';
 
 const Pages = ({ locale, data }) => {
   const router = useRouter();
@@ -64,7 +64,7 @@ export const getStaticPaths = ({ locales }) => {
   // Герерит массив путей, на основе навигации.
   for (const locale of locales) {
     const localePaths = navigation.reduce((acc, { slug, subCategory }) => {
-      if (subCategory && subCategory.onPageNavigation) {
+      if (subCategory || !slug) {
         return acc;
       }
       return [...acc, { params: { slug }, locale }];

@@ -1,20 +1,22 @@
+const getNormalizedCategory =
+  locale =>
+  ({ locales, id, slug }) => ({
+    id,
+    slug,
+    name: locales[locale],
+  });
+
 export const getLocalNavData = (allNavData, locale) => {
+  const normalizeFunction = getNormalizedCategory(locale);
+
   const navData = allNavData.map(({ locales, id, slug, subCategory }) => {
     const localizedSubCategory = subCategory
-      ? {
-          onPageNavigation: subCategory.onPageNavigation,
-          items: subCategory.navigation.map(({ locales, id, slug }) => ({
-            id,
-            slug,
-            name: locales[locale],
-          })),
-        }
+      ? subCategory.map(normalizeFunction)
       : null;
 
+    const normalizedCategory = normalizeFunction({ locales, id, slug });
     return {
-      id,
-      slug,
-      name: locales[locale],
+      ...normalizedCategory,
       subCategory: localizedSubCategory,
     };
   });

@@ -20,11 +20,7 @@ const NavMenuItem = ({ navItemData }) => {
         {name}
       </button>
       {subCategory && showSubCategory && (
-        <SubMenu
-          navData={subCategory.items}
-          external={subCategory.onPageNavigation}
-          from={slug}
-        />
+        <SubMenu navData={subCategory} from={slug} />
       )}
     </>
   );
