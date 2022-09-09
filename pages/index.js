@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Icon from 'public/vercel.svg';
 
 // import axios from 'axios';
-import { withLayout } from 'components/layout/Layout';
+import withLayout from 'components/layout/Layout';
 import { navigation } from 'data/data';
 import { getLocalNavData } from 'helpers/localize';
 import Section from '../components/reusable/Section';
@@ -54,6 +54,7 @@ export const getStaticProps = async ({
 
   try {
     // const { data: todos } = await axios.get(getEndpoint('todos'));
+
     const todos = [
       {
         createdAt: '2022-09-06T03:50:23.097Z',
@@ -104,6 +105,7 @@ export const getStaticProps = async ({
         id: '8',
       },
     ];
+
     return {
       props: {
         todos,

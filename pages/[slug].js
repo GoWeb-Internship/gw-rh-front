@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { withLayout } from 'components/layout/Layout';
+import withLayout from 'components/layout/Layout';
 
 import { navigation, pages } from 'data/data';
 import { getLocalNavData } from 'helpers/localize';
+import About from '../components/reusable/pages/About';
 
 const Pages = ({ locale, data }) => {
   const router = useRouter();
@@ -14,7 +15,7 @@ const Pages = ({ locale, data }) => {
   }
 
   return (
-    <div>
+    <>
       <p>Текущая страница: {query.slug}</p>
       <p>Текущий язык: {locale}</p>
 
@@ -22,26 +23,15 @@ const Pages = ({ locale, data }) => {
         <a className="inline-block p-4 bg-slate-400">To index page</a>
       </Link>
       <br />
+
       {data.name === 'about' && <About data={data.content} />}
-    </div>
+    </>
   );
 };
 
 export default withLayout(Pages);
 
-const About = ({ data }) => (
-  <>
-    <section>
-      <div>
-        <h1>{data.title}</h1>
-        <p>{data.description}</p>
-        <p>{data.goal}</p>
-      </div>
-    </section>
-  </>
-);
-
-export const getStaticProps = ({ locale, locales, params }) => {
+export const getStaticProps = async ({ locale, locales, params }) => {
   if (!params.slug) {
     return {
       notFound: true,
@@ -53,6 +43,7 @@ export const getStaticProps = ({ locale, locales, params }) => {
 
   //дальше c помощью запросов на бек, получаем необходимы данные (с учётом локализации) и кидаем их как пропсы.
 
+  // временно
   const data = pages[params.slug] ?? { ru: {}, uk: {}, en: {}, cz: {} };
 
   return {
@@ -70,6 +61,7 @@ export const getStaticPaths = ({ locales }) => {
 
   // сюда необходимо будет сделать запрос на получение навигации, для формирования динамической маршрутизации
 
+  // Герерит массив путей, на основе навигации.
   for (const locale of locales) {
     const localePaths = navigation.reduce((acc, { slug, subCategory }) => {
       if (subCategory && subCategory.onPageNavigation) {
