@@ -1,5 +1,7 @@
 import man from '../public/man.jpg';
-import women from '../public/woman.jpg';
+import woman from '../public/woman.jpg';
+import womanInHood from '../public/woman-in-hood.jpg';
+import smilingWoman from '../public/smiling-woman.jpg';
 
 export const teams = {
   title: 'Наша команда',
@@ -10,7 +12,7 @@ export const teams = {
       id: 1,
       name: 'Ольга Александрова',
       prof: 'Психолог-практик, специалист в области семейных отношений',
-      foto: women,
+      foto: woman,
     },
     {
       id: 2,
@@ -22,13 +24,13 @@ export const teams = {
       id: 3,
       name: 'Ольга Александрова',
       prof: 'Психолог-практик, специалист в области семейных отношений',
-      foto: women,
+      foto: womanInHood,
     },
     {
       id: 4,
       name: 'Ольга Александрова',
       prof: 'Психолог-практик, специалист в области семейных отношений',
-      foto: man,
+      foto: smilingWoman,
     },
   ],
 };
