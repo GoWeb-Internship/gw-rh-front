@@ -1,12 +1,12 @@
 import React from 'react';
 import NextImage from '../reusable/Image';
-import women from '../../public/woman.jpg';
+// import women from '../../public/woman.jpg';
 
 const CardTeam = ({ team }) => {
   //   console.log('team', team);
   return (
     <div>
-      <NextImage src={women} className="rounded" layout="fill" />
+      <NextImage src={team.foto} className="rounded" layout="fill" />
       <h3 className="mt-4 text-base font-semibold uppercase md:text-lg md:tracking-[0.005em]">
         {team.name}
       </h3>
