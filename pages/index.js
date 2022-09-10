@@ -9,6 +9,8 @@ import { navigation } from 'data/data';
 import { getLocalNavData } from 'helpers/localize';
 import Section from 'components/reusable/Section';
 import Container from 'components/reusable/Container';
+import { teams } from 'data/teamsData';
+import Team from '../components/Team/Team';
 
 // const API_KEY = process.env.API_KEY;
 // const BASE_URL = `https://${API_KEY}.mockapi.io/api/`;
@@ -35,6 +37,7 @@ const Home = ({ todos }) => {
               </li>
             ))}
         </ul>
+        <Team teams={teams} />
       </Container>
     </Section>
   );
@@ -110,6 +113,7 @@ export const getStaticProps = async ({
       props: {
         todos,
         navData,
+        teams,
       },
     };
   } catch (error) {
