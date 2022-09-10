@@ -1,4 +1,4 @@
-// import CardTeam from './CardTeam';
+import CardTeam from './CardTeam';
 import Heading from '../reusable/Heading';
 
 const Team = ({ teams }) => {
@@ -11,14 +11,14 @@ const Team = ({ teams }) => {
         className="uppercase font-semibold text-[28px] leading-[33px] mb-6 text-black"
       />
       <p className="mb-14 w-[464px] text-blue-800">{teams.description}</p>
-      {/* <ul className="grid grid-cols-4 gap-4">
+      <ul className="grid grid-cols-4 gap-4">
         {teams &&
           teams.item.map(team => (
             <li key={team.id}>
               <CardTeam team={team} />
             </li>
           ))}
-      </ul> */}
+      </ul>
     </div>
   );
 };
