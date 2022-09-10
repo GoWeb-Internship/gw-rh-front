@@ -25,6 +25,10 @@ module.exports = {
       fontSize: {
         qqBase: ['16px', '24px'],
       },
+      colors: {
+        main: '#00090E',
+        accentTextColor: '#065A92',
+      },
     },
   },
   variants: {},

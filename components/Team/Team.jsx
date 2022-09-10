@@ -4,14 +4,16 @@ import Heading from '../reusable/Heading';
 const Team = ({ teams }) => {
   // console.log('teams', teams);
   return (
-    <div className="py-10">
+    <div className="pt-8 pb-16 text-main md:pt-16 md:pb-32 lg:pt-[124px] lg:pb-[248px]">
       <Heading
         tag="h2"
         text={teams.title}
-        className="uppercase font-semibold text-[28px] leading-[33px] mb-6 text-black"
+        className="uppercase font-semibold text-[28px] leading-[33px] mb-6"
       />
-      <p className="mb-14 w-[464px] text-blue-800">{teams.description}</p>
-      <ul className="grid grid-cols-4 gap-4">
+      <p className="mb-4 text-base font-semibold text-accentTextColor md:w-[464px] md:mb-14">
+        {teams.description}
+      </p>
+      <ul className="grid grid-cols-2 gap-x-3 gap-y-4 md:gap-x-5 lg:grid-cols-4 lg:gap-x-4">
         {teams &&
           teams.item.map(team => (
             <li key={team.id}>
