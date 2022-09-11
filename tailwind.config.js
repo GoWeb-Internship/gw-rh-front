@@ -19,9 +19,11 @@ module.exports = {
     extend: {
       boxShadow: {
         bb1: '0px 4px 10px rgba(106, 161, 193, 0.25)',
+        btnSh: 'inset 0px -1px 2px rgba(0, 0, 0, 0.32), inset -1px -2px 4px rgba(7, 33, 50, 0.16)',
       },
       fontSize: {
         qqBase: ['16px', '24px'],
+        52: ['52px', '61px'],
       },
     },
   },
