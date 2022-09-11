@@ -31,43 +31,10 @@ export const projects = [
   },
 ];
 
-export const consultations = [
-  {
-    id: '1',
-    slug: 'couching',
-    locales: {
-      ru: 'Коучинг',
-      en: 'EN Коучинг',
-      uk: 'UK Коучинг',
-      cz: 'CZ Коучинг',
-    },
-  },
-  {
-    id: '2',
-    slug: 'consultations',
-    locales: {
-      ru: 'Психол консультации',
-      en: 'EN Психол консультации',
-      uk: 'UK Психол консультации',
-      cz: 'CZ Психол консультации',
-    },
-  },
-  {
-    id: '3',
-    slug: 'resolve-problems',
-    locales: {
-      ru: 'Решение проблем и выход из кризиса',
-      en: 'EN Решение проблем и выход из кризиса',
-      uk: 'UK Решение проблем и выход из кризиса',
-      cz: 'CZ Решение проблем и выход из кризиса',
-    },
-  },
-];
-
 export const navigation = [
   {
     id: '1',
-    slug: 'about',
+    slug: '',
     locales: {
       ru: 'Об авторе',
       en: 'About',
@@ -85,10 +52,7 @@ export const navigation = [
       uk: 'Проекти',
       cz: 'blablabla2',
     },
-    subCategory: {
-      onPageNavigation: true,
-      navigation: projects,
-    },
+    subCategory: projects,
   },
   {
     id: '3',
@@ -99,10 +63,7 @@ export const navigation = [
       uk: 'Консультації',
       cz: 'blablabla3',
     },
-    subCategory: {
-      onPageNavigation: false,
-      navigation: consultations,
-    },
+    subCategory: null,
   },
   {
     id: '4',

@@ -11,6 +11,7 @@ import Section from '../components/reusable/Section';
 import Container from '../components/reusable/Container';
 import Hero from '../components/layout/Hero';
 import {hero} from 'data/hero';
+
 // const API_KEY = process.env.API_KEY;
 // const BASE_URL = `https://${API_KEY}.mockapi.io/api/`;
 
