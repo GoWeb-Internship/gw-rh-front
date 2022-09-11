@@ -25,6 +25,7 @@ module.exports = {
       },
       fontSize: {
         qqBase: ['16px', '24px'],
+        28: ['28px', '33px'],
         52: ['52px', '61px'],
       },
     },

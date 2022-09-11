@@ -3,7 +3,7 @@ import Button from '../reusable/Button';
 
 const Hero = ({ data }) => {
   return (
-    <section className="py-8 md:py-16 lg:pt-[60px] lg:pb-[124px] lg:flex lg:justify-between">
+    <section className="pt-8 pb-7 md:py-16 lg:pt-[60px] lg:pb-[124px] lg:flex lg:justify-between">
       <div className="md:mb-[140px] lg:mb-0">
         <div className="absolute left-0 top-[84px] md:left-3 md:top-[146px] lg:top-[188px] w-[192px] h-[42px] md:w-[276px] md:h-[62px] lg:w-[344px] lg:h-[78px] -z-10">
           <Image

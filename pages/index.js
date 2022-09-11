@@ -10,14 +10,16 @@ import { getLocalNavData } from 'helpers/localize';
 import Section from '../components/reusable/Section';
 import Container from '../components/reusable/Container';
 import Hero from '../components/layout/Hero';
+import About from '../components/layout/About';
 import {hero} from 'data/hero';
+import {about} from 'data/about';
 
 // const API_KEY = process.env.API_KEY;
 // const BASE_URL = `https://${API_KEY}.mockapi.io/api/`;
 
 // const getEndpoint = (endpoint = '') => BASE_URL + endpoint;
 
-const Home = ({data}) => {
+const Home = ({data, about}) => {
 
   return (
     <Section>
@@ -28,6 +30,7 @@ const Home = ({data}) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Hero data={data}/>
+        <About data={about}/>
 {/* 
         <Icon width={100} fill={'#dddddd'} />
         <ul>
@@ -59,6 +62,7 @@ export const getStaticProps = async ({
   try {
     // const { data: todos } = await axios.get(getEndpoint('todos'));
     const data = hero ?? { ru: {}, uk: {}, en: {}, cz: {} };
+    const aboutRes = about ?? { ru: {}, uk: {}, en: {}, cz: {} };
     const todos = [
       {
         createdAt: '2022-09-06T03:50:23.097Z',
@@ -115,6 +119,7 @@ export const getStaticProps = async ({
         todos,
         navData,
         data: data[locale],
+        about: aboutRes[locale],
       },
     };
   } catch (error) {
