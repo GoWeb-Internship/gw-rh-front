@@ -28,6 +28,10 @@ module.exports = {
         28: ['28px', '33px'],
         52: ['52px', '61px'],
       },
+      colors: {
+        main: '#00090E',
+        accentTextColor: '#065A92',
+      },
     },
   },
   variants: {},

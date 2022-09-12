@@ -7,12 +7,15 @@ import Head from 'next/head';
 import withLayout from 'components/layout/Layout';
 import { navigation } from 'data/data';
 import { getLocalNavData } from 'helpers/localize';
-import Section from '../components/reusable/Section';
-import Container from '../components/reusable/Container';
+import Section from 'components/reusable/Section';
+import Container from 'components/reusable/Container';
+import { teams } from 'data/teamsData';
+import Team from '../components/Team/Team';
 import Hero from '../components/layout/Hero';
 import About from '../components/layout/About';
 import {hero} from 'data/hero';
 import {about} from 'data/about';
+
 
 // const API_KEY = process.env.API_KEY;
 // const BASE_URL = `https://${API_KEY}.mockapi.io/api/`;
@@ -42,6 +45,7 @@ const Home = ({data, about}) => {
               </li>
             ))}
         </ul> */}
+        <Team teams={teams} />
       </Container>
     </Section>
   );
@@ -118,8 +122,10 @@ export const getStaticProps = async ({
       props: {
         todos,
         navData,
+        teams,
         data: data[locale],
         about: aboutRes[locale],
+
       },
     };
   } catch (error) {
