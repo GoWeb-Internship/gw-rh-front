@@ -1,0 +1,9 @@
+.btn {
+    @apply w-[280px] h-14 px-7 rounded border text-lg leading-[21px] font-semibold md:w-[256px];
+}
+.btnPrimery {
+    @apply bg-[#3497D8] text-[#FCFCFA] shadow-btnSh hover:bg-[#FCFCFA] hover:text-[#3497D8] hover:border-2 hover:border-[#3497D8] hover:shadow-none focus:bg-[#FCFCFA] focus:text-[#3497D8] focus:border-2 focus:border-[#3497D8] focus:shadow-none transition-colors;
+}
+.btnSecondary {
+    @apply bg-[#FCFCFA] text-[#3497D8] border-2 border-[#3497D8] hover:bg-[#3497D8] hover:text-[#FCFCFA] focus:bg-[#3497D8] focus:text-[#FCFCFA] transition-colors;
+}
