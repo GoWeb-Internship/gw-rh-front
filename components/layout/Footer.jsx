@@ -12,9 +12,12 @@ const links = [
 const Footer = () => {
   return (
     <footer>
-      <Container className="footer pt-8 px-5 pb-[104px]  md:pt-16 md:px-16 md:pb-[108px]   lg:pt-14 lg:pb-32 lg:px-[152px]  md:flex-row md:text-base md:font-semibold  ">
+      <Container className="footer pt-8 px-5 pb-[104px] md:pt-16 md:px-16 md:pb-[108px] lg:pt-14 lg:pb-32 lg:px-[152px] md:flex-row md:text-base md:font-semibold">
         <div className="flex mb-16 md:mb-0 gap-x-6 md:gap-x-11 lg:gap-x-8 items-start  ">
-          <Image src="/logo.svg" alt="alt" width={64} height={64} />
+          <div className=" relative h-12 w-12 md:h-16 md:w-16  ">
+            <Image src="/logo.svg" alt="alt" layout="fill" />
+          </div>
+
           <div>
             <p className="mb-4">Мы всегда на связи:</p>
             <p className="mb-4">lovebook@gmail.com</p>
