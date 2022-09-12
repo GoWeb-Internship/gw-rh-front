@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { getData } from './apiServices';
 
 export const getNavigation = async (
   collection,
@@ -30,28 +30,6 @@ export const getNavigation = async (
   );
 
   return croppedNavData;
-};
-
-const getQueryParams = queryParams =>
-  Object.keys(queryParams).reduce(
-    (acc, item, id) => acc + (id ? '&' : '') + item + '=' + queryParams[item],
-    '?',
-  );
-
-export const getData = async (collection, queryParams) => {
-  let params = '';
-  if (queryParams) {
-    params = getQueryParams(queryParams);
-  }
-  try {
-    const { data } = await axios.get(
-      `http://localhost:1337/api/${collection}${params}`,
-    );
-    return data.data;
-  } catch (error) {
-    console.log('ERROR', error.message);
-    return [];
-  }
 };
 
 const normalizeNavItem = (name, id, locale) => ({ id, name, slug: id, locale });

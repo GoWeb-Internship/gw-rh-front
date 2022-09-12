@@ -12,7 +12,7 @@ const Header = ({ navData = [], translation }) => {
         <LogoIcon className="mr-auto" />
 
         <NavMenu navData={navData} className="hidden lg:block mr-12" />
-        <button type="button" className="font-navigation hidden lg:block">
+        <button type="button" className="font-navigation py-3 hidden lg:block">
           {translation.contacts}
         </button>
         <LangSwitcher className="ml-auto mr-4" />

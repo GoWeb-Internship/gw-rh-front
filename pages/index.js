@@ -9,14 +9,15 @@ import withLayout from 'components/layout/Layout';
 import Section from 'components/reusable/Section';
 import Container from 'components/reusable/Container';
 
-import { getData, getNavigation } from '../helpers/navigation';
+import { getNavigation } from 'helpers/navigation';
 
 import { teams } from 'data/teamsData';
-import Team from '../components/Team/Team';
-import Hero from '../components/layout/Hero';
-import About from '../components/layout/About';
+import Team from 'components/Team/Team';
+import Hero from 'components/pages/Hero';
+import About from 'components/pages/About';
 import { hero } from 'data/hero';
 import { about } from 'data/about';
+import { getData } from 'helpers/apiServices';
 
 // const API_KEY = process.env.API_KEY;
 // const BASE_URL = `https://${API_KEY}.mockapi.io/api/`;

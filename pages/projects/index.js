@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import withLayout from 'components/layout/Layout';
 
-import { getData, getNavigation } from '../../helpers/navigation';
+import { getNavigation } from 'helpers/navigation';
+import { getData } from 'helpers/apiServices';
 
 const ProjectsPage = () => {
   return (

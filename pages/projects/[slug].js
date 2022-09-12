@@ -2,7 +2,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
 
-import { getData, getNavigation } from '../../helpers/navigation';
+import { getNavigation } from 'helpers/navigation';
+import { getData } from 'helpers/apiServices';
 
 const Projects = () => {
   const { isFallback } = useRouter();

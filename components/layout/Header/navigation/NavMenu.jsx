@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const NavMenu = ({ navData = [], className = '' }) => {
   return (
     <nav className={className}>
-      <ul className="flex gap-x-12">
+      <ul className="flex gap-x-12 items-center">
         {!!navData.length &&
           navData.map(item => (
             <li key={item.id} className="relative">

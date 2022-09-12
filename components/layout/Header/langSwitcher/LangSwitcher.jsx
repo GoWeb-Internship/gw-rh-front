@@ -62,21 +62,21 @@ const LangSwitcher = ({ className = '' }) => {
           aria-label={'Кнопка переключения языка'}
           id={'lang-switcher-button'}
           type="button"
-          className="flex items-center px-3 py-2 text-t1421 font-medium"
+          className="flex items-center px-3 py-2 font-navigation"
         >
           {getNormalizeData(activeLocale).label}
           <DropdownArrowIcon className={`ml-[12px] relative z-30`} />
         </button>
         {/* language selector list */}
         <ul
-          className={`absolute top-0 left-0 w-full transition-opacity duration-200 ${isHidden} ${opacity} ${pointerEvents} rounded-[4px] shadow-sh2 z-20`}
+          className={`absolute top-0 left-0 w-full rounded-[4px] bg-white shadow-sh2 z-20 transition-opacity duration-200 ${isHidden} ${opacity} ${pointerEvents}`}
         >
           {langData.map(({ label, value }) => {
             const { pathname, query } = router;
             return (
               <li key={value} className="pt-2 last:pb-2">
                 <Link href={{ pathname, query }} locale={value}>
-                  <a className="block px-3 text-t1421 font-medium">{label}</a>
+                  <a className="font-navigation block px-3">{label}</a>
                 </Link>
               </li>
             );
