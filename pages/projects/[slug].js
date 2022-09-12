@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
 
-import { navigation, projects } from 'data/data';
-import { getLocalNavData } from 'helpers/localize';
+import { getNavigation } from 'helpers/navigation';
+import { getData } from 'helpers/apiServices';
 
 const Projects = () => {
   const { isFallback } = useRouter();
@@ -23,28 +23,39 @@ const Projects = () => {
 
 export default withLayout(Projects);
 
-export const getStaticProps = ({ locale, locales }) => {
-  const navData = getLocalNavData(navigation, locale);
+export const getStaticProps = async ({ locale, locales }) => {
+  const [navData, translation] = await Promise.all([
+    getNavigation('pages', { locale, sort: 'navPosition' }, 5),
+    getData('translation', { locale }),
+  ]);
 
   return {
     props: {
       locale,
       locales,
       navData,
+      translation: translation.attributes,
     },
     revalidate: 5,
   };
 };
 
-export const getStaticPaths = ({ locales }) => {
-  const paths = [];
+export const getStaticPaths = async () => {
+  const navData = await getData('pages', {
+    locale: 'all',
+    sort: 'navPosition',
+    'pagination[pageSize]': 50,
+  });
 
-  for (const locale of locales) {
-    const localePaths = projects.reduce((acc, item) => {
-      return [...acc, { params: { slug: item.slug }, locale }];
-    }, []);
-    paths.push(...localePaths);
-  }
+  const paths = navData
+    .map(({ attributes }) => {
+      const { locale, slug, singlePage } = attributes;
+      if (!singlePage) {
+        return null;
+      }
+      return { params: { slug }, locale };
+    })
+    .filter(i => i);
 
   return {
     paths,

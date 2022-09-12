@@ -2,9 +2,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
 
-import { navigation, pages } from 'data/data';
-import { getLocalNavData } from 'helpers/localize';
+import { pages } from 'data/data';
+
 import About from '../components/pages/About';
+
+import {  getNavigation } from '../helpers/navigation';
+import { getData } from '../helpers/apiServices';
 
 const Pages = ({ locale, data }) => {
   const router = useRouter();
@@ -38,39 +41,46 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     };
   }
 
-  // сюда необходимо будет сделать запрос на получение навигации, которую нужно будет передать в getLocalNavData
-  const navData = getLocalNavData(navigation, locale);
+  const [navData, translation] = await Promise.all([
+    getNavigation('pages', { locale, sort: 'navPosition' }, 5),
+    getData('translation', { locale }),
+  ]);
 
   //дальше c помощью запросов на бек, получаем необходимы данные (с учётом локализации) и кидаем их как пропсы.
 
   // временно
-  const data = pages[params.slug] ?? { ru: {}, uk: {}, en: {}, cz: {} };
+  const data = pages[params.slug] ?? { ru: {}, uk: {}, en: {}, cs: {} };
 
   return {
     props: {
       locale,
       locales,
       navData,
+      translation: translation.attributes,
       data: { name: params.slug, content: data[locale] },
     },
   };
 };
 
-export const getStaticPaths = ({ locales }) => {
-  const paths = [];
-
+export const getStaticPaths = async () => {
   // сюда необходимо будет сделать запрос на получение навигации, для формирования динамической маршрутизации
 
+  const navData = await getData('pages', {
+    locale: 'all',
+    sort: 'navPosition',
+    'pagination[pageSize]': 50,
+  });
+
   // Герерит массив путей, на основе навигации.
-  for (const locale of locales) {
-    const localePaths = navigation.reduce((acc, { slug, subCategory }) => {
-      if (subCategory || !slug) {
-        return acc;
+  const paths = navData
+    .map(({ attributes }) => {
+      const { locale, slug, singlePage } = attributes;
+      if (!singlePage) {
+        return null;
       }
-      return [...acc, { params: { slug }, locale }];
-    }, []);
-    paths.push(...localePaths);
-  }
+      return { params: { slug }, locale };
+    })
+    .filter(i => i);
 
   return {
     paths,

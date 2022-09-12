@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import withLayout from 'components/layout/Layout';
 
-import { navigation } from 'data/data';
-import { getLocalNavData } from 'helpers/localize';
+import { getNavigation } from 'helpers/navigation';
+import { getData } from 'helpers/apiServices';
 
 const ProjectsPage = () => {
   return (
@@ -16,13 +16,18 @@ const ProjectsPage = () => {
 
 export default withLayout(ProjectsPage);
 
-export const getStaticProps = ({ locale, locales }) => {
-  const navData = getLocalNavData(navigation, locale);
+export const getStaticProps = async ({ locale, locales }) => {
+  const [navData, translation] = await Promise.all([
+    getNavigation('pages', { locale, sort: 'navPosition' }, 5),
+    getData('translation', { locale }),
+  ]);
+
   return {
     props: {
       locale,
       locales,
       navData,
+      translation: translation.attributes,
     },
   };
 };

@@ -23,7 +23,7 @@ export const hero = {
             alt: "author's photo",
         },
     },
-    cz: {
+    cs: {
         author: "Alexander Ryzhenko:",
         profession: "Psycholog. Trenér. Spisovatel. Výzkumník. Expert na objev Daru člověka.",
         photo: {

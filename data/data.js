@@ -6,7 +6,7 @@ export const projects = [
       ru: 'Род по Золотому сечению',
       en: 'EN Род по Золотому сечению',
       uk: 'UK Род по Золотому сечению',
-      cz: 'CZ Род по Золотому сечению',
+      cs: 'Cs Род по Золотому сечению',
     },
   },
   {
@@ -16,7 +16,7 @@ export const projects = [
       ru: 'Как открыть в себе любовь',
       en: 'EN Как открыть в себе любовь',
       uk: 'UK Как открыть в себе любовь',
-      cz: 'CZ Как открыть в себе любовь',
+      cs: 'Cs Как открыть в себе любовь',
     },
   },
   {
@@ -26,7 +26,7 @@ export const projects = [
       ru: 'Раскрытие талантов',
       en: 'EN Раскрытие талантов',
       uk: 'UK Раскрытие талантов',
-      cz: 'CZ Раскрытие талантов',
+      cs: 'Cs Раскрытие талантов',
     },
   },
 ];
@@ -39,9 +39,9 @@ export const navigation = [
       ru: 'Об авторе',
       en: 'About',
       uk: 'Про автора',
-      cz: 'blablabla',
+      cs: 'blablabla',
     },
-    subCategory: null,
+    subMenu: null,
   },
   {
     id: '2',
@@ -50,9 +50,9 @@ export const navigation = [
       ru: 'Проекты',
       en: 'Projects',
       uk: 'Проекти',
-      cz: 'blablabla2',
+      cs: 'blablabla2',
     },
-    subCategory: projects,
+    subMenu: projects,
   },
   {
     id: '3',
@@ -61,9 +61,9 @@ export const navigation = [
       ru: 'Консультации',
       en: 'Consultations',
       uk: 'Консультації',
-      cz: 'blablabla3',
+      cs: 'blablabla3',
     },
-    subCategory: null,
+    subMenu: null,
   },
   {
     id: '4',
@@ -72,9 +72,9 @@ export const navigation = [
       ru: 'Влог',
       en: 'Vlog',
       uk: 'Влог',
-      cz: 'Vlog',
+      cs: 'Vlog',
     },
-    subCategory: null,
+    subMenu: null,
   },
 ];
 
@@ -95,7 +95,7 @@ export const pages = {
       description: 'My name is Pavel and i`m developer',
       goal: 'I want to work to live, not live to work',
     },
-    cz: {
+    cs: {
       title: 'Bla Bla',
       description: 'Bla Bla Pavel',
       goal: 'Bla Bla Bla Bla',
