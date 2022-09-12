@@ -3,25 +3,27 @@ import Link from 'next/link';
 import SubMenu from './SubMenu';
 
 const NavMenuItem = ({ navItemData }) => {
-  const [showSubCategory, setShowSubCategory] = useState(false);
-  const { subCategory, slug, name } = navItemData;
+  const [showSubMenu, setShowSubMenu] = useState(false);
+  const { subMenu, slug, name } = navItemData;
 
-  if (!subCategory) {
+  if (!subMenu) {
     return (
-      <Link href={`/${slug}`}>
-        <a>{name}</a>
+      <Link href={`/${slug !== 'index' ? slug : ''}`}>
+        <a className="font-navigation">{name}</a>
       </Link>
     );
   }
 
   return (
     <>
-      <button type="button" onClick={() => setShowSubCategory(p => !p)}>
+      <button
+        type="button"
+        className="font-navigation"
+        onClick={() => setShowSubMenu(p => !p)}
+      >
         {name}
       </button>
-      {subCategory && showSubCategory && (
-        <SubMenu navData={subCategory} from={slug} />
-      )}
+      {subMenu && showSubMenu && <SubMenu navData={subMenu} from={slug} />}
     </>
   );
 };

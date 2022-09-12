@@ -1,13 +1,7 @@
 import PropTypes from 'prop-types';
 
 const Container = ({ children, className = '' }) => {
-  return (
-    <div
-      className={`${className} relative w-screen mx-auto px-5 md:w-[768px] md:px-9 lg:w-[1440px] lg:px-20`}
-    >
-      {children}
-    </div>
-  );
+  return <div className={`${className} container relative`}>{children}</div>;
 };
 
 Container.propTypes = {

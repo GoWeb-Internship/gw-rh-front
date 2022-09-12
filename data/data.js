@@ -41,7 +41,7 @@ export const navigation = [
       uk: 'Про автора',
       cz: 'blablabla',
     },
-    subCategory: null,
+    subMenu: null,
   },
   {
     id: '2',
@@ -52,7 +52,7 @@ export const navigation = [
       uk: 'Проекти',
       cz: 'blablabla2',
     },
-    subCategory: projects,
+    subMenu: projects,
   },
   {
     id: '3',
@@ -63,7 +63,7 @@ export const navigation = [
       uk: 'Консультації',
       cz: 'blablabla3',
     },
-    subCategory: null,
+    subMenu: null,
   },
   {
     id: '4',
@@ -74,7 +74,7 @@ export const navigation = [
       uk: 'Влог',
       cz: 'Vlog',
     },
-    subCategory: null,
+    subMenu: null,
   },
 ];
 

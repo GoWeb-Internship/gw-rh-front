@@ -5,17 +5,12 @@ import Icon from 'public/vercel.svg';
 
 // import axios from 'axios';
 import withLayout from 'components/layout/Layout';
-import { navigation } from 'data/data';
-import { getLocalNavData } from 'helpers/localize';
+
 import Section from 'components/reusable/Section';
 import Container from 'components/reusable/Container';
+import { getData, getNavigation } from '../helpers/navigation';
 
-// const API_KEY = process.env.API_KEY;
-// const BASE_URL = `https://${API_KEY}.mockapi.io/api/`;
-
-// const getEndpoint = (endpoint = '') => BASE_URL + endpoint;
-
-const Home = ({ todos }) => {
+const Home = () => {
   return (
     <Section>
       <Container>
@@ -26,15 +21,6 @@ const Home = ({ todos }) => {
         </Head>
 
         <Icon width={100} fill={'#dddddd'} />
-        <ul>
-          {todos &&
-            todos.map(({ id, createdAt, todo }) => (
-              <li key={id}>
-                <p>{new Date(createdAt).toUTCString()}</p>
-                <p>{todo}</p>
-              </li>
-            ))}
-        </ul>
       </Container>
     </Section>
   );
@@ -42,92 +28,27 @@ const Home = ({ todos }) => {
 
 export default withLayout(Home);
 
-export const getStaticProps = async ({
-  params,
-  locale,
-  locales,
-  defaultLocale,
-}) => {
-  console.log(params, locale, locales, defaultLocale);
+export const getStaticProps = async ({ locale }) => {
+  const [navData, translation] = await Promise.all([
+    getNavigation('pages', { locale, sort: 'navPosition' }, 5),
+    getData('translation', { locale }),
+  ]);
 
-  const navData = getLocalNavData(navigation, locale);
-
-  try {
-    // const { data: todos } = await axios.get(getEndpoint('todos'));
-
-    const todos = [
-      {
-        createdAt: '2022-09-06T03:50:23.097Z',
-        todo: 'Rerum ut aut alias a.',
-        done: false,
-        id: '1',
-      },
-      {
-        createdAt: '2022-09-06T02:34:11.291Z',
-        todo: 'Qui aliquid suscipit dolore laboriosam nulla et.',
-        done: false,
-        id: '2',
-      },
-      {
-        createdAt: '2022-09-06T06:48:24.841Z',
-        todo: 'Suscipit maxime nostrum saepe totam dolor et.',
-        done: false,
-        id: '3',
-      },
-      {
-        createdAt: '2022-09-05T20:15:26.832Z',
-        todo: 'Esse dolores non et rem.',
-        done: false,
-        id: '4',
-      },
-      {
-        createdAt: '2022-09-05T17:46:14.531Z',
-        todo: 'Architecto dicta fuga neque.',
-        done: false,
-        id: '5',
-      },
-      {
-        createdAt: '2022-09-05T10:26:13.714Z',
-        todo: 'Quod nisi ea nisi soluta quos rerum rem quasi.',
-        done: false,
-        id: '6',
-      },
-      {
-        createdAt: '2022-09-06T02:42:41.807Z',
-        todo: 'Quia et voluptatem velit molestiae corrupti odit doloribus eaque.',
-        done: false,
-        id: '7',
-      },
-      {
-        createdAt: '2022-09-05T18:58:35.968Z',
-        todo: 'Sunt ipsum repellat voluptatem esse ut eveniet enim.',
-        done: false,
-        id: '8',
-      },
-    ];
-
-    return {
-      props: {
-        todos,
-        navData,
-      },
-    };
-  } catch (error) {
+  if (!navData.length) {
     return {
       notFound: true,
     };
   }
+
+  return {
+    props: {
+      navData,
+      translation: translation.attributes,
+    },
+  };
 };
 
 Home.propTypes = {
-  todos: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      createdAt: PropTypes.string,
-      todo: PropTypes.string,
-      done: PropTypes.bool.isRequired,
-    }),
-  ),
   navData: PropTypes.arrayOf(
     PropTypes.shape({
       slug: PropTypes.string.isRequired,

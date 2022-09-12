@@ -9,15 +9,13 @@ const getNormalizedCategory =
 export const getLocalNavData = (allNavData, locale) => {
   const normalizeFunction = getNormalizedCategory(locale);
 
-  const navData = allNavData.map(({ locales, id, slug, subCategory }) => {
-    const localizedSubCategory = subCategory
-      ? subCategory.map(normalizeFunction)
-      : null;
+  const navData = allNavData.map(({ locales, id, slug, subMenu }) => {
+    const localizedsubMenu = subMenu ? subMenu.map(normalizeFunction) : null;
 
     const normalizedCategory = normalizeFunction({ locales, id, slug });
     return {
       ...normalizedCategory,
-      subCategory: localizedSubCategory,
+      subMenu: localizedsubMenu,
     };
   });
 
