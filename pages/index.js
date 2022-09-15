@@ -20,6 +20,7 @@ import { getData } from 'helpers/apiServices';
 // const getEndpoint = (endpoint = '') => BASE_URL + endpoint;
 
 const Home = ({ sectionTeam, teams, home }) => {
+
   return (
     <>
         <Head>

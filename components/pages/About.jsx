@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
+import Section from '../reusable/Section';
+import Container from '../reusable/Container';
+
 const About = ({ data }) => {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <section className="py-9 lg:py-20">
+    <Section className="py-9 lg:py-20" id="about author">
+      <Container>
       <h2 className="mb-6 md:mb-[52px] lg:mb-14 text-28 font-semibold text-left md:text-right md:pr-[130px] lg:text-center lg:pr-0 uppercase">
         {data.aboutTitle}
       </h2>
@@ -49,7 +53,8 @@ const About = ({ data }) => {
           </Link>
         </div>
       </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 
