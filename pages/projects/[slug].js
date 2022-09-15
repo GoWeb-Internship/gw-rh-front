@@ -23,11 +23,19 @@ const Projects = () => {
 
 export default withLayout(Projects);
 
-export const getStaticProps = async ({ locale, locales }) => {
+export const getStaticProps = async ({ locale, locales, params }) => {
+  if (!params.slug) {
+    return {
+      notFound: true,
+    };
+  }
+
   const [navData, translation] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
   ]);
+
+  console.log(params.slug, Boolean(translation.attributes));
 
   return {
     props: {
@@ -35,30 +43,25 @@ export const getStaticProps = async ({ locale, locales }) => {
       locales,
       navData,
       translation: translation.attributes,
+      slug: params.slug,
     },
-    revalidate: 5,
   };
 };
 
 export const getStaticPaths = async () => {
-  const navData = await getData('pages', {
+  const navData = await getData('projects', {
     locale: 'all',
     sort: 'navPosition',
     'pagination[pageSize]': 50,
   });
 
-  const paths = navData
-    .map(({ attributes }) => {
-      const { locale, slug, singlePage } = attributes;
-      if (!singlePage) {
-        return null;
-      }
-      return { params: { slug }, locale };
-    })
-    .filter(i => i);
+  const paths = navData.map(({ attributes }) => {
+    const { locale, slug } = attributes;
+    return { params: { slug }, locale };
+  });
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
