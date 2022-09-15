@@ -6,7 +6,7 @@ import { pages } from 'data/data';
 
 import About from '../components/pages/About';
 
-import {  getNavigation } from '../helpers/navigation';
+import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
 
 const Pages = ({ locale, data }) => {

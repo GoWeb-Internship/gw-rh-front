@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import React from 'react';
 import NextImage from 'next/image';
 
 const Image = ({ src, ...props }) => {
-  const [isReady, setIsReady] = useState(false);
+  // const [isReady, setIsReady] = useState(false);
 
-  const onLoadCallback = () => {
-    setIsReady(true);
-  };
+  // const onLoadCallback = () => {
+  //   setIsReady(true);
+  // };
 
   return (
     <NextImage
       objectFit="cover"
       src={src}
       {...props}
-      onLoadingComplete={onLoadCallback}
+      // onLoadingComplete={onLoadCallback}
       layout="responsive"
     />
   );
