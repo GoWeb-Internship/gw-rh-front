@@ -35,8 +35,6 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     getData('translation', { locale }),
   ]);
 
-  console.log(params.slug, Boolean(translation.attributes));
-
   return {
     props: {
       locale,
