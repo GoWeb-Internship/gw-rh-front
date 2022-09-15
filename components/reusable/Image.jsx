@@ -2,7 +2,7 @@ import { getStrapiMedia } from '../../helpers/apiServices';
 import NextImage from 'next/image';
 
 const Image = ({ image, className, style }) => {
-  console.log('image', image);
+  // console.log('image', image);
   const { url, alternativeText, width, height } = image.data.attributes;
   return (
     <NextImage

@@ -2,7 +2,7 @@ import React from 'react';
 import NextImage from '../reusable/Image';
 
 const CardTeam = ({ team }) => {
-  console.log('teamFoto', team.attributes.foto);
+  // console.log('teamFoto', team.attributes.foto);
   return (
     <div>
       <NextImage image={team.attributes.foto} className="rounded" />

@@ -10,7 +10,7 @@ const Team = ({ teams, listCard }) => {
         text={teams.title}
         className="uppercase font-semibold text-[28px] leading-[33px] mb-6"
       />
-      <p className="mb-4 text-base font-semibold text-brand md:w-[464px] md:mb-14">
+      <p className="mb-4 text-base font-semibold text-brand1 md:w-[464px] md:mb-14">
         {teams.description}
       </p>
       <ul className="grid grid-cols-2 gap-x-3 gap-y-4 md:gap-x-5 lg:grid-cols-4 lg:gap-x-4">
