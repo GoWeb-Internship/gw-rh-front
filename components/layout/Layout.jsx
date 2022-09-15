@@ -3,7 +3,6 @@ import Main from './Main';
 import Footer from './Footer';
 
 const Layout = ({ children, ...props }) => {
-  console.log('props', props);
   return (
     <>
       <Header {...props} />
