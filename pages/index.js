@@ -11,7 +11,6 @@ import Container from 'components/reusable/Container';
 
 import { getNavigation } from 'helpers/navigation';
 
-import { teams } from 'data/teamsData';
 import Team from 'components/Team/Team';
 import Hero from 'components/pages/Hero';
 import About from 'components/pages/About';
@@ -24,7 +23,7 @@ import { getData } from 'helpers/apiServices';
 
 // const getEndpoint = (endpoint = '') => BASE_URL + endpoint;
 
-const Home = ({ data, about }) => {
+const Home = ({ data, about, sectionTeam, teams }) => {
   return (
     <Section>
       <Container>
@@ -35,7 +34,7 @@ const Home = ({ data, about }) => {
         </Head>
         <Hero data={data} />
         <About data={about} />
-        <Team teams={teams} />
+        <Team teams={sectionTeam} listCard={teams} />
       </Container>
     </Section>
   );
@@ -44,9 +43,11 @@ const Home = ({ data, about }) => {
 export default withLayout(Home);
 
 export const getStaticProps = async ({ locale }) => {
-  const [navData, translation] = await Promise.all([
+  const [navData, translation, sectionTeam, teams] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
+    getData('section-team', { locale, populate: '*' }),
+    getData('section-team', { locale, populate: 'teams.foto' }),
   ]);
 
   const data = hero ?? { ru: {}, uk: {}, en: {}, cs: {} };
@@ -55,10 +56,11 @@ export const getStaticProps = async ({ locale }) => {
   return {
     props: {
       navData,
-      teams,
       data: data[locale],
       about: aboutRes[locale],
       translation: translation.attributes,
+      sectionTeam: sectionTeam.attributes,
+      teams: teams.attributes,
     },
   };
 };

@@ -44,6 +44,10 @@ const nextConfig = {
     locales: ['en', 'ru', 'uk', 'cs'],
     defaultLocale: 'ru',
   },
+  images: {
+    loader: 'default',
+    domains: ['powerful-brushlands-30427.herokuapp.com', 'localhost'],
+  },
 };
 
 module.exports = nextConfig;
