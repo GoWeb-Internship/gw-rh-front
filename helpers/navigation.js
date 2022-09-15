@@ -23,7 +23,7 @@ export const getNavigation = async (
     return navData;
   }
 
-  const croppedNavData = await getCloppedNavData(
+  const croppedNavData = await getCroppedNavData(
     navData,
     visibleNavAmount,
     queryParams.locale,
@@ -59,7 +59,7 @@ const getMoreNavItem = async (locale, subMenu) => {
   };
 };
 
-const getCloppedNavData = async (allNavData, visibleNavAmount, locale) => {
+const getCroppedNavData = async (allNavData, visibleNavAmount, locale) => {
   const cropItems = allNavData.slice(0, visibleNavAmount);
   const cropperdSubMenu = allNavData.slice(visibleNavAmount);
   const normalizeSubMenu = cropperdSubMenu.map(({ name, id, locale }) =>
