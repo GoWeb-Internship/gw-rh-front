@@ -7,6 +7,7 @@ import { getData } from 'helpers/apiServices';
 const ProjectsPage = () => {
   return (
     <div>
+      СТРАНИЦА ПРОЕКТОВ
       <Link href="/">
         <a className="inline-block p-4 bg-slate-400">To index page</a>
       </Link>
