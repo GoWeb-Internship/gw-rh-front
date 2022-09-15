@@ -28,6 +28,5 @@ export const getData = async (collection, queryParams, dev = false) => {
 export const getStrapiMedia = (media, dev = false) => {
   const { url } = media.data.attributes;
   const imageUrl = `${dev ? LOCAL_SERVER_URL : SERVER_URL}${url}`;
-  console.log('imageUrl', imageUrl);
   return imageUrl;
 };
