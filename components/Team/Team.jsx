@@ -1,8 +1,8 @@
 import CardTeam from './CardTeam';
 import Heading from '../reusable/Heading';
 
-const Team = ({ teams }) => {
-  // console.log('teams', teams);
+const Team = ({ teams, listCard }) => {
+  // console.log('listCard', listCard);
   return (
     <div className="pt-8 pb-16 text-main md:pt-16 md:pb-32 lg:pt-[124px] lg:pb-[248px]">
       <Heading
@@ -14,8 +14,8 @@ const Team = ({ teams }) => {
         {teams.description}
       </p>
       <ul className="grid grid-cols-2 gap-x-3 gap-y-4 md:gap-x-5 lg:grid-cols-4 lg:gap-x-4">
-        {teams &&
-          teams.item.map(team => (
+        {listCard &&
+          listCard.teams.data.map(team => (
             <li key={team.id}>
               <CardTeam team={team} />
             </li>
