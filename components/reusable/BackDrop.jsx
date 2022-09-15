@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-const LangBackdrop = ({ onClose }) => {
+const Backdrop = ({ onClose, transparent }) => {
   useEffect(() => {
     const handleEscape = e => {
       if (e.code !== 'Escape') return;
@@ -17,14 +18,17 @@ const LangBackdrop = ({ onClose }) => {
 
   return (
     <div
-      className="fixed top-0 left-0 w-full h-full z-10"
+      className={`fixed top-0 left-0 w-full h-full z-10 bg-black/60 ${classnames(
+        { 'opacity-0': transparent },
+      )}`}
       onClick={onClose}
     ></div>
   );
 };
 
-LangBackdrop.propTypes = {
+Backdrop.propTypes = {
   onClose: PropTypes.func.isRequired,
+  transparent: PropTypes.bool,
 };
 
-export default LangBackdrop;
+export default Backdrop;

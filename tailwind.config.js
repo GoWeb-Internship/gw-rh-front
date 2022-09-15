@@ -42,7 +42,8 @@ module.exports = {
       },
       colors: {
         main: '#00090E',
-        accentTextColor: '#065A92',
+        brand1: '#065A92',
+        light: '#FCFCFA',
       },
     },
   },

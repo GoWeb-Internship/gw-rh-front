@@ -1,11 +1,15 @@
-import classnames from "classnames";
-import { btn, btnPrimery, btnSecondary } from "styles/Button.module.scss";
+import classnames from 'classnames';
+import { btn, btnPrimary, btnSecondary } from 'styles/Button.module.scss';
 
-const Button = ({ text, buttonTheme = "primery", className = '' }) => {
+const Button = ({ text, buttonTheme = 'primary', className = '' }) => {
   return (
     <button
-        className={classnames([btn, buttonTheme === "primery"? btnPrimery : btnSecondary, className])}
-        type="button"
+      type="button"
+      className={classnames([
+        btn,
+        buttonTheme === 'primary' ? btnPrimary : btnSecondary,
+        className,
+      ])}
     >
       {text}
     </button>
