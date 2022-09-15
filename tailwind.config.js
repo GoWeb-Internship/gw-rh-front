@@ -44,6 +44,7 @@ module.exports = {
         main: '#00090E',
         brand1: '#065A92',
         light: '#FCFCFA',
+        bgHero: '#E4F0F6',
       },
     },
   },
