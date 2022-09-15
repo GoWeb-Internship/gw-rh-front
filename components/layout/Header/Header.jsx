@@ -17,7 +17,7 @@ const Header = ({ navData = [], translation }) => {
           type="button"
           className="font-navigation text-light py-3 hidden lg:block"
         >
-          {translation?.contacts}
+          {translation.contacts}
         </button>
         <LangSwitcher className="ml-auto mr-4" />
         <IconButton IconComponent={BurgerIcon} />

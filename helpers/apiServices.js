@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getConfig } from '../config/config';
 
-const SERVER_URL = getConfig().SERVER_URL;
+const { SERVER_URL, LOCAL_SERVER_URL } = getConfig();
 
 const getQueryParams = queryParams =>
   Object.keys(queryParams).reduce(
@@ -9,18 +9,25 @@ const getQueryParams = queryParams =>
     '?',
   );
 
-export const getData = async (collection, queryParams) => {
+export const getData = async (collection, queryParams, dev = false) => {
   let params = '';
   if (queryParams) {
     params = getQueryParams(queryParams);
   }
   try {
     const { data } = await axios.get(
-      `${SERVER_URL}/api/${collection}${params}`,
+      `${dev ? LOCAL_SERVER_URL : SERVER_URL}/api/${collection}${params}`,
     );
     return data.data;
   } catch (error) {
     console.log('ERROR', error.message);
     return [];
   }
+};
+
+export const getStrapiMedia = (media, dev = false) => {
+  const { url } = media.data.attributes;
+  const imageUrl = `${dev ? LOCAL_SERVER_URL : SERVER_URL}${url}`;
+  console.log('imageUrl', imageUrl);
+  return imageUrl;
 };

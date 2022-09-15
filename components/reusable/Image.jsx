@@ -1,21 +1,18 @@
-// import React, { useState } from 'react';
-import React from 'react';
+import { getStrapiMedia } from '../../helpers/apiServices';
 import NextImage from 'next/image';
 
-const Image = ({ src, ...props }) => {
-  // const [isReady, setIsReady] = useState(false);
-
-  // const onLoadCallback = () => {
-  //   setIsReady(true);
-  // };
-
+const Image = ({ image, className, style, dev = false }) => {
+  // console.log('image', image);
+  const { url, alternativeText, width, height } = image.data.attributes;
   return (
     <NextImage
-      objectFit="cover"
-      src={src}
-      {...props}
-      // onLoadingComplete={onLoadCallback}
       layout="responsive"
+      width={width || '100%'}
+      height={height || '100%'}
+      objectFit="contain"
+      src={getStrapiMedia(image, dev)}
+      alt={alternativeText || ''}
+      className={className}
     />
   );
 };

@@ -1,16 +1,17 @@
 import React from 'react';
 import NextImage from '../reusable/Image';
-// import women from '../../public/woman.jpg';
 
 const CardTeam = ({ team }) => {
-  //   console.log('team', team);
+  // console.log('teamFoto', team.attributes.foto);
   return (
     <div>
-      <NextImage src={team.foto} className="rounded" layout="fill" />
+      <NextImage image={team.attributes.foto} className="rounded" />
       <h3 className="mt-4 text-base font-semibold uppercase md:text-lg md:tracking-[0.005em]">
-        {team.name}
+        {team.attributes.name}
       </h3>
-      <p className="mt-2 text-[14px] leading-[16px] font-normal">{team.prof}</p>
+      <p className="mt-2 text-[14px] leading-[16px] font-normal">
+        {team.attributes.profession}
+      </p>
     </div>
   );
 };

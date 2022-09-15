@@ -8,7 +8,6 @@ import withLayout from 'components/layout/Layout';
 
 import { getNavigation } from 'helpers/navigation';
 
-import { teams } from 'data/teamsData';
 import Team from 'components/Team/Team';
 import Hero from 'components/pages/Hero';
 import About from 'components/pages/About';
@@ -20,7 +19,7 @@ import { getData } from 'helpers/apiServices';
 
 // const getEndpoint = (endpoint = '') => BASE_URL + endpoint;
 
-const Home = ({ home }) => {
+const Home = ({ sectionTeam, teams, home }) => {
   return (
     <>
         <Head>
@@ -30,7 +29,7 @@ const Home = ({ home }) => {
         </Head>
         <Hero data={home} />
         <About data={home} />
-        <Team teams={teams} />
+        <Team teams={sectionTeam} listCard={teams} />
     </>
   );
 };
@@ -38,18 +37,21 @@ const Home = ({ home }) => {
 export default withLayout(Home);
 
 export const getStaticProps = async ({ locale }) => {
-  const [navData, translation, homePage] = await Promise.all([
+  const [navData, translation, homePage, sectionTeam, teams] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
-    getData('home-page', {locale})
+    getData('home-page', {locale}),
+    getData('section-team', { locale, populate: '*' }),
+    getData('section-team', { locale, populate: 'teams.foto' }),
   ]);
 
   return {
     props: {
       navData,
-      teams,
-      translation: translation.attributes,
       home: homePage.attributes,
+      translation: translation.attributes,
+      sectionTeam: sectionTeam.attributes,
+      teams: teams.attributes,
     },
   };
 };
