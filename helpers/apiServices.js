@@ -15,7 +15,9 @@ export const getData = async (collection, queryParams) => {
     params = getQueryParams(queryParams);
   }
   try {
-    const { data } = await axios.get(`${SERVER_URL}${collection}${params}`);
+    const { data } = await axios.get(
+      `${SERVER_URL}/api/${collection}${params}`,
+    );
     return data.data;
   } catch (error) {
     console.log('ERROR', error.message);
