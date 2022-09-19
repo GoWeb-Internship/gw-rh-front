@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
+import ReactMarkdown from 'react-markdown';
 
 import { getNavigation } from 'helpers/navigation';
 import { getData } from 'helpers/apiServices';
+import AccordionComponent from '../../components/Accordion/Accordion';
 
-const Projects = () => {
+const Projects = ({ md }) => {
   const { isFallback } = useRouter();
 
   if (isFallback) {
@@ -17,6 +19,8 @@ const Projects = () => {
       <Link href="/">
         <a className="inline-block p-4 bg-slate-400">To index page</a>
       </Link>
+      <AccordionComponent />
+      <ReactMarkdown>{md}</ReactMarkdown>
     </div>
   );
 };
@@ -30,9 +34,10 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     };
   }
 
-  const [navData, translation] = await Promise.all([
+  const [navData, translation, md] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
+    getData('tests', { 'filters[title][$contains]': 'так' }, true),
   ]);
 
   return {
@@ -42,6 +47,7 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       navData,
       translation: translation.attributes,
       slug: params.slug,
+      md: md[0].attributes.markdown,
     },
   };
 };

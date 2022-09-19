@@ -11,7 +11,7 @@ import Container from 'components/reusable/Container';
 
 import { getNavigation } from 'helpers/navigation';
 
-import Team from 'components/Team/Team';
+// import Team from 'components/Team/Team';
 import Hero from 'components/pages/Hero';
 import About from 'components/pages/About';
 import { hero } from 'data/hero';
@@ -23,7 +23,8 @@ import { getData } from 'helpers/apiServices';
 
 // const getEndpoint = (endpoint = '') => BASE_URL + endpoint;
 
-const Home = ({ data, about, sectionTeam, teams }) => {
+// const Home = ({ data, about, sectionTeam, teams }) => {
+const Home = ({ data, about }) => {
   return (
     <Section>
       <Container>
@@ -34,7 +35,7 @@ const Home = ({ data, about, sectionTeam, teams }) => {
         </Head>
         <Hero data={data} />
         <About data={about} />
-        <Team teams={sectionTeam} listCard={teams} />
+        {/* <Team teams={sectionTeam} listCard={teams} /> */}
       </Container>
     </Section>
   );

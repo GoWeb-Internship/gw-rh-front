@@ -8,7 +8,7 @@ const NavMenuItem = ({ navItemData }) => {
     <>
       {!subMenu ? (
         <Link href={`/${slug !== 'index' ? slug : ''}`}>
-          <a className="block font-navigation text-light py-3">{name}</a>
+          <a className="block font-navigation text-light py-4">{name}</a>
         </Link>
       ) : (
         <DropDownOption subMenuData={navItemData} />

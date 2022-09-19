@@ -26,7 +26,6 @@ const Pages = ({ locale, data }) => {
         <a className="inline-block p-4 bg-slate-400">To index page</a>
       </Link>
       <br />
-
       {data.name === 'about' && <About data={data.content} />}
     </>
   );
