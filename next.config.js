@@ -46,7 +46,8 @@ const nextConfig = {
   },
   images: {
     loader: 'default',
-    domains: ['powerful-brushlands-30427.herokuapp.com', 'localhost'],
+    domains: ['res.cloudinary.com'],
+    // domains: ['powerful-brushlands-30427.herokuapp.com', 'localhost'],
   },
 };
 
