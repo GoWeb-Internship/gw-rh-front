@@ -1,6 +1,11 @@
 import NextImage from 'next/image';
 
-const Image = ({ image, className, style, alt }) => {
+const Image = ({
+  image,
+  className,
+  // style,
+  alt,
+}) => {
   // console.log('image', image);
   const { url, width, height } = image.data.attributes;
   return (
