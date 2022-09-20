@@ -1,14 +1,19 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
-import ReactMarkdown from 'react-markdown';
+// import ReactMarkdown from 'react-markdown';
 
 import { getNavigation } from 'helpers/navigation';
 import { getData } from 'helpers/apiServices';
 import AccordionComponent from '../../components/Accordion/Accordion';
+import { normalizeProjectData } from '../../helpers/projectsServices';
+import Overview from '../../components/projects/Overview';
 
-const Projects = ({ md }) => {
+const Projects = ({ projectData }) => {
   const { isFallback } = useRouter();
+
+  // console.log('projectData', projectData);
+
+  const { overview, accordionData } = projectData;
 
   if (isFallback) {
     return 'Loading...';
@@ -16,11 +21,8 @@ const Projects = ({ md }) => {
 
   return (
     <div>
-      <Link href="/">
-        <a className="inline-block p-4 bg-slate-400">To index page</a>
-      </Link>
-      <AccordionComponent />
-      <ReactMarkdown>{md}</ReactMarkdown>
+      <Overview overviewData={overview} />
+      <AccordionComponent accordionData={accordionData} />
     </div>
   );
 };
@@ -34,41 +36,26 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     };
   }
 
-  const [navData, translation, md, projects] = await Promise.all([
+  const [navData, translation, projects] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
-    getData('tests', { 'filters[title][$contains]': 'Добавим' }, true),
-    getData(
-      'projects',
-      { locale, 'filters[slug][$eq]': params.slug, populate: '*' },
-      true,
-    ),
+    getData('projects', {
+      locale,
+      'filters[slug][$eq]': params.slug,
+      'populate[page_modules][populate][0]': 'id',
+      'populate[overview][populate][0]': 'id,optionalSections',
+      'populate[methodology][populate][0]': 'sections,page_module',
+      'populate[benefit][populate][0]': 'section,page_module',
+      'populate[modules_section][populate][0]': 'module,page_module',
+      'populate[seminar][populate][0]': 'videoList,page_module',
+      'populate[review][populate][0]': 'videoList,textReviewsList,page_module',
+      'populate[price][populate][0]': 'page_module',
+    }),
   ]);
 
-  const modules = projects[0].attributes;
+  const data = projects[0].attributes;
 
-  console.log('modules', modules);
-
-  // console.log('modules', modules);
-
-  // const data = await getData(
-  //   `accordion-modules/${modules[0].id}`,
-  //   { populate: '*' },
-  //   true,
-  // );
-
-  // console.log('data', data);
-
-  // const modulesSections = await Promise.all(
-  //   modules.map(({ id }) =>
-  //     getData(`accordion-modules/${id}`, { populate: '*' }, true),
-  //   ),
-  // );
-
-  // console.log(
-  //   'modulesSections',
-  //   modulesSections.map(i => i.attributes.project_section),
-  // );
+  const projectData = normalizeProjectData(data);
 
   return {
     props: {
@@ -77,7 +64,7 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       navData,
       translation: translation.attributes,
       slug: params.slug,
-      md: md[0].attributes.markdown,
+      projectData,
     },
   };
 };
