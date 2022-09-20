@@ -34,11 +34,41 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     };
   }
 
-  const [navData, translation, md] = await Promise.all([
+  const [navData, translation, md, projects] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
-    getData('tests', { 'filters[title][$contains]': 'так' }, true),
+    getData('tests', { 'filters[title][$contains]': 'Добавим' }, true),
+    getData(
+      'projects',
+      { locale, 'filters[slug][$eq]': params.slug, populate: '*' },
+      true,
+    ),
   ]);
+
+  const modules = projects[0].attributes;
+
+  console.log('modules', modules);
+
+  // console.log('modules', modules);
+
+  // const data = await getData(
+  //   `accordion-modules/${modules[0].id}`,
+  //   { populate: '*' },
+  //   true,
+  // );
+
+  // console.log('data', data);
+
+  // const modulesSections = await Promise.all(
+  //   modules.map(({ id }) =>
+  //     getData(`accordion-modules/${id}`, { populate: '*' }, true),
+  //   ),
+  // );
+
+  // console.log(
+  //   'modulesSections',
+  //   modulesSections.map(i => i.attributes.project_section),
+  // );
 
   return {
     props: {
