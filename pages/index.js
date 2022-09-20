@@ -19,7 +19,7 @@ import { getData } from 'helpers/apiServices';
 
 // const getEndpoint = (endpoint = '') => BASE_URL + endpoint;
 
-const Home = ({ sectionTeam, teams, home, translation }) => {
+const Home = ({ teams, home, translation }) => {
 
   return (
     <>
@@ -30,7 +30,7 @@ const Home = ({ sectionTeam, teams, home, translation }) => {
         </Head>
         <Hero data={home} translation={translation}/>
         <About data={home} />
-        <Team teams={sectionTeam} listCard={teams} />
+        <Team teams={teams} />
     </>
   );
 };
@@ -38,11 +38,11 @@ const Home = ({ sectionTeam, teams, home, translation }) => {
 export default withLayout(Home);
 
 export const getStaticProps = async ({ locale }) => {
-  const [navData, translation, homePage, sectionTeam, teams] = await Promise.all([
+
+  const [navData, translation, homePage, teams] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
     getData('home-page', {locale}),
-    getData('section-team', { locale, populate: '*' }),
     getData('section-team', { locale, populate: 'teams.foto' }),
   ]);
 
@@ -51,7 +51,6 @@ export const getStaticProps = async ({ locale }) => {
       navData,
       home: homePage.attributes,
       translation: translation.attributes,
-      sectionTeam: sectionTeam.attributes,
       teams: teams.attributes,
     },
   };

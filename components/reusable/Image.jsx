@@ -1,7 +1,11 @@
-import { getStrapiMedia } from '../../helpers/apiServices';
 import NextImage from 'next/image';
 
-const Image = ({ image, className, style, alt, dev = false }) => {
+const Image = ({
+  image,
+  className,
+  // style,
+  alt,
+}) => {
   // console.log('image', image);
   const { url, width, height } = image.data.attributes;
   return (
@@ -10,7 +14,7 @@ const Image = ({ image, className, style, alt, dev = false }) => {
       width={width || '100%'}
       height={height || '100%'}
       objectFit="contain"
-      src={getStrapiMedia(image, dev)}
+      src={url}
       alt={alt || ''}
       className={className}
     />
