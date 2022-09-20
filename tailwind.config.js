@@ -42,6 +42,7 @@ module.exports = {
       },
       colors: {
         main: '#00090E',
+        blue: '#3497D8',
         brand1: '#065A92',
         light: '#FCFCFA',
         black: '#00090E',
