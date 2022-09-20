@@ -9,9 +9,10 @@ import ArrowDown from '../../public/hero/arrowDown.svg';
 import ArrowUp from '../../public/hero/arrowUp.svg';
 
 const Hero = ({ data, translation }) => {
+
   return (
     <Section
-      className="pt-8 pb-7 bg-bgHero md:py-16 lg:pt-[116px] lg:pb-[124px] lg:!w-screen"
+      className="pt-8 pb-7 bg-bgHero md:py-16 lg:pt-[116px] lg:pb-[124px] lg:w-screen"
       id="hero"
     >
       <Container className="lg:flex lg:justify-between">
@@ -31,7 +32,7 @@ const Hero = ({ data, translation }) => {
         </div>
         <div className="hidden md:block md:m-auto md:w-[420px] md:h-[480px] lg:w-[476px] lg:h-[540px] relative">
           <Image
-            src="/hero/author.png"
+            src={data.photo.data.attributes.url}
             alt={data.photoAlt}
             width={476}
             height={540}

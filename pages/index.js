@@ -42,7 +42,7 @@ export const getStaticProps = async ({ locale }) => {
   const [navData, translation, homePage, teams] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
-    getData('home-page', {locale}),
+    getData('home-page', {locale, populate: '*'}),
     getData('section-team', { locale, populate: 'teams.foto' }),
   ]);
 
