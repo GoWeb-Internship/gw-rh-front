@@ -9,7 +9,8 @@ const links = [
   { id: '3', name: 'Консультации', path: '/consultations' },
 ];
 
-const Footer = () => {
+const Footer = ({ footer }) => {
+  console.log(footer);
   return (
     <footer>
       <Container className="footer pt-8 px-5 pb-[104px] md:pt-16 md:px-16 md:pb-[108px] lg:pt-14 lg:pb-32 lg:px-[152px] md:flex-row md:text-base md:font-semibold">
