@@ -36,9 +36,10 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     };
   }
 
-  const [navData, translation, projects] = await Promise.all([
+  const [navData, translation, footer, projects] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
+    getData('footer', { locale, populate: '*' }),
     getData('projects', {
       locale,
       'filters[slug][$eq]': params.slug,
@@ -79,6 +80,7 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       translation: translation.attributes,
       slug: params.slug,
       projectData,
+      footer: footer.attributes,
     },
   };
 };
