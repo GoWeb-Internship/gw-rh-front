@@ -55,7 +55,20 @@ export const getStaticProps = async ({ locale, locales, params }) => {
 
   const data = projects[0].attributes;
 
-  const projectData = normalizeProjectData(data);
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  let projectData = null;
+  try {
+    projectData = normalizeProjectData(data);
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
