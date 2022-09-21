@@ -44,9 +44,12 @@ module.exports = {
       },
       colors: {
         main: '#00090E',
+        blue: '#3497D8',
         brand1: '#065A92',
         brand2: '#3497D8',
         light: '#FCFCFA',
+        black: '#00090E',
+        bgHero: '#E4F0F6',
       },
     },
   },

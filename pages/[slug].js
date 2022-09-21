@@ -4,12 +4,13 @@ import withLayout from 'components/layout/Layout';
 
 import { pages } from 'data/data';
 
-import About from '../components/pages/About';
+// import About from '../components/pages/About';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
 
-const Pages = ({ locale, data }) => {
+const Pages = ({ locale, dataPage }) => {
+  console.log(dataPage);
   const router = useRouter();
   const { isFallback, query } = router;
 
@@ -26,7 +27,8 @@ const Pages = ({ locale, data }) => {
         <a className="inline-block p-4 bg-slate-400">To index page</a>
       </Link>
       <br />
-      {data.name === 'about' && <About data={data.content} />}
+
+      {/* {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />} */}
     </>
   );
 };
@@ -45,6 +47,12 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     getData('translation', { locale }),
   ]);
 
+  let dataPage = { slug: '', content: null };
+
+  if (params.slug === 'vlog') {
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('vlog', { locale });
+  }
   //дальше c помощью запросов на бек, получаем необходимы данные (с учётом локализации) и кидаем их как пропсы.
 
   // временно
@@ -57,6 +65,7 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       navData,
       translation: translation.attributes,
       data: { name: params.slug, content: data[locale] },
+      dataPage,
     },
   };
 };
