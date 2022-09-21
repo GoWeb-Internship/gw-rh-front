@@ -1,0 +1,3 @@
+.after {
+  @apply relative after:content-[''] after:opacity-0 after:duration-200 after:transition-opacity after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-brand1 hover:after:opacity-100 focus:after:opacity-100 z-50;
+}

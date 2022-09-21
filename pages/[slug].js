@@ -27,7 +27,6 @@ const Pages = ({ locale, dataPage }) => {
       <br />
 
       {/* {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />} */}
-
     </>
   );
 };
@@ -46,9 +45,9 @@ console.log(params);
     getData('translation', { locale }),
   ]);
 
- let dataPage = {slug: "", content: null};
+  let dataPage = { slug: '', content: null };
 
-  if (params.slug === 'vlog' ) {
+  if (params.slug === 'vlog') {
     dataPage.slug = params.slug;
     dataPage.content = await getData('vlog', { locale });
   }
@@ -60,7 +59,6 @@ console.log(params);
       navData,
       translation: translation.attributes,
       dataPage,
-
     },
   };
 };
