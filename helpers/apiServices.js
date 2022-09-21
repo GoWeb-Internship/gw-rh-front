@@ -14,10 +14,13 @@ export const getData = async (collection, queryParams, dev = false) => {
   if (queryParams) {
     params = getQueryParams(queryParams);
   }
+
+  const url = `${
+    dev ? LOCAL_SERVER_URL : SERVER_URL
+  }/api/${collection}${params}`;
+
   try {
-    const { data } = await axios.get(
-      `${dev ? LOCAL_SERVER_URL : SERVER_URL}/api/${collection}${params}`,
-    );
+    const { data } = await axios.get(encodeURI(url));
     return data.data;
   } catch (error) {
     console.log('ERROR', error.message);
@@ -28,6 +31,5 @@ export const getData = async (collection, queryParams, dev = false) => {
 export const getStrapiMedia = (media, dev = false) => {
   const { url } = media.data.attributes;
   const imageUrl = `${dev ? LOCAL_SERVER_URL : SERVER_URL}${url}`;
-  console.log('imageUrl', imageUrl);
   return imageUrl;
 };

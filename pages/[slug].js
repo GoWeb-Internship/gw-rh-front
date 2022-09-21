@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
 
-// import { pages } from 'data/data';
 
 // import About from '../components/pages/About';
 import Vlog from '../components/Vlog/Vlog';
@@ -11,7 +10,7 @@ import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
 
 const Pages = ({ locale, dataPage }) => {
-  // console.log('dataPage', dataPage);
+  console.log(dataPage);
   const router = useRouter();
   const { isFallback, query } = router;
 
@@ -28,7 +27,6 @@ const Pages = ({ locale, dataPage }) => {
       </Link>
       <br />
       {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
-      {/* <Vlog data={video} /> */}
     </>
   );
 };
@@ -41,14 +39,13 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       notFound: true,
     };
   }
-
+console.log(params);
   const [navData, translation] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
     // getData('section-video', { locale, populate: 'video.video' }, true),
   ]);
   // console.log('videoSection', videoSection);
-  //дальше c помощью запросов на бек, получаем необходимы данные (с учётом локализации) и кидаем их как пропсы.
   let dataPage = { slug: '', content: null };
 
   if (params.slug === 'vlog') {
@@ -62,9 +59,6 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       true,
     );
   }
-  // console.log('dataPage2', dataPage);
-  // временно
-  // const data = pages[params.slug] ?? { ru: {}, uk: {}, en: {}, cs: {} };
 
   return {
     props: {
@@ -72,8 +66,6 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       locales,
       navData,
       translation: translation.attributes,
-      // data: { name: params.slug, content: data[locale] },
-      // video: videoSection.attributes,
       dataPage,
     },
   };

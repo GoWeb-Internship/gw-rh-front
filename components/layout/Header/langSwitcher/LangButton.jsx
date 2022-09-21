@@ -7,7 +7,7 @@ const LangButton = ({ currentLanguage, onClick }) => {
       aria-label={'Кнопка переключения языка'}
       id={'lang-switcher-button'}
       type="button"
-      className={`flex items-center gap-x-3 px-3 py-2 font-navigation text-light`}
+      className={`flex items-center gap-x-3 px-3 py-4 font-navigation text-light`}
     >
       <span>{currentLanguage}</span>
       <DropdownArrowIcon className="stroke-light" />
