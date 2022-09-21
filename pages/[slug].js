@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
 
-
 // import About from '../components/pages/About';
 import Vlog from '../components/Vlog/Vlog';
 
@@ -39,10 +38,11 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       notFound: true,
     };
   }
-console.log(params);
-  const [navData, translation] = await Promise.all([
+  console.log(params);
+  const [navData, translation, footer] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
+    getData('footer', { locale, populate: '*' }),
     // getData('section-video', { locale, populate: 'video.video' }, true),
   ]);
   // console.log('videoSection', videoSection);
@@ -67,6 +67,7 @@ console.log(params);
       navData,
       translation: translation.attributes,
       dataPage,
+      footer: footer.attributes,
     },
   };
 };
