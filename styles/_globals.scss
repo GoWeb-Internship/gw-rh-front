@@ -25,6 +25,10 @@ a {
   }
 }
 
+.ReactCollapse--collapse {
+  transition: height 500ms;
+}
+
 // span {
 //   @apply text-[#065A92]
 // }

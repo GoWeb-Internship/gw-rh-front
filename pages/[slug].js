@@ -2,8 +2,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
 
-import { pages } from 'data/data';
-
 // import About from '../components/pages/About';
 
 import { getNavigation } from '../helpers/navigation';
@@ -41,7 +39,7 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       notFound: true,
     };
   }
-
+console.log(params);
   const [navData, translation] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
@@ -53,10 +51,6 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     dataPage.slug = params.slug;
     dataPage.content = await getData('vlog', { locale });
   }
-  //дальше c помощью запросов на бек, получаем необходимы данные (с учётом локализации) и кидаем их как пропсы.
-
-  // временно
-  const data = pages[params.slug] ?? { ru: {}, uk: {}, en: {}, cs: {} };
 
   return {
     props: {
@@ -64,7 +58,6 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       locales,
       navData,
       translation: translation.attributes,
-      data: { name: params.slug, content: data[locale] },
       dataPage,
     },
   };
