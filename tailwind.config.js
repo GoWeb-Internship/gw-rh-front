@@ -52,6 +52,7 @@ module.exports = {
   },
   variants: {},
   plugins: [
+    require('@tailwindcss/typography'),
     plugin(({ addComponents }) => {
       addComponents({
         '.footer': {
