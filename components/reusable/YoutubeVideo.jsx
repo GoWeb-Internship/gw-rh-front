@@ -1,28 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
 import YouTube from 'react-youtube';
-import { format } from 'date-fns';
-import { en, ru, uk, cs } from 'date-fns/locale';
 
-import Heading from './Heading';
 import ArrowYoutube from 'public/arrowYoutube.svg';
 
-const localeConfig = {
-  uk: uk,
-  en: en,
-  cs: cs,
-  ru: ru,
-};
-
-const Video = ({ video }) => {
+const YoutubeVideo = ({ data }) => {
   // console.log('video', video);
-
-  const { locale } = useRouter();
-
-  const data = format(new Date(`${video.data}`), 'MMM yyyy', {
-    locale: localeConfig[locale],
-  });
-
   const [showVideo, setShowVideo] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const container = useRef();
@@ -93,15 +75,13 @@ const Video = ({ video }) => {
 
   return (
     <>
-      <div className="relative rounded">
+      <div className="relative rounded overflow-hidden">
         {showVideo ? (
-          <div className="bg-slate-300 w-full h-full">
-            <h1>Hi</h1>
-          </div>
+          <div className="bg-slate-300 w-full h-full"></div>
         ) : (
           <>
             <YouTube
-              videoId={video.idVideo}
+              videoId={data.videoID}
               opts={opts}
               onReady={handleYoutubeReady}
               onPlay={handleOnPlay}
@@ -118,13 +98,7 @@ const Video = ({ video }) => {
           </>
         )}
       </div>
-
-      <Heading tag="h3" text={video.title} />
-      <div className="flex">
-        <p>{video.location}</p>
-        <p className="ml-4">{data}</p>
-      </div>
     </>
   );
 };
-export default Video;
+export default YoutubeVideo;

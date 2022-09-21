@@ -9,7 +9,7 @@ import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
 
 const Pages = ({ locale, dataPage }) => {
-  console.log(dataPage);
+  // console.log(dataPage);
   const router = useRouter();
   const { isFallback, query } = router;
 
@@ -43,9 +43,7 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
     getData('footer', { locale, populate: '*' }),
-    // getData('section-video', { locale, populate: 'video.video' }, true),
   ]);
-  // console.log('videoSection', videoSection);
   let dataPage = { slug: '', content: null };
 
   if (params.slug === 'vlog') {

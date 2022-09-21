@@ -38,8 +38,11 @@ module.exports = {
       },
       fontSize: {
         t1421: ['14px', '21px'],
+        t1416: ['14px', '16px'],
         qqBase: ['16px', '24px'],
         28: ['28px', '33px'],
+        t3642: ['36px', '42px'],
+        t2444: ['24px', '44px'],
         52: ['52px', '61px'],
       },
       colors: {
