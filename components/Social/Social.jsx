@@ -15,7 +15,7 @@ const Social = () => {
           <li key={id}>
             <a
               href={link}
-              className="flex justify-center items-center  rounded-full   "
+              className="flex justify-center items-center  rounded-full"
             >
               <Icon size={40} />
             </a>

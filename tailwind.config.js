@@ -54,10 +54,7 @@ module.exports = {
         '.footer': {
           color: '#fff',
           backgroundColor: '#065A92',
-          display: 'flex',
-          flexDirection: 'column',
           textAlign: 'left',
-          justifyContent: 'space-between',
           fontSize: 14,
           fontWeight: 500,
           lineHeight: 1.5,

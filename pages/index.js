@@ -45,10 +45,11 @@ const Home = ({ data, about, teams }) => {
 export default withLayout(Home);
 
 export const getStaticProps = async ({ locale }) => {
-  const [navData, translation, teams] = await Promise.all([
+  const [navData, translation, teams, footer] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
     getData('section-team', { locale, populate: 'teams.foto' }),
+    getData('footer', { locale, populate: '*' }),
   ]);
 
   const data = hero ?? { ru: {}, uk: {}, en: {}, cs: {} };
@@ -61,6 +62,7 @@ export const getStaticProps = async ({ locale }) => {
       about: aboutRes[locale],
       translation: translation.attributes,
       teams: teams.attributes,
+      footer: footer.attributes,
     },
   };
 };
