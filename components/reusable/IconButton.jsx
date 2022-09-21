@@ -17,7 +17,7 @@ const IconButton = ({
   return (
     <button
       type="button"
-      className={`flex items-center gap-x-3 py-3 font-navigation ${classes} ${className}`}
+      className={`flex items-center gap-x-3 py-4 font-navigation ${classes} ${className}`}
       onClick={onClick}
       {...props}
     >

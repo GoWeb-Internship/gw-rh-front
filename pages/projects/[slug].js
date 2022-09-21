@@ -1,12 +1,19 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
+// import ReactMarkdown from 'react-markdown';
 
 import { getNavigation } from 'helpers/navigation';
 import { getData } from 'helpers/apiServices';
+import AccordionComponent from '../../components/Accordion/Accordion';
+import { normalizeProjectData } from '../../helpers/projectsServices';
+import Overview from '../../components/projects/Overview';
 
-const Projects = () => {
+const Projects = ({ projectData }) => {
   const { isFallback } = useRouter();
+
+  // console.log('projectData', projectData);
+
+  const { overview, accordionData } = projectData;
 
   if (isFallback) {
     return 'Loading...';
@@ -14,9 +21,8 @@ const Projects = () => {
 
   return (
     <div>
-      <Link href="/">
-        <a className="inline-block p-4 bg-slate-400">To index page</a>
-      </Link>
+      <Overview overviewData={overview} />
+      <AccordionComponent accordionData={accordionData} />
     </div>
   );
 };
@@ -30,10 +36,39 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     };
   }
 
-  const [navData, translation] = await Promise.all([
+  const [navData, translation, projects] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
+    getData('projects', {
+      locale,
+      'filters[slug][$eq]': params.slug,
+      'populate[page_modules][populate][0]': 'id',
+      'populate[overview][populate][0]': 'id,optionalSections',
+      'populate[methodology][populate][0]': 'sections,page_module',
+      'populate[benefit][populate][0]': 'section,page_module',
+      'populate[modules_section][populate][0]': 'module,page_module',
+      'populate[seminar][populate][0]': 'videoList,page_module',
+      'populate[review][populate][0]': 'videoList,textReviewsList,page_module',
+      'populate[price][populate][0]': 'page_module',
+    }),
   ]);
+
+  const data = projects[0].attributes;
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  let projectData = null;
+  try {
+    projectData = normalizeProjectData(data);
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
@@ -42,6 +77,7 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       navData,
       translation: translation.attributes,
       slug: params.slug,
+      projectData,
     },
   };
 };
