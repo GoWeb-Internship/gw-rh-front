@@ -11,8 +11,6 @@ import Overview from '../../components/projects/Overview';
 const Projects = ({ projectData }) => {
   const { isFallback } = useRouter();
 
-  // console.log('projectData', projectData);
-
   const { overview, accordionData } = projectData;
 
   if (isFallback) {
@@ -22,7 +20,9 @@ const Projects = ({ projectData }) => {
   return (
     <div>
       <Overview overviewData={overview} />
-      <AccordionComponent accordionData={accordionData} />
+      {!!accordionData.length && (
+        <AccordionComponent accordionData={accordionData} />
+      )}
     </div>
   );
 };
@@ -48,7 +48,8 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       'populate[benefit][populate][0]': 'section,page_module',
       'populate[modules_section][populate][0]': 'module,page_module',
       'populate[seminar][populate][0]': 'videoList,page_module',
-      'populate[review][populate][0]': 'videoList,textReviewsList,page_module',
+      'populate[review][populate][0]':
+        'videoList,textReviewsList.photo.url,page_module',
       'populate[price][populate][0]': 'page_module',
     }),
   ]);
