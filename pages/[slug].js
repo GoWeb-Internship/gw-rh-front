@@ -3,11 +3,12 @@ import withLayout from 'components/layout/Layout';
 
 import Vlog from '../components/Vlog/Vlog';
 import Afisha from '../components/Afisha/Afisha';
+import Contacts from '../components/pages/Contacts';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
 
-const Pages = ({ dataPage }) => {
+const Pages = ({ dataPage, translation }) => {
   const router = useRouter();
   const { isFallback } = router;
 
@@ -19,6 +20,9 @@ const Pages = ({ dataPage }) => {
     <>
       {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
       {dataPage.slug === 'announcements' && <Afisha data={dataPage.content} />}
+      {dataPage.slug === 'contact-us' && (
+        <Contacts data={dataPage.content} btn={translation.sendBtn} />
+      )}
     </>
   );
 };
@@ -51,6 +55,14 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     dataPage.content = await getData('afisha', {
       locale,
       populate: 'imageCard.image',
+    });
+  }
+
+  if (params.slug === 'contact-us') {
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('form', {
+      locale,
+      populate: '*',
     });
   }
 
