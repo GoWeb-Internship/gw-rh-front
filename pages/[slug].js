@@ -3,12 +3,13 @@ import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
 
 // import About from '../components/pages/About';
+import Vlog from '../components/Vlog/Vlog';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
 
 const Pages = ({ locale, dataPage }) => {
-  console.log(dataPage);
+  // console.log(dataPage);
   const router = useRouter();
   const { isFallback, query } = router;
 
@@ -20,13 +21,11 @@ const Pages = ({ locale, dataPage }) => {
     <>
       <p>Текущая страница: {query.slug}</p>
       <p>Текущий язык: {locale}</p>
-
       <Link href="/">
         <a className="inline-block p-4 bg-slate-400">To index page</a>
       </Link>
       <br />
-
-      {/* {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />} */}
+      {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
     </>
   );
 };
@@ -44,12 +43,14 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     getData('translation', { locale }),
     getData('footer', { locale, populate: '*' }),
   ]);
-
   let dataPage = { slug: '', content: null };
 
   if (params.slug === 'vlog') {
     dataPage.slug = params.slug;
-    dataPage.content = await getData('vlog', { locale });
+    dataPage.content = await getData('vlog', {
+      locale,
+      populate: '*',
+    });
   }
 
   return {
