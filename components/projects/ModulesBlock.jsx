@@ -19,7 +19,7 @@ const ModulesBlock = ({ data }) => {
                   <Head
                     title={title}
                     Tag="h3"
-                    className="text-brand1 lg:text-main"
+                    className="text-brand1 lg:text-main mb-2"
                   />
                   <p className="text-brand1 font-semibold mb-6">{subTitle}</p>
                   <ReactMarkdown className="prose mb-6">{body}</ReactMarkdown>

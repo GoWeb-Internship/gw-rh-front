@@ -19,6 +19,26 @@ const config = {
   price: PriceBlock,
 };
 
+const theme = {
+  accordion: {
+    styles: {
+      base: {
+        body: {
+          padding: 'pt-0 pb-[100px]',
+        },
+        header: {
+          initial: {
+            padding: 'py-9',
+          },
+          active: {
+            padding: 'py-9',
+          },
+        },
+      },
+    },
+  },
+};
+
 const AccordionComponent = ({ accordionData }) => {
   const [open, setOpen] = useState(0);
 
@@ -27,7 +47,7 @@ const AccordionComponent = ({ accordionData }) => {
   };
 
   return (
-    <ThemeProvider>
+    <ThemeProvider value={theme}>
       {accordionData.map(
         ({ pageModuleTitle, pageModuleIdentifier, ...data }, idx) => (
           <Accordion

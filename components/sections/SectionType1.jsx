@@ -11,7 +11,7 @@ const SectionType1 = ({ data, Tag = 'h2', firstElementClass }) => {
         title={title}
         Tag={Tag}
         showTitle={showTitle}
-        className={firstElementClass}
+        className={[firstElementClass, 'mb-6 lg:mb-14'].join(' ')}
       />
       <ProjectContentBox reverse>
         {quote && <Quote quote={quote} className="mb-6 lg:mb-0" />}

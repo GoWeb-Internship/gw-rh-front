@@ -43,7 +43,7 @@ const YoutubeVideo = ({ data }) => {
     width: '100%',
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
+      autoplay: 0,
     },
   };
 
@@ -74,9 +74,9 @@ const YoutubeVideo = ({ data }) => {
 
   return (
     <>
-      <div className="relative rounded overflow-hidden">
+      <div className="relative rounded overflow-hidden w-full h-full">
         {showVideo ? (
-          <div className="bg-slate-300 w-full h-full"></div>
+          <div className="bg-slate-300 "></div>
         ) : (
           <>
             <YouTube
@@ -85,8 +85,9 @@ const YoutubeVideo = ({ data }) => {
               onReady={handleYoutubeReady}
               onPlay={handleOnPlay}
               onPause={handleOnPause}
-              className="relative rounded"
+              className="relative rounded w-full h-full overflow-hidden"
             />
+
             <button
               type="button"
               onClick={handleClick}

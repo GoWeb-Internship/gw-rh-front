@@ -1,18 +1,15 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
 
-// import About from '../components/pages/About';
 import Vlog from '../components/Vlog/Vlog';
 import Afisha from '../components/Afisha/Afisha';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
 
-const Pages = ({ locale, dataPage }) => {
-  // console.log(dataPage);
+const Pages = ({ dataPage }) => {
   const router = useRouter();
-  const { isFallback, query } = router;
+  const { isFallback } = router;
 
   if (isFallback) {
     return 'Loading... или какой-то спиннер нацепить';
@@ -20,12 +17,6 @@ const Pages = ({ locale, dataPage }) => {
 
   return (
     <>
-      <p>Текущая страница: {query.slug}</p>
-      <p>Текущий язык: {locale}</p>
-      <Link href="/">
-        <a className="inline-block p-4 bg-slate-400">To index page</a>
-      </Link>
-      <br />
       {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
       {dataPage.slug === 'announcements' && <Afisha data={dataPage.content} />}
     </>
