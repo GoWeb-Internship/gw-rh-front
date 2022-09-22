@@ -10,7 +10,7 @@ const Head = ({
       !showTitle
         ? 'visually-hidden'
         : [
-            'left-container mb-6 text-t1828 tracking-[0.005em] font-semibold md:text-t2444 lg:mb-14 uppercase',
+            'left-container text-t1828 tracking-[0.005em] font-semibold md:text-t2444 uppercase',
             className,
             isColor ? 'text-brand1' : '',
           ].join(' ')
