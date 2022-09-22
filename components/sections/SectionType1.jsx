@@ -1,18 +1,25 @@
-import Container from '../reusable/Container';
 import ReactMarkdown from 'react-markdown';
+import Quote from '../Quote/Quote';
+import Head from '../reusable/Head';
+import ProjectContentBox from '../reusable/ProjectContentBox';
 
-const SectionType1 = ({ data }) => {
+const SectionType1 = ({ data, Tag = 'h2', firstElementClass }) => {
   const { title, showTitle, body, quote } = data;
   return (
-    <section>
-      <Container>
-        <h2 className={!showTitle ? 'visually-hidden' : null}>{title}</h2>
-        <div>
-          <ReactMarkdown>{body}</ReactMarkdown>
-          <p>{quote}</p>
-        </div>
-      </Container>
-    </section>
+    <>
+      <Head
+        title={title}
+        Tag={Tag}
+        showTitle={showTitle}
+        className={firstElementClass}
+      />
+      <ProjectContentBox reverse>
+        {quote && <Quote quote={quote} className="mb-6 lg:mb-0" />}
+        <ReactMarkdown className="prose left-container mr-auto">
+          {body}
+        </ReactMarkdown>
+      </ProjectContentBox>
+    </>
   );
 };
 

@@ -1,12 +1,23 @@
+import Container from '../reusable/Container';
 import SectionType1 from '../sections/SectionType1';
 
 const MethodologyBlock = ({ data }) => {
   const { sections } = data;
   return (
     <>
-      {sections.map(sectionData => (
-        <SectionType1 key={sectionData.id} data={sectionData} />
-      ))}
+      {sections.length ? (
+        <section>
+          <Container className="project-container">
+            {sections.map(sectionData => (
+              <SectionType1
+                key={sectionData.id}
+                data={sectionData}
+                firstElementClass={'first:mt-0 mt-8 md:mt-14 lg:mt-14'}
+              />
+            ))}
+          </Container>
+        </section>
+      ) : null}
     </>
   );
 };
