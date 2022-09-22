@@ -6,7 +6,7 @@ import VideoList from '../VideoList/VideoList';
 const Vlog = ({ data }) => {
   // console.log('data', data);
   return (
-    <Section className="pt-[152px] pb-9 md:pt-[184px] md:pb-[64px] lg:pt-[244px] lg:pb-[124px]">
+    <Section className="pt-[152px] pb-8 md:pt-[184px] md:pb-[64px] lg:pt-[244px] lg:pb-[124px]">
       <Container>
         <>
           <Heading
