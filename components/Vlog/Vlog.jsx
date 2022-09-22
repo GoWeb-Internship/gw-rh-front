@@ -1,13 +1,15 @@
-import Section from 'components/reusable/Section';
 import Container from 'components/reusable/Container';
 import Heading from '../reusable/Heading';
 import VideoList from '../VideoList/VideoList';
 
 const Vlog = ({ data }) => {
-  // console.log('data', data);
   return (
-    <Section className="pt-[152px] pb-8 md:pt-[184px] md:pb-[64px] lg:pt-[244px] lg:pb-[124px]">
-      <Container>
+    <section>
+      <Container
+        className={
+          'pt-[152px] pb-8 md:pt-[184px] md:pb-[64px] lg:pt-[244px] lg:pb-[124px]'
+        }
+      >
         <>
           <Heading
             text={data.attributes.mainTitle}
@@ -21,7 +23,7 @@ const Vlog = ({ data }) => {
           <VideoList listData={data.attributes.video} />
         </>
       </Container>
-    </Section>
+    </section>
   );
 };
 export default Vlog;

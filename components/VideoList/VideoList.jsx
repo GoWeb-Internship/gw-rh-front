@@ -1,16 +1,17 @@
 import VideoCard from './VideoCard';
 
-const VideoList = ({ listData }) => {
+const VideoList = ({ listData, className = '' }) => {
   return (
     <ul
-      className={
-        'grid gap-y-6 md:grid-cols-2 md:gap-x-5 lg:grid-cols-4 lg:gap-x-4'
-      }
+      className={[
+        'grid gap-y-6 md:grid-cols-2 md:gap-x-5 lg:grid-cols-4 lg:gap-x-4',
+        className,
+      ].join(' ')}
     >
       {listData.map(item => (
         <li
           key={item.id}
-          className="w-[280px] my-0 mx-auto sm:w-[400px] md:w-full md:"
+          className="w-[280px] my-0 mx-auto sm:w-[400px] md:w-full"
         >
           <VideoCard
             video={item}
