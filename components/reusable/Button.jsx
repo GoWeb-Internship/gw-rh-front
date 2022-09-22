@@ -1,24 +1,33 @@
+import Link from 'next/link';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { btn, btnPrimary, btnSecondary } from 'styles/Button.module.scss';
 
 const Button = ({
+  linkTo,
   text,
   buttonTheme = 'primary',
   className = '',
-  type = 'button',
+  ...props
 }) => {
   return (
-    <button
-      type={type}
-      className={classnames([
-        btn,
-        buttonTheme === 'primary' ? btnPrimary : btnSecondary,
-        className,
-      ])}
+    <Link
+      href={linkTo}
+      {...props}
     >
-      {text}
-    </button>
+      <a className={classnames([
+        "btn",
+        buttonTheme === 'primary' ? "btnPrimary" : "btnSecondary",
+        className,
+      ])}>{text}</a>
+    </Link>
   );
+};
+
+Button.propTypes = {
+  linkTo: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  buttonTheme: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Button;
