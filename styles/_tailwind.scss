@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .project-container {
+    @apply py-8 md:py-16 lg:py-[124px];
+  }
+  .left-container {
+    @apply lg:max-w-[656px] xl:max-w-[1200px];
+  }
+}
