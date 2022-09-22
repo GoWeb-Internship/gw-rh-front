@@ -4,7 +4,6 @@ import YouTube from 'react-youtube';
 import ArrowYoutube from 'public/arrowYoutube.svg';
 
 const YoutubeVideo = ({ data }) => {
-  // console.log('video', video);
   const [showVideo, setShowVideo] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const container = useRef();
