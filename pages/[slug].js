@@ -1,17 +1,16 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
-import Contacts from 'components/pages/Contacts';
-// import About from '../components/pages/About';
+
+import Vlog from '../components/Vlog/Vlog';
+import Afisha from '../components/Afisha/Afisha';
+import Contacts from '../components/pages/Contacts';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
 
-const Pages = ({ locale, dataPage, translation }) => {
-  console.log(dataPage);
-
+const Pages = ({ dataPage, translation }) => {
   const router = useRouter();
-  const { isFallback, query } = router;
+  const { isFallback } = router;
 
   if (isFallback) {
     return 'Loading... или какой-то спиннер нацепить';
@@ -19,14 +18,8 @@ const Pages = ({ locale, dataPage, translation }) => {
 
   return (
     <>
-      <p>Текущая страница: {query.slug}</p>
-      <p>Текущий язык: {locale}</p>
-
-      <Link href="/">
-        <a className="inline-block p-4 bg-slate-400">To index page</a>
-      </Link>
-      <br />
-      {/* {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />} */}
+      {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
+      {dataPage.slug === 'announcements' && <Afisha data={dataPage.content} />}
       {dataPage.slug === 'contact-us' && (
         <Contacts data={dataPage.content} btn={translation.sendBtn} />
       )}
@@ -47,17 +40,30 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     getData('translation', { locale }),
     getData('footer', { locale, populate: '*' }),
   ]);
-
   let dataPage = { slug: '', content: null };
 
-  dataPage.slug = params.slug;
-
   if (params.slug === 'vlog') {
-    dataPage.content = await getData('vlog', { locale });
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('vlog', {
+      locale,
+      populate: '*',
+    });
+  }
+
+  if (params.slug === 'announcements') {
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('afisha', {
+      locale,
+      populate: 'imageCard.image',
+    });
   }
 
   if (params.slug === 'contact-us') {
-    dataPage.content = await getData('form', { locale, populate: '*' });
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('form', {
+      locale,
+      populate: '*',
+    });
   }
 
   return {

@@ -1,10 +1,9 @@
 import Image from 'next/image';
-import Button from '../reusable/Button';
 
+import Button from '../reusable/Button';
 import Section from '../reusable/Section';
 import Container from '../reusable/Container';
 
-import { dialogOne, dialogTwo, dialogThree } from 'styles/Hero.module.scss';
 import ArrowDown from '../../public/hero/arrowDown.svg';
 import ArrowUp from '../../public/hero/arrowUp.svg';
 
@@ -26,8 +25,8 @@ const Hero = ({ data, translation }) => {
             {data.description}
           </p>
           <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-5 lg:space-x-12">
-            <Button text={translation.signToConsultBtn} />
-            <Button text={translation.projectsBtn} buttonTheme="secondary" />
+            <Button linkTo="/contuct-us" text={translation.signToConsultBtn} />
+            <Button linkTo="/projects" text={translation.projectsBtn} buttonTheme="secondary" />
           </div>
         </div>
         <div className="hidden md:block md:m-auto md:w-[420px] md:h-[480px] lg:w-[476px] lg:h-[540px] relative">
@@ -38,7 +37,7 @@ const Hero = ({ data, translation }) => {
             height={540}
           />
           <div
-            className={`absolute top-[94px] -left-[94px] w-[216px] h-[82px] lg:top-[118px] lg:-left-[68px] ${dialogOne}`}
+            className={`absolute top-[94px] -left-[94px] w-[216px] h-[82px] lg:top-[118px] lg:-left-[68px] dialogOne`}
           >
             <p className="text-blue text-center text-sm leading-[16px] font-semibold px-8 py-4">
               Провел более <span className="text-brand1">30 000 </span>
@@ -46,7 +45,7 @@ const Hero = ({ data, translation }) => {
             </p>
           </div>
           <div
-            className={`absolute top-[140px] -right-[110px] w-[202px] h-[99px] lg:top-[130px] lg:-right-[44px] ${dialogTwo}`}
+            className={`absolute top-[140px] -right-[110px] w-[202px] h-[99px] lg:top-[130px] lg:-right-[44px] dialogTwo`}
           >
             <p className="text-blue text-center text-sm leading-[16px] font-semibold px-8 py-4">
               <span className="text-brand1">20 лет </span>консультационной
@@ -54,7 +53,7 @@ const Hero = ({ data, translation }) => {
             </p>
           </div>
           <div
-            className={`absolute top-[245px] -left-[110px] w-[194px] h-[99px] lg:top-[300px] lg:-left-[140px] ${dialogThree}`}
+            className={`absolute top-[245px] -left-[110px] w-[194px] h-[99px] lg:top-[300px] lg:-left-[140px] dialogThree`}
           >
             <p className="text-blue text-center text-sm leading-[16px] font-semibold px-8 py-4">
               <span className="text-brand1">15 лет </span>посвятил изучению

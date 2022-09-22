@@ -9,8 +9,8 @@ import withLayout from 'components/layout/Layout';
 import { getNavigation } from 'helpers/navigation';
 
 import Team from 'components/Team/Team';
-import Hero from 'components/pages/Hero';
-import About from 'components/pages/About';
+import Hero from 'components/sections/Hero';
+import About from 'components/sections/About';
 
 import { getData } from 'helpers/apiServices';
 

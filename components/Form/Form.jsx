@@ -4,7 +4,6 @@ import * as yup from 'yup';
 import PropTypes from 'prop-types';
 import useFormPersist from 'react-hook-form-persist';
 
-import Button from '../reusable/Button';
 import Input from './Input';
 
 const isBrowser = typeof window !== 'undefined';
@@ -88,7 +87,9 @@ const Form = ({ inputsData, textareaMsg, btn, errorMessage }) => {
           />
         </label>
 
-        <Button type="submit" text={btn} />
+        <button className="btn btnPrimary" type="submit">
+          {btn}
+        </button>
       </form>
     </div>
   );

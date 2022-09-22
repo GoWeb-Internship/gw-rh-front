@@ -1,9 +1,0 @@
-.btn {
-  @apply w-[280px] h-14 px-7 rounded border text-lg leading-[21px] font-semibold md:w-[256px];
-}
-.btnPrimary {
-  @apply bg-brand1 text-light shadow-btnSh hover:bg-light hover:text-brand1 hover:border-2 hover:border-brand1 hover:shadow-none focus:bg-light focus:text-brand1 focus:border-2 focus:border-brand1 focus:shadow-none transition-colors;
-}
-.btnSecondary {
-  @apply bg-light text-brand1 border-2 border-brand1 hover:bg-brand1 hover:text-light focus:bg-brand1 focus:text-light transition-colors;
-}

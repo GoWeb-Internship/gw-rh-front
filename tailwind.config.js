@@ -39,6 +39,7 @@ module.exports = {
       fontSize: {
         qqBase: ['16px', '24px'],
         t1421: ['14px', '21px'],
+        t1416: ['14px', '16px'],
         t3642: ['36px', '42px'],
         t1821: ['18px', '21px'],
         t1824: ['18px', '24px'],
@@ -52,6 +53,7 @@ module.exports = {
         blue: '#3497D8',
         brand1: '#065A92',
         brand2: '#3497D8',
+        brand3: '#FFB35B',
         light: '#FCFCFA',
         black: '#00090E',
         bgHero: '#E4F0F6',
