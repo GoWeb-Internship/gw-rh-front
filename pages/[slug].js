@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import withLayout from 'components/layout/Layout';
-
+import Contacts from 'components/pages/Contacts';
 // import About from '../components/pages/About';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
 
-const Pages = ({ locale, dataPage }) => {
+const Pages = ({ locale, dataPage, translation }) => {
   console.log(dataPage);
+
   const router = useRouter();
   const { isFallback, query } = router;
 
@@ -25,8 +26,10 @@ const Pages = ({ locale, dataPage }) => {
         <a className="inline-block p-4 bg-slate-400">To index page</a>
       </Link>
       <br />
-
       {/* {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />} */}
+      {dataPage.slug === 'contact-us' && (
+        <Contacts data={dataPage.content} btn={translation.sendBtn} />
+      )}
     </>
   );
 };
@@ -47,9 +50,14 @@ export const getStaticProps = async ({ locale, locales, params }) => {
 
   let dataPage = { slug: '', content: null };
 
+  dataPage.slug = params.slug;
+
   if (params.slug === 'vlog') {
-    dataPage.slug = params.slug;
     dataPage.content = await getData('vlog', { locale });
+  }
+
+  if (params.slug === 'contact-us') {
+    dataPage.content = await getData('form', { locale, populate: '*' });
   }
 
   return {
