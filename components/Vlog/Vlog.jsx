@@ -18,10 +18,7 @@ const Vlog = ({ data }) => {
             text={data.attributes.title}
             className="uppercase font-semibold text-t2444 mb-4 md:mb-6"
           />
-          <VideoList
-            listData={data.attributes.video}
-            className="grid gap-y-6 md:grid-cols-2 md:gap-x-5 lg:grid-cols-4 lg:gap-x-4"
-          />
+          <VideoList listData={data.attributes.video} />
         </>
       </Container>
     </Section>

@@ -12,7 +12,7 @@ const localeConfig = {
   ru: ru,
 };
 
-const VideoCard = ({ video }) => {
+const VideoCard = ({ video, videoWrapperClass }) => {
   const { locale } = useRouter();
 
   const dataPublished = format(new Date(`${video.published}`), 'MMM yyyy', {
@@ -21,7 +21,9 @@ const VideoCard = ({ video }) => {
 
   return (
     <>
-      <YoutubeVideo data={video} />
+      <div className={videoWrapperClass}>
+        <YoutubeVideo data={video} />
+      </div>
       <Heading
         tag="h3"
         text={video.videoTitle}
