@@ -8,7 +8,7 @@ const Team = ({ teams }) => {
   return (
     <Section>
       <Container>
-        <div className="pt-8 pb-16 text-main md:pt-16 md:pb-32 lg:pt-[124px] lg:pb-[248px]">
+        <div className="pt-8 pb-16 text-main md:pt-16 md:pb-32 lg:pt-[124px] lg:pb-[124px]">
           <Heading
             tag="h2"
             text={teams.title}
