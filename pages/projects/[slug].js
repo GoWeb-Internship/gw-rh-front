@@ -36,14 +36,15 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     };
   }
 
-  const [navData, translation, projects] = await Promise.all([
+  const [navData, translation, footer, projects] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
+    getData('footer', { locale, populate: '*' }),
     getData('projects', {
       locale,
       'filters[slug][$eq]': params.slug,
       'populate[page_modules][populate][0]': 'id',
-      'populate[overview][populate][0]': 'id,optionalSections',
+      'populate[overview][populate][0]': 'optionalSections,quotes',
       'populate[methodology][populate][0]': 'sections,page_module',
       'populate[benefit][populate][0]': 'section,page_module',
       'populate[modules_section][populate][0]': 'module,page_module',
@@ -79,6 +80,7 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       translation: translation.attributes,
       slug: params.slug,
       projectData,
+      footer: footer.attributes,
     },
   };
 };

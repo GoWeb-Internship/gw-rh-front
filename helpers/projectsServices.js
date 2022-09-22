@@ -1,5 +1,5 @@
 export const normalizeProjectData = data => {
-  const { title, subTitle, textContent, optionalSections } =
+  const { title, subTitle, textContent, quotes, optionalSections } =
     data.overview.data.attributes;
 
   const normalizedData = {
@@ -8,6 +8,7 @@ export const normalizeProjectData = data => {
       title,
       subTitle,
       textContent,
+      quotes,
       optionalSections,
     },
     accordionData: [],
