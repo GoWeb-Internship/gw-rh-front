@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router';
 import { format } from 'date-fns';
-import { en, ru, uk, cs } from 'date-fns/locale';
+import { enGB, ru, uk, cs } from 'date-fns/locale';
 
 import Heading from '../reusable/Heading';
 import YoutubeVideo from '../reusable/YoutubeVideo';
 
 const localeConfig = {
   uk: uk,
-  en: en,
+  en: enGB,
   cs: cs,
   ru: ru,
 };
