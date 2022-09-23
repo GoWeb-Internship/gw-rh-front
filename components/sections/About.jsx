@@ -1,11 +1,11 @@
-import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 
 import Section from '../reusable/Section';
 import Container from '../reusable/Container';
 import Collapse from '../reusable/Collapse';
+import LinkToBook from '../reusable/LinkToBook';
 
-const About = ({ data }) => {
+const About = ({ data, translation }) => {
   return (
     <Section className="py-9 lg:py-20" id="about author">
       <Container>
@@ -17,17 +17,13 @@ const About = ({ data }) => {
             {data.quote}
           </p>
           <div>
-            <Collapse>
+            <Collapse translate={translation}>
               <ReactMarkdown className="prose prose-em:text-blue prose-em:not-italic w-[656px]">
                 {data.body}
               </ReactMarkdown>
             </Collapse>
 
-            <Link href="/">
-              <a className="block text-brand1 text-lg leading-[21px] font-medium underline">
-                {data.linkToBook}
-              </a>
-            </Link>
+            <LinkToBook />
           </div>
         </div>
       </Container>

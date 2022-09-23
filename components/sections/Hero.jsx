@@ -37,27 +37,24 @@ const Hero = ({ data, translation }) => {
             height={540}
           />
           <div
-            className={`absolute top-[94px] -left-[94px] w-[216px] h-[82px] lg:top-[118px] lg:-left-[68px] dialogOne`}
+            className={`flex justify-center align-center absolute top-[94px] -left-[94px] w-[216px] h-[82px] lg:top-[118px] lg:-left-[68px] dialogOne`}
           >
-            <p className="text-blue text-center text-sm leading-[16px] font-semibold px-8 py-4">
-              Провел более <span className="text-brand1">30 000 </span>
-              консультаций
+            <p className=" text-blue text-center text-sm leading-[16px] font-semibold px-8 py-4">
+              {translation.consultMore}
             </p>
           </div>
           <div
-            className={`absolute top-[140px] -right-[110px] w-[202px] h-[99px] lg:top-[130px] lg:-right-[44px] dialogTwo`}
+            className={`flex justify-center align-center absolute top-[140px] -right-[110px] w-[202px] h-[99px] lg:top-[130px] lg:-right-[44px] dialogTwo`}
           >
-            <p className="text-blue text-center text-sm leading-[16px] font-semibold px-8 py-4">
-              <span className="text-brand1">20 лет </span>консультационной
-              деятельности
+            <p className=" text-blue text-center text-sm leading-[16px] font-semibold px-8 py-4">
+              {translation.actionYears}
             </p>
           </div>
           <div
-            className={`absolute top-[245px] -left-[110px] w-[194px] h-[99px] lg:top-[300px] lg:-left-[140px] dialogThree`}
+            className={`flex justify-center align-center absolute top-[245px] -left-[110px] w-[194px] h-[99px] lg:top-[300px] lg:-left-[140px] dialogThree`}
           >
-            <p className="text-blue text-center text-sm leading-[16px] font-semibold px-8 py-4">
-              <span className="text-brand1">15 лет </span>посвятил изучению
-              науки информациологии
+            <p className=" text-blue text-center text-sm leading-[16px] font-semibold px-8 py-4">
+              {translation.learnInfo}
             </p>
           </div>
         </div>

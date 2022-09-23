@@ -5,12 +5,12 @@ import ProjectContentBox from '../reusable/ProjectContentBox';
 import SectionType1 from '../sections/SectionType1';
 import Collapse from '../reusable/Collapse';
 
-const Overview = ({ overviewData }) => {
+const Overview = ({ overviewData, translation }) => {
   const { title, subTitle, textContent, quotes, optionalSections } =
     overviewData;
 
   return (
-    <section>
+    <section className="pt-[120px]">
       <Container className="project-container">
         <h1 className="mb-6 text-t3642 font-semibold text-brand1 left-container">
           {title.toUpperCase()}
@@ -19,7 +19,7 @@ const Overview = ({ overviewData }) => {
           {subTitle}
         </p>
         <ProjectContentBox>
-          <Collapse>
+          <Collapse translate={translation}>
             <ReactMarkdown className={`prose left-container`}>
               {textContent}
             </ReactMarkdown>
