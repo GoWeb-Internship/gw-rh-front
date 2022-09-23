@@ -81,14 +81,10 @@ export const getStaticProps = async ({ locale, locales, params }) => {
 
   if (params.slug === 'consultations') {
     dataPage.slug = params.slug;
-    dataPage.content = await getData(
-      'consultation',
-      {
-        locale,
-        populate: '*',
-      },
-      // true,
-    );
+    dataPage.content = await getData('consultation', {
+      locale,
+      populate: '*',
+    });
   }
 
   return {
