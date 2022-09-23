@@ -28,7 +28,7 @@ const Home = ({ teams, home, translation }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero data={home} translation={translation} />
-      <About data={home} />
+      <About data={home} translation={translation}/>
       <Team teams={teams} />
     </>
   );

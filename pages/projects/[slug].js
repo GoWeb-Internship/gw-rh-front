@@ -8,7 +8,7 @@ import AccordionComponent from '../../components/Accordion/Accordion';
 import { normalizeProjectData } from '../../helpers/projectsServices';
 import Overview from '../../components/projects/Overview';
 
-const Projects = ({ projectData }) => {
+const Projects = ({ projectData, translation }) => {
   const { isFallback } = useRouter();
 
   const { overview, accordionData } = projectData;
@@ -19,7 +19,7 @@ const Projects = ({ projectData }) => {
 
   return (
     <div>
-      <Overview overviewData={overview} />
+      <Overview overviewData={overview} translation={translation}/>
       {!!accordionData.length && (
         <AccordionComponent accordionData={accordionData} />
       )}
