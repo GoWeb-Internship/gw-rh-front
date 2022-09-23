@@ -10,7 +10,7 @@ const Overview = ({ overviewData }) => {
     overviewData;
 
   return (
-    <section>
+    <section className="pt-[120px]">
       <Container className="project-container">
         <h1 className="mb-6 text-t3642 font-semibold text-brand1 left-container">
           {title.toUpperCase()}

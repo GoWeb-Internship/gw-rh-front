@@ -8,7 +8,7 @@ import BurgerIcon from 'public/burgerBtn.svg';
 
 const Header = ({ navData = [], translation }) => {
   return (
-    <header className="bg-brand1">
+    <header className="bg-brand1 fixed top-0 w-full z-[1000]">
       <Container className="flex items-center pt-[34px] pb-[38px] md:py-7">
         <LogoIcon className="mr-auto" />
 
