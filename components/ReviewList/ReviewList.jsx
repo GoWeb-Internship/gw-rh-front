@@ -30,6 +30,7 @@ const ReviewList = ({ listData }) => {
       spaceBetween={spaceBetween}
       btnClass={'fill-brand3'}
       innerButtons={false}
+      pageFormat={pageFormat}
     >
       {listData.map(({ id, ...itemData }) => (
         <SwiperSlide key={id} className="slide h-auto">
