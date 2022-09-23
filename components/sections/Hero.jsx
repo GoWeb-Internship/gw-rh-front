@@ -11,7 +11,7 @@ const Hero = ({ data, translation }) => {
 
   return (
     <Section
-      className="pt-8 pb-7 bg-bgHero md:py-16 lg:pt-[116px] lg:pb-[124px] lg:!w-screen"
+      className="pt-[152px] pb-7 bg-bgHero md:pt-[184px] md:pb-16 lg:pt-[236px] lg:pb-[124px] lg:!w-screen"
       id="hero"
     >
       <Container className="lg:flex lg:justify-between">

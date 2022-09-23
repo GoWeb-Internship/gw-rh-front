@@ -8,6 +8,7 @@ import Consultation from '../components/Consultation/Consultation';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
+import Soul from '../components/pages/Soul';
 
 const Pages = ({ dataPage, translation }) => {
   const router = useRouter();
@@ -32,10 +33,11 @@ const Pages = ({ dataPage, translation }) => {
       )}
       {dataPage.slug === 'consultations' && (
         <Consultation
-          data={dataPage.content}
-          translation={translation.signToConsultBtn}
+        data={dataPage.content}
+        translation={translation.signToConsultBtn}
         />
-      )}
+        )}
+        {dataPage.slug === 'soul' && <Soul data={dataPage.content.attributes.Soul} />}
     </>
   );
 };
@@ -79,13 +81,22 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     });
   }
 
-  if (params.slug === 'consultations') {
+if (params.slug === 'consultations') {
+  dataPage.slug = params.slug;
+  dataPage.content = await getData('consultation', {
+    locale,
+    populate: '*',
+  });
+}
+
+  if (params.slug === 'soul') {
     dataPage.slug = params.slug;
-    dataPage.content = await getData('consultation', {
+    dataPage.content = await getData('soul', {
       locale,
       populate: '*',
     });
   }
+
 
   return {
     props: {

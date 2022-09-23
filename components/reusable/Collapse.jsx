@@ -37,7 +37,7 @@ const Collapse = ({ children, maxHeight = 252, className = '', translate }) => {
       </div>
       <button
         type="button"
-        className="text-qqBase text-brand1 underline flex mr-auto py-3"
+        className="text-lg leading-[21px] font-semibold text-brand1 underline flex mr-auto py-3"
         onClick={() => {
           setShowBlock(p => !p);
         }}
