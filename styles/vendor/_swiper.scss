@@ -1,0 +1,54 @@
+/* Swiper style */
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  display: none;
+}
+
+.prev-slider,
+.next-slider {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  // width: 40px;
+  // height: 40px;
+  cursor: pointer;
+  transition: opacity 200ms linear;
+  z-index: 1000;
+}
+
+.prev-slider {
+  left: -60px;
+
+  &.nav-desk {
+    left: -120px;
+  }
+}
+
+.next-slider {
+  right: -60px;
+
+  &.nav-desk {
+    right: -120px;
+  }
+}
+
+.slide.h-auto {
+  height: auto;
+}
+
+// .swiper-mobile-translate {
+//   transform: translateX(calc(50vw - 152px));
+// }
+
+// .slider-width {
+//   max-width: calc(100vw - 40px);
+// }
+
+// .slider-item-width {
+//   max-width: calc(100vw - 80px);
+// }
+
+// .priceswiper > div {
+//   align-items: center;
+// }

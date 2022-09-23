@@ -3,6 +3,7 @@ import Quote from '../Quote/Quote';
 import Container from '../reusable/Container';
 import ProjectContentBox from '../reusable/ProjectContentBox';
 import SectionType1 from '../sections/SectionType1';
+import Collapse from '../reusable/Collapse';
 
 const Overview = ({ overviewData }) => {
   const { title, subTitle, textContent, quotes, optionalSections } =
@@ -18,9 +19,12 @@ const Overview = ({ overviewData }) => {
           {subTitle}
         </p>
         <ProjectContentBox>
-          <ReactMarkdown className="prose left-container">
-            {textContent}
-          </ReactMarkdown>
+          <Collapse>
+            <ReactMarkdown className={`prose left-container`}>
+              {textContent}
+            </ReactMarkdown>
+          </Collapse>
+
           {!!quotes.length && (
             <div className="hidden mt-6 lg:block lg:mt-0 lg:shrink-0">
               {quotes.map(({ id, item }) => (

@@ -2,8 +2,8 @@ import { useRouter } from 'next/router';
 import { format } from 'date-fns';
 import { enGB, ru, uk, cs } from 'date-fns/locale';
 
+import NextImage from '../reusable/Image';
 import Heading from '../reusable/Heading';
-import YoutubeVideo from '../reusable/YoutubeVideo';
 
 const localeConfig = {
   uk: uk,
@@ -12,28 +12,29 @@ const localeConfig = {
   ru: ru,
 };
 
-const VideoCard = ({ video, videoWrapperClass }) => {
+const ImageCard = ({ data }) => {
   const { locale } = useRouter();
 
-  const dataPublished = format(new Date(`${video.published}`), 'MMM yyyy', {
+  const dataPublished = format(new Date(`${data.data}`), 'd MMMM', {
     locale: localeConfig[locale],
   });
 
   return (
     <>
-      <div className={videoWrapperClass}>
-        <YoutubeVideo data={video} />
-      </div>
+      <NextImage image={data.image} className="rounded" alt={data.alt} />
       <Heading
         tag="h3"
-        text={video.videoTitle}
+        text={data.titleImg}
         className="uppercase mt-2 text-lg tracking-[0.005em] font-semibold md:mt-4 lg:mt-2"
       />
       <div className="flex mt-2 text-t1416 font-normal">
-        <p>{video.location}</p>
-        <p className="ml-4">{dataPublished}</p>
+        <p className="mr-4">
+          {data.location}, {dataPublished}
+        </p>
+        <p>{data.locationPlace}</p>
       </div>
     </>
   );
 };
-export default VideoCard;
+
+export default ImageCard;
