@@ -28,6 +28,8 @@ const ReviewList = ({ listData }) => {
       slidesPerView={slidesPerView}
       className={'md:w-[500px] lg:w-[844px] mx-auto'}
       spaceBetween={spaceBetween}
+      btnClass={'fill-brand3'}
+      innerButtons={false}
     >
       {listData.map(({ id, ...itemData }) => (
         <SwiperSlide key={id} className="slide h-auto">
