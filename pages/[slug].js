@@ -4,6 +4,7 @@ import withLayout from 'components/layout/Layout';
 import Vlog from '../components/Vlog/Vlog';
 import Afisha from '../components/Afisha/Afisha';
 import Contacts from '../components/pages/Contacts';
+import Consultation from '../components/Consultation/Consultation';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
@@ -19,9 +20,21 @@ const Pages = ({ dataPage, translation }) => {
   return (
     <>
       {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
-      {dataPage.slug === 'announcements' && <Afisha data={dataPage.content} />}
+      {dataPage.slug === 'announcements' && (
+        <Afisha
+          data={dataPage.content}
+          btn={translation.signToConsultBtn}
+          text={translation.afishaConsult}
+        />
+      )}
       {dataPage.slug === 'contact-us' && (
         <Contacts data={dataPage.content} btn={translation.sendBtn} />
+      )}
+      {dataPage.slug === 'consultations' && (
+        <Consultation
+          data={dataPage.content}
+          translation={translation.signToConsultBtn}
+        />
       )}
     </>
   );
@@ -61,6 +74,14 @@ export const getStaticProps = async ({ locale, locales, params }) => {
   if (params.slug === 'contact-us') {
     dataPage.slug = params.slug;
     dataPage.content = await getData('form', {
+      locale,
+      populate: '*',
+    });
+  }
+
+  if (params.slug === 'consultations') {
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('consultation', {
       locale,
       populate: '*',
     });
