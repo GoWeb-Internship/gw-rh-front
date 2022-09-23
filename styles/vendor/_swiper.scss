@@ -18,18 +18,36 @@
 }
 
 .prev-slider {
-  left: -60px;
+  &.outer {
+    left: -60px;
 
-  &.nav-desk {
-    left: -120px;
+    &.desk-nav-btn {
+      left: -120px;
+    }
+  }
+  &.inner {
+    left: 16px;
+
+    &.desk-nav-btn {
+      left: 24px;
+    }
   }
 }
 
 .next-slider {
-  right: -60px;
+  &.outer {
+    right: -60px;
 
-  &.nav-desk {
-    right: -120px;
+    &.desk-nav-btn {
+      right: -120px;
+    }
+  }
+  &.inner {
+    right: 16px;
+
+    &.desk-nav-btn {
+      right: 24px;
+    }
   }
 }
 

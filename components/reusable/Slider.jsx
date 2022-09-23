@@ -12,6 +12,8 @@ const Slider = ({
   onSwiper,
   style,
   spaceBetween = 40,
+  btnClass = 'fill-main',
+  innerButtons = false,
 }) => {
   return (
     <div className={`${className} relative`}>
@@ -35,16 +37,22 @@ const Slider = ({
 
       <>
         <div
-          className="hidden prev-slider swiper-button-disabled md:block nav-desk "
+          className={[
+            'hidden prev-slider swiper-button-disabled md:block desk-nav-btn',
+            innerButtons ? 'inner' : 'outer',
+          ].join(' ')}
           role={'button'}
         >
-          <Arrow />
+          <Arrow className={['rotate-180', btnClass].join(' ')} />
         </div>
         <div
-          className="hidden next-slider swiper-button-disabled md:block nav-desk"
+          className={[
+            'hidden next-slider swiper-button-disabled md:block desk-nav-btn',
+            innerButtons ? 'inner' : 'outer',
+          ].join(' ')}
           role={'button'}
         >
-          <Arrow className="rotate-180" />
+          <Arrow className={[btnClass].join(' ')} />
         </div>
       </>
     </div>
