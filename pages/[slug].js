@@ -7,6 +7,7 @@ import Contacts from '../components/pages/Contacts';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
+import Soul from '../components/pages/Soul';
 
 const Pages = ({ dataPage, translation }) => {
   const router = useRouter();
@@ -23,6 +24,7 @@ const Pages = ({ dataPage, translation }) => {
       {dataPage.slug === 'contact-us' && (
         <Contacts data={dataPage.content} btn={translation.sendBtn} />
       )}
+      {dataPage.slug === 'soul' && <Soul data={dataPage.content.attributes.Soul} />}
     </>
   );
 };
@@ -61,6 +63,14 @@ export const getStaticProps = async ({ locale, locales, params }) => {
   if (params.slug === 'contact-us') {
     dataPage.slug = params.slug;
     dataPage.content = await getData('form', {
+      locale,
+      populate: '*',
+    });
+  }
+
+  if (params.slug === 'soul') {
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('soul', {
       locale,
       populate: '*',
     });

@@ -15,7 +15,7 @@ const ShortProject = ({ data, translation, nav }) => {
         <ReactMarkdown className="mb-7 md:mb-14 prose">
           {data.projectDescription}
         </ReactMarkdown>
-          {nav === 2 && <LinkToBook className="mb-8 md:mb-14"/>}
+          {nav === 2 && <LinkToBook className="mb-8 md:mb-14" text={translation.linkToBook}/>}
         <div className="flex flex-col space-y-5 md:flex-row md:space-y-0 md:space-x-12 lg:space-x-12">
           <Button linkTo="/contuct-us" text={translation.signToConsultBtn} />
           <Button
