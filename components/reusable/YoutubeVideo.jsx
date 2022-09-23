@@ -2,53 +2,33 @@ import React, { useState, useEffect, useRef } from 'react';
 import YouTube from 'react-youtube';
 
 import ArrowYoutube from 'public/arrowYoutube.svg';
+import useObserver from '../../hooks/useObserver';
+
+const opts = {
+  height: '100%',
+  width: '100%',
+  playerVars: {
+    // https://developers.google.com/youtube/player_parameters
+    autoplay: 0,
+  },
+};
 
 const YoutubeVideo = ({ data }) => {
-  const [showVideo, setShowVideo] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const container = useRef();
   const videoPlayer = useRef(null);
-  const observer = useRef();
 
-  const onVideoIntersection = entries => {
-    if (!entries || entries.length <= 0) {
-      return;
-    }
-
-    if (entries[0].isIntersecting) {
-      setShowVideo(true);
-      observer.current.disconnect();
-    }
-  };
+  const [showVideo, getRef] = useObserver();
 
   useEffect(() => {
-    observer.current = new IntersectionObserver(onVideoIntersection, {
-      rootMargin: '100px 0px',
-      threshold: 0.25,
-    });
-  }, []);
-
-  useEffect(() => {
-    if (window && 'IntersectionObserver' in window) {
-      if (container && container.current) {
-        observer.current.observe(container.current);
-      }
-    } else {
-      setShowVideo(true);
-    }
-  }, [container]);
-
-  const opts = {
-    height: '100%',
-    width: '100%',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 0,
-    },
-  };
+    if (!container.current || !getRef) return;
+    getRef(container);
+  }, [getRef]);
 
   const handleYoutubeReady = e => {
     videoPlayer.current = e.target;
+    setDisabled(false);
   };
 
   const handleOnPlay = () => {
@@ -74,9 +54,12 @@ const YoutubeVideo = ({ data }) => {
 
   return (
     <>
-      <div className="relative rounded overflow-hidden w-full h-full">
-        {showVideo ? (
-          <div className="bg-slate-300 "></div>
+      <div
+        ref={container}
+        className="relative rounded overflow-hidden w-full h-full"
+      >
+        {!showVideo ? (
+          <div className="bg-slate-300 w-full h-full"></div>
         ) : (
           <>
             <YouTube
@@ -92,6 +75,7 @@ const YoutubeVideo = ({ data }) => {
               type="button"
               onClick={handleClick}
               className={`${isPlaying ? playBtn && hidePlayBtn : playBtn}`}
+              disabled={disabled}
             >
               <ArrowYoutube className="absolute top-[22%] left-[34%] " />
             </button>

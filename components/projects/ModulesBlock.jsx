@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import Container from '../reusable/Container';
 import Head from '../reusable/Head';
+import YoutubeVideo from '../reusable/YoutubeVideo';
 
 const ModulesBlock = ({ data }) => {
   const { module, page_module } = data;
@@ -25,7 +26,7 @@ const ModulesBlock = ({ data }) => {
                   <ReactMarkdown className="prose mb-6">{body}</ReactMarkdown>
                 </div>
                 <div className="bg-slate-400 flex items-center w-[280px] h-[158px] sm:w-full sm:h-[248px] md:h-[360px] lg:shrink-0 lg:w-[560px] lg:h-[315px] xl:w-[794px] xl:h-[446px]">
-                  {videoID}
+                  <YoutubeVideo data={{ videoID }} />
                 </div>
               </li>
             ))}
