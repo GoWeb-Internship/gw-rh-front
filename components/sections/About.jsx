@@ -1,21 +1,11 @@
-import { useState } from 'react';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
-// import { Collapse } from 'react-collapse';
 
 import Section from '../reusable/Section';
 import Container from '../reusable/Container';
+import Collapse from '../reusable/Collapse';
 
 const About = ({ data }) => {
-  const [showMore, setShowMore] = useState(false);
-
-  const getText = num =>
-    data.body
-      .split('\n\n')
-      .slice(0, num)
-      .map(p => p);
-  const shortText = getText(5);
-
   return (
     <Section className="py-9 lg:py-20" id="about author">
       <Container>
@@ -27,44 +17,12 @@ const About = ({ data }) => {
             {data.quote}
           </p>
           <div>
-            {/* <Collapse isOpened={showMore}> */}
-            {!showMore ? (
-              <ReactMarkdown className="prose prose-em:text-blue prose-em:not-italic w-[656px]">
-                {shortText.join('')}
-              </ReactMarkdown>
-            ) : (
+            <Collapse>
               <ReactMarkdown className="prose prose-em:text-blue prose-em:not-italic w-[656px]">
                 {data.body}
               </ReactMarkdown>
-            )}
+            </Collapse>
 
-            {/* </Collapse>           */}
-            <button
-              type="button"
-              className={
-                showMore
-                  ? 'hidden'
-                  : 'block text-brand1 text-lg leading-[21px] underline font-medium mb-8 mt-5 md:mt-9'
-              }
-              onClick={() => setShowMore(true)}
-            >
-              Читать больше
-            </button>
-            {showMore && (
-              <>
-                <button
-                  type="button"
-                  className={
-                    showMore
-                      ? 'block text-brand1 text-lg leading-[21px] underline font-medium mb-8 mt-5 md:mt-9'
-                      : 'hidden'
-                  }
-                  onClick={() => setShowMore(false)}
-                >
-                  Читать меньше
-                </button>
-              </>
-            )}
             <Link href="/">
               <a className="block text-brand1 text-lg leading-[21px] font-medium underline">
                 {data.linkToBook}
