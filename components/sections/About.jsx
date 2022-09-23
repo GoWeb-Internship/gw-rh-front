@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 
 import Section from '../reusable/Section';
 import Container from '../reusable/Container';
 import Collapse from '../reusable/Collapse';
+import LinkToBook from '../reusable/LinkToBook';
 
 const About = ({ data }) => {
   return (
@@ -23,11 +23,7 @@ const About = ({ data }) => {
               </ReactMarkdown>
             </Collapse>
 
-            <Link href="/">
-              <a className="block text-brand1 text-lg leading-[21px] font-medium underline">
-                {data.linkToBook}
-              </a>
-            </Link>
+            <LinkToBook />
           </div>
         </div>
       </Container>
