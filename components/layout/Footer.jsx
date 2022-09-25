@@ -5,8 +5,8 @@ import LogoIcon from 'public/logo-header.svg';
 
 const Footer = ({ footer }) => {
   return (
-    <footer>
-      <Container className="footer pt-8 px-5 pb-[104px] md:pt-16 md:px-16 md:pb-[108px] lg:pt-14 lg:pb-32 lg:px-[152px] md:text-base md:font-semibold">
+    <footer className="bg-brand1  w-full">
+      <Container className="footer pt-8 px-5 pb-6 md:pt-16 md:px-16  lg:pt-14  lg:px-[152px] md:text-base md:font-semibold">
         <div className="flex flex-col items-center md:flex-row md:justify-between md:items-start ">
           <div className="flex mb-16 md:mb-0 gap-x-6 md:gap-x-11 lg:gap-x-8 items-start  ">
             <div className="relative h-12 w-12 md:h-16 md:w-16  ">
