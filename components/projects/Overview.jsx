@@ -5,7 +5,7 @@ import ProjectContentBox from '../reusable/ProjectContentBox';
 import SectionType1 from '../sections/SectionType1';
 import Collapse from '../reusable/Collapse';
 
-const Overview = ({ overviewData }) => {
+const Overview = ({ overviewData, translation }) => {
   const { title, subTitle, textContent, quotes, optionalSections } =
     overviewData;
 
@@ -19,7 +19,7 @@ const Overview = ({ overviewData }) => {
           {subTitle}
         </p>
         <ProjectContentBox>
-          <Collapse>
+          <Collapse translate={translation}>
             <ReactMarkdown className={`prose left-container`}>
               {textContent}
             </ReactMarkdown>

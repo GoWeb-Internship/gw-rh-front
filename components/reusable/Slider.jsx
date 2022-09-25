@@ -14,13 +14,17 @@ const Slider = ({
   spaceBetween = 40,
   btnClass = 'fill-main',
   innerButtons = false,
+  pageFormat = 'mobile',
 }) => {
+  const modules =
+    pageFormat === 'mobile' ? [Navigation, Pagination] : [Navigation];
+
   return (
     <div className={`${className} relative`}>
       <Swiper
         className=""
         spaceBetween={spaceBetween}
-        modules={[Navigation, Pagination]}
+        modules={modules}
         pagination
         slidesPerView={slidesPerView}
         onSlideChange={onSlideChange}

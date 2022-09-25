@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 
 const getMaxHeight = height => (!height ? '1000px' : `${height + 100}px`);
 
-const Collapse = ({ children, maxHeight = 252, className = '' }) => {
+const Collapse = ({ children, maxHeight = 252, className = '', translate }) => {
+  const {readMore, readLess } = translate;
   const [containerHeight, setContainerHeight] = useState(0);
   const [showBlock, setShowBlock] = useState(false);
   const container = useRef(null);
@@ -36,12 +37,12 @@ const Collapse = ({ children, maxHeight = 252, className = '' }) => {
       </div>
       <button
         type="button"
-        className="text-qqBase text-brand1 underline flex ml-auto py-3"
+        className="text-lg leading-[21px] font-semibold text-brand1 underline flex mr-auto py-3"
         onClick={() => {
           setShowBlock(p => !p);
         }}
       >
-        {!showBlock ? 'Читать больше' : 'Спрятать'}
+        {!showBlock ? `${readMore}` : `${readLess}`}
       </button>
     </div>
   );
