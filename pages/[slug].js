@@ -132,7 +132,7 @@ export const getStaticPaths = async () => {
   const paths = navData
     .map(({ attributes }) => {
       const { locale, slug, singlePage } = attributes;
-      if (!singlePage) {
+      if (!singlePage || slug === 'index') {
         return null;
       }
       return { params: { slug }, locale };
