@@ -58,35 +58,34 @@ const Form = ({ inputsData, textareaMsg, btn, errorMessage }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         {inputsData &&
           inputsData.map(({ type, placeholder }) => {
-            const errorBool = errors[type] ? true : false;
+            const hasError = errors[type] ? true : false;
 
             return (
-              <label key={type}>
-                {errors[type] ? (
-                  <span className="text-red-500">{errors[type]?.message}</span>
-                ) : (
-                  <span>{placeholder}</span>
-                )}
+              <div key={type} className="relative mb-4">
                 <Input
-                  error={errorBool}
+                  hasError={hasError}
                   type={type}
                   placeholder={placeholder}
                   register={register}
+                  errorMessage={errors[type] ? errors[type]?.message : ''}
                 />
-              </label>
+              </div>
             );
           })}
-
-        <label>
-          {textareaMsg}
+        <div className="relative mb-6 md:mb-[30px] lg:mb-10">
           <textarea
             id="message"
             type="text"
-            className="resize-none w-full h-36 py-5 px-4 text-sm border border-blue rounded-sm mb-6 md:mb-[30px] lg:mb-10 "
+            className="resize-none w-full h-36 py-5 px-4 text-sm border border-blue rounded-sm"
             {...register('message')}
           />
-        </label>
-
+          <label
+            htmlFor="message"
+            className="absolute left-[15px] top-5 lg:top-4 "
+          >
+            {textareaMsg}
+          </label>
+        </div>
         <button className="btn btnPrimary" type="submit">
           {btn}
         </button>

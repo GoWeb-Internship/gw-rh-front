@@ -130,7 +130,6 @@ module.exports = {
       addComponents({
         '.footer': {
           color: '#fff',
-          backgroundColor: '#065A92',
           textAlign: 'left',
           fontSize: 14,
           fontWeight: 500,
