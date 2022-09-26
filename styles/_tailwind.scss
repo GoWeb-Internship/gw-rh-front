@@ -34,4 +34,18 @@
   .btnSecondary {
     @apply bg-light text-brand1 border-2 border-brand1 hover:bg-brand1 hover:text-light focus:bg-brand1 focus:text-light transition-colors;
   }
+
+  .treeBg {
+    @media (min-width: 768px) {
+      background-image: url('../public/tree404t.svg');
+      background-repeat: no-repeat;
+      background-position: bottom 64px center;
+    }
+
+    @media (min-width: 1440px) {
+      background-image: url('../public/tree404.svg');
+      background-repeat: no-repeat;
+      background-position: bottom 12px center;
+    }
+  }
 }
