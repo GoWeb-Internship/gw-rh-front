@@ -20,12 +20,20 @@ const Pages = ({ dataPage, translation }) => {
 
   return (
     <>
-      {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
+      {dataPage.slug === 'vlog' && (
+        <Vlog
+          data={dataPage.content}
+          btnShowMore={translation.readMore}
+          btnShowLess={translation.readLess}
+        />
+      )}
       {dataPage.slug === 'announcements' && (
         <Afisha
           data={dataPage.content}
-          btn={translation.signToConsultBtn}
+          btn={translation.callbackBtn}
           text={translation.afishaConsult}
+          btnShowMore={translation.readMore}
+          btnShowLess={translation.readLess}
         />
       )}
       {dataPage.slug === 'contact-us' && (
@@ -33,11 +41,13 @@ const Pages = ({ dataPage, translation }) => {
       )}
       {dataPage.slug === 'consultations' && (
         <Consultation
-        data={dataPage.content}
-        translation={translation.signToConsultBtn}
+          data={dataPage.content}
+          translation={translation.signToConsultBtn}
         />
-        )}
-        {dataPage.slug === 'soul' && <Soul data={dataPage.content.attributes.Soul} />}
+      )}
+      {dataPage.slug === 'soul' && (
+        <Soul data={dataPage.content.attributes.Soul} />
+      )}
     </>
   );
 };
@@ -81,13 +91,13 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     });
   }
 
-if (params.slug === 'consultations') {
-  dataPage.slug = params.slug;
-  dataPage.content = await getData('consultation', {
-    locale,
-    populate: '*',
-  });
-}
+  if (params.slug === 'consultations') {
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('consultation', {
+      locale,
+      populate: '*',
+    });
+  }
 
   if (params.slug === 'soul') {
     dataPage.slug = params.slug;
@@ -96,7 +106,6 @@ if (params.slug === 'consultations') {
       populate: '*',
     });
   }
-
 
   return {
     props: {

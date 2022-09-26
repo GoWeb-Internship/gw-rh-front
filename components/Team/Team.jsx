@@ -4,11 +4,10 @@ import CardTeam from './CardTeam';
 import Heading from '../reusable/Heading';
 
 const Team = ({ teams }) => {
-  // console.log('listCard', teams);
   return (
-    <Section>
+    <Section className="pt-8 pb-1 md:pt-16 md:pb-32 lg:pt-[124px] lg:pb-[124px]">
       <Container>
-        <div className="pt-8 pb-16 text-main md:pt-16 md:pb-32 lg:pt-[124px] lg:pb-[124px]">
+        <>
           <Heading
             tag="h2"
             text={teams.title}
@@ -25,7 +24,7 @@ const Team = ({ teams }) => {
                 </li>
               ))}
           </ul>
-        </div>
+        </>
       </Container>
     </Section>
   );
