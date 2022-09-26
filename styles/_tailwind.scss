@@ -37,15 +37,14 @@
 
   .treeBg {
     @media (min-width: 768px) {
-      background-image: url('../public/tree404t.svg');
+      background-image: url('../public/tree404.svg');
       background-repeat: no-repeat;
       background-position: bottom 64px center;
     }
 
     @media (min-width: 1440px) {
-      background-image: url('../public/tree404.svg');
-      background-repeat: no-repeat;
       background-position: bottom 12px center;
+      background-size: 1240px 660px;
     }
   }
 }
