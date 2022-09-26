@@ -4,7 +4,7 @@ const ButtonShow = ({ children, onClick }) => {
   return (
     <button
       type="button"
-      className="text-t1821 text-brand1 font-medium underline"
+      className="text-t1821 text-brand1 font-medium underline font-semibold"
       onClick={onClick}
     >
       {children}
@@ -13,8 +13,8 @@ const ButtonShow = ({ children, onClick }) => {
 };
 
 ButtonShow.propTypes = {
-  children: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  children: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default ButtonShow;
