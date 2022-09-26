@@ -8,7 +8,6 @@ import ArrowDown from '../../public/hero/arrowDown.svg';
 import ArrowUp from '../../public/hero/arrowUp.svg';
 
 const Hero = ({ data, translation }) => {
-
   return (
     <Section
       className="pt-[152px] pb-7 bg-bgHero md:pt-[184px] md:pb-16 lg:pt-[236px] lg:pb-[124px] lg:!w-screen"
@@ -25,8 +24,12 @@ const Hero = ({ data, translation }) => {
             {data.description}
           </p>
           <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-5 lg:space-x-12">
-            <Button linkTo="/contuct-us" text={translation.signToConsultBtn} />
-            <Button linkTo="/projects" text={translation.projectsBtn} buttonTheme="secondary" />
+            <Button linkTo="/contact-us" text={translation.signToConsultBtn} />
+            <Button
+              linkTo="/projects"
+              text={translation.projectsBtn}
+              buttonTheme="secondary"
+            />
           </div>
         </div>
         <div className="hidden md:block md:m-auto md:w-[420px] md:h-[480px] lg:w-[476px] lg:h-[540px] relative">
