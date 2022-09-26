@@ -20,12 +20,20 @@ const Pages = ({ dataPage, translation }) => {
 
   return (
     <>
-      {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
+      {dataPage.slug === 'vlog' && (
+        <Vlog
+          data={dataPage.content}
+          btnShowMore={translation.readMore}
+          btnShowLess={translation.readLess}
+        />
+      )}
       {dataPage.slug === 'announcements' && (
         <Afisha
           data={dataPage.content}
-          btn={translation.signToConsultBtn}
+          btn={translation.callbackBtn}
           text={translation.afishaConsult}
+          btnShowMore={translation.readMore}
+          btnShowLess={translation.readLess}
         />
       )}
       {dataPage.slug === 'contact-us' && (

@@ -4,7 +4,7 @@ import Heading from '../reusable/Heading';
 import Button from '../reusable/Button';
 import ImageList from '../ImageList/ImageList';
 
-const Afisha = ({ data, btn, text }) => {
+const Afisha = ({ data, btn, text, btnShowMore, btnShowLess }) => {
   return (
     <Section className="pt-[152px] pb-8 md:pt-[184px] md:pb-[64px] lg:pt-[244px] lg:pb-[124px]">
       <Container>
@@ -19,7 +19,8 @@ const Afisha = ({ data, btn, text }) => {
         />
         <ImageList
           dataList={data.attributes.imageCard}
-          className="grid gap-y-6 mb-9 md:mb-20 md:grid-cols-2 md:gap-x-5 lg:grid-cols-4 lg:gap-x-4"
+          btnShowLess={btnShowLess}
+          btnShowMore={btnShowMore}
         />
         <div className="md:flex md:justify-between lg:justify-start">
           <Button
@@ -27,7 +28,7 @@ const Afisha = ({ data, btn, text }) => {
             text={btn}
             className="my-0 mx-auto mb-6 md:m-0 lg:mr-[33px]"
           />
-          <p className="text-brand1 text-qqBase font-semibold md:w-[310px] lg:w-[464px]">
+          <p className="text-brand1 text-lg font-semibold md:w-[310px] lg:w-[464px]">
             {text}
           </p>
         </div>

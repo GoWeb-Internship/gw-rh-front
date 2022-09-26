@@ -6,11 +6,11 @@ const Contacts = ({ btn, data: { attributes } }) => {
   const { title, additional_info, validation, message, error } = attributes;
 
   return (
-    <Section className="py-9 lg:py-20" id="about author">
+    <Section className="py-[152px]  lg:py-[244px]" id="about author">
       <Container>
         <div className="flex flex-col lg:flex-row justify-between">
           <div className="lg:w-[464px]">
-            <h1 className="font-semibold text-lg tracking-[0.005em] leading-7 text-[#065A92] mb-4 md:text-28 md:tracking-normal md:mb-6 lg:mb-14">
+            <h1 className="font-semibold text-lg tracking-[0.005em] uppercase leading-7 text-[#065A92] mb-4 md:text-28 md:tracking-normal md:mb-6 lg:mb-14">
               {title}
             </h1>
             <p className="font-semibold leading-6 text-[#3497D8] mb-6 md:mb-16 lg:mb-0">

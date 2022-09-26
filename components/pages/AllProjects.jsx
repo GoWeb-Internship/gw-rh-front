@@ -8,7 +8,7 @@ const AllProjects = ({ data, translation }) => {
   return (
     <Section className="pt-[152px] pb-8 md:pt-[184px] md:pb-[124px] lg:pt-[244px]">
       <Container>
-        <Head  title={data.title} isColor className="text-4xl !mb-4 md:mb-6 md:text-4xl"/>
+        <Head Tag="h1" title={data.title} isColor className="text-4xl !mb-4 md:mb-6 md:text-4xl"/>
         <p className="font-semibold text-brand1 mb-8 md:mb-16 lg:mb-[124px] lg:w-[656px]">{data.description}</p>
         <ul>
           {data.projectShort &&
