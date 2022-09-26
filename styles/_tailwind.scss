@@ -12,6 +12,9 @@
   .btn {
     @apply flex items-center justify-center text-center w-[280px] min-h-[56px] px-7 rounded border text-lg leading-[21px] font-semibold md:w-[256px];
   }
+  .after {
+    @apply relative after:content-[''] after:opacity-0 after:duration-200 after:transition-opacity after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-brand1 hover:after:opacity-100 focus:after:opacity-100 z-50;
+  }
 
   .dialogOne {
     background-image: url('../public/hero/dialogWindow1.png');

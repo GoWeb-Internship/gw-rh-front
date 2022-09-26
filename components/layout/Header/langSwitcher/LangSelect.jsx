@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { after } from '../Header.module.scss';
 
 import DropdownArrowIcon from 'public/dropdownArrow.svg';
 
@@ -16,7 +15,7 @@ const LangSelect = ({ langData, className, onClick }) => {
             <Link href={{ pathname, query }} locale={value}>
               <a
                 onClick={onClick}
-                className={`font-navigation flex gap-x-3 items-center px-3 py-2 duration-100 transition-colors ${after}`}
+                className={`font-navigation flex gap-x-3 items-center px-3 py-2 duration-100 transition-colors after`}
               >
                 <span>{label}</span>
                 {!id && <DropdownArrowIcon className="stroke-main" />}

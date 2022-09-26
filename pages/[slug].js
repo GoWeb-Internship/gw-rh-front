@@ -33,11 +33,13 @@ const Pages = ({ dataPage, translation }) => {
       )}
       {dataPage.slug === 'consultations' && (
         <Consultation
-        data={dataPage.content}
-        translation={translation.signToConsultBtn}
+          data={dataPage.content}
+          translation={translation.signToConsultBtn}
         />
-        )}
-        {dataPage.slug === 'soul' && <Soul data={dataPage.content.attributes.Soul} />}
+      )}
+      {dataPage.slug === 'soul' && (
+        <Soul data={dataPage.content.attributes.Soul} />
+      )}
     </>
   );
 };
@@ -81,13 +83,13 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     });
   }
 
-if (params.slug === 'consultations') {
-  dataPage.slug = params.slug;
-  dataPage.content = await getData('consultation', {
-    locale,
-    populate: '*',
-  });
-}
+  if (params.slug === 'consultations') {
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('consultation', {
+      locale,
+      populate: '*',
+    });
+  }
 
   if (params.slug === 'soul') {
     dataPage.slug = params.slug;
@@ -96,7 +98,6 @@ if (params.slug === 'consultations') {
       populate: '*',
     });
   }
-
 
   return {
     props: {
@@ -123,7 +124,7 @@ export const getStaticPaths = async () => {
   const paths = navData
     .map(({ attributes }) => {
       const { locale, slug, singlePage } = attributes;
-      if (!singlePage) {
+      if (!singlePage || slug === 'index') {
         return null;
       }
       return { params: { slug }, locale };
