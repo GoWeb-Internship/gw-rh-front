@@ -9,7 +9,7 @@ const ConsultationCard = ({ data }) => {
 
   return (
     <>
-      <div className="bg-slate-400 flex items-center w-[280px] h-[158px] sm:w-full sm:h-[248px] md:h-[360px] lg:shrink-0 lg:w-[560px] lg:h-[315px] xl:w-[794px] xl:h-[446px]">
+      <div className="rounded overflow-hidden bg-slate-400 flex items-center w-[280px] h-[158px] sm:w-full sm:h-[248px] md:h-[360px] lg:shrink-0 lg:w-[560px] lg:h-[315px] xl:w-[794px] xl:h-[446px]">
         <YoutubeVideo data={data} />
       </div>
       <div>
