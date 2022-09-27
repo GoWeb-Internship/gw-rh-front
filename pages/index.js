@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-// import Icon from 'public/vercel.svg';
-
-// import axios from 'axios';
 import withLayout from 'components/layout/Layout';
 
 import { getNavigation } from 'helpers/navigation';
@@ -13,11 +10,6 @@ import Hero from 'components/sections/Hero';
 import About from 'components/sections/About';
 
 import { getData } from 'helpers/apiServices';
-
-// const API_KEY = process.env.API_KEY;
-// const BASE_URL = `https://${API_KEY}.mockapi.io/api/`;
-
-// const getEndpoint = (endpoint = '') => BASE_URL + endpoint;
 
 const Home = ({ teams, home, translation }) => {
   return (

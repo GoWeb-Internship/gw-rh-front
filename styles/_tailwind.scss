@@ -10,7 +10,10 @@
     @apply lg:max-w-[656px] xl:max-w-[1200px];
   }
   .btn {
-    @apply flex items-center justify-center text-center w-[280px] min-h-[56px] px-7 rounded border text-lg leading-[21px] font-semibold md:w-[256px];
+    @apply flex items-center justify-center text-center w-[280px] min-h-[56px] px-4 rounded border text-lg leading-[21px] font-semibold md:w-[256px];
+  }
+  .after {
+    @apply relative after:content-[''] after:opacity-0 after:duration-200 after:transition-opacity after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-brand1 hover:after:opacity-100 focus:after:opacity-100 z-50;
   }
 
   .dialogOne {
@@ -29,9 +32,28 @@
   }
 
   .btnPrimary {
-    @apply bg-brand1 text-light shadow-btnSh hover:bg-light hover:text-brand1 hover:border-2 hover:border-brand1 hover:shadow-none focus:bg-light focus:text-brand1 focus:border-2 focus:border-brand1 focus:shadow-none transition-colors;
+    @apply bg-brand1 text-light  hover:bg-blue  focus:bg-blue transition-colors duration-200;
   }
   .btnSecondary {
-    @apply bg-light text-brand1 border-2 border-brand1 hover:bg-brand1 hover:text-light focus:bg-brand1 focus:text-light transition-colors;
+    @apply bg-light text-brand1 border-2 border-brand1 hover:bg-brand3 hover:text-light hover:border-brand3 focus:bg-brand3 focus:text-light focus:border-brand3 transition-colors duration-200;
+  }
+  .type3 {
+    @apply bg-brand3 text-light border-2 border-brand3 hover:bg-brand2 hover:text-light hover:border-2 hover:border-brand2 hover:shadow-none focus:bg-brand2 focus:text-light focus:border-brand2 focus:shadow-none transition-colors;
+  }
+  .type4 {
+    @apply bg-light text-brand3 border-2 border-brand3 hover:bg-brand2 hover:text-light hover:border-brand2 focus:bg-brand2 focus:border-brand2 focus:text-light transition-colors;
+  }
+
+  .treeBg {
+    @media (min-width: 768px) {
+      background-image: url('../public/tree404.svg');
+      background-repeat: no-repeat;
+      background-position: bottom 64px center;
+    }
+
+    @media (min-width: 1440px) {
+      background-position: bottom 12px center;
+      background-size: 1240px 660px;
+    }
   }
 }

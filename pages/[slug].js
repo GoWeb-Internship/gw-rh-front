@@ -14,19 +14,26 @@ import Soul from '../components/pages/Soul';
 const Pages = ({ dataPage, translation }) => {
   const router = useRouter();
   const { isFallback } = router;
-
   if (isFallback) {
     return 'Loading... или какой-то спиннер нацепить';
   }
 
   return (
     <>
-      {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
+      {dataPage.slug === 'vlog' && (
+        <Vlog
+          data={dataPage.content}
+          btnShowMore={translation.readMore}
+          btnShowLess={translation.readLess}
+        />
+      )}
       {dataPage.slug === 'announcements' && (
         <Afisha
           data={dataPage.content}
-          btn={translation.signToConsultBtn}
+          btn={translation.callbackBtn}
           text={translation.afishaConsult}
+          btnShowMore={translation.readMore}
+          btnShowLess={translation.readLess}
         />
       )}
       {dataPage.slug === 'contact-us' && (
@@ -111,7 +118,6 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       'populate[slider][populate][0]': 'image',
     });
   }
-
   return {
     props: {
       locale,
@@ -137,7 +143,7 @@ export const getStaticPaths = async () => {
   const paths = navData
     .map(({ attributes }) => {
       const { locale, slug, singlePage } = attributes;
-      if (!singlePage) {
+      if (!singlePage || slug === 'index') {
         return null;
       }
       return { params: { slug }, locale };

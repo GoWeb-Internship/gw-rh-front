@@ -7,8 +7,11 @@ import BenefitsBlock from '../projects/BenefitsBlock';
 import ModulesBlock from '../projects/ModulesBlock';
 import SeminarsBlock from '../projects/SeminarsBlock';
 import ReviewsBlock from '../projects/ReviewsBlock';
+import ContactBlock from '../projects/ContactBlock';
 import PriceBlock from '../projects/PriceBlock';
 import AccordionBody from './AccordionBody';
+// import Container from '../reusable/Container';
+// import AccodrionIcon from './AccodrionIcon';
 
 const config = {
   methodology: MethodologyBlock,
@@ -17,6 +20,7 @@ const config = {
   seminar: SeminarsBlock,
   review: ReviewsBlock,
   price: PriceBlock,
+  contact: ContactBlock,
 };
 
 const theme = {
@@ -24,7 +28,7 @@ const theme = {
     styles: {
       base: {
         body: {
-          padding: 'pt-0 pb-[100px]',
+          padding: 'py-0',
         },
         header: {
           initial: {
@@ -73,3 +77,29 @@ const AccordionComponent = ({ accordionData }) => {
 };
 
 export default AccordionComponent;
+
+// const AccordionComponent2 = ({ accordionData }) => {
+//   const [open, setOpen] = useState(0);
+
+//   const handleOpen = value => {
+//     setOpen(open === value ? 0 : value);
+//   };
+
+//   {
+//     accordionData.map(
+//       ({ pageModuleTitle, pageModuleIdentifier, ...data }, idx) => (
+//         <div key={pageModuleIdentifier}>
+//           <button className="py-9 flex justify-between items-center bg-brand2 shadow-accordion">
+//             <Container>
+//               <span className="font-semibold text-light text-left text-[1.2rem] leading-[2.2rem] md:text-28 uppercase">
+//                 {pageModuleTitle}
+//               </span>
+//               <AccodrionIcon idx={1 + idx} open={open} />
+//             </Container>
+//           </button>
+//           <AccordionBody Component={config[pageModuleIdentifier]} data={data} />
+//         </div>
+//       ),
+//     );
+//   }
+// };

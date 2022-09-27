@@ -8,7 +8,13 @@ const SeminarsBlock = ({ data }) => {
     <section>
       <Container className="project-container">
         <Head title={title} className={'mb-6 lg:mb-14'} />
-        {!!videoList.length && <VideoList listData={videoList} />}
+        {!!videoList.length && (
+          <VideoList
+            listData={videoList}
+            btnShowMore={'show more'}
+            btnShowLess={'show less'}
+          />
+        )}
       </Container>
     </section>
   );
