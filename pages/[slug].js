@@ -5,6 +5,7 @@ import Vlog from '../components/Vlog/Vlog';
 import Afisha from '../components/Afisha/Afisha';
 import Contacts from '../components/pages/Contacts';
 import Consultation from '../components/Consultation/Consultation';
+import Traveling from '../components/pages/Traveling';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
@@ -33,11 +34,17 @@ const Pages = ({ dataPage, translation }) => {
       )}
       {dataPage.slug === 'consultations' && (
         <Consultation
-        data={dataPage.content}
-        translation={translation.signToConsultBtn}
+          data={dataPage.content}
+          translation={translation.signToConsultBtn}
         />
-        )}
-        {dataPage.slug === 'soul' && <Soul data={dataPage.content.attributes.Soul} />}
+      )}
+      {dataPage.slug === 'soul' && (
+        <Soul data={dataPage.content.attributes.Soul} />
+      )}
+
+      {dataPage.slug === 'travels' && (
+        <Traveling data={dataPage.content.attributes} />
+      )}
     </>
   );
 };
@@ -81,13 +88,13 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     });
   }
 
-if (params.slug === 'consultations') {
-  dataPage.slug = params.slug;
-  dataPage.content = await getData('consultation', {
-    locale,
-    populate: '*',
-  });
-}
+  if (params.slug === 'consultations') {
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('consultation', {
+      locale,
+      populate: '*',
+    });
+  }
 
   if (params.slug === 'soul') {
     dataPage.slug = params.slug;
@@ -97,6 +104,13 @@ if (params.slug === 'consultations') {
     });
   }
 
+  if (params.slug === 'travels') {
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('travel', {
+      'populate[video]': '*',
+      'populate[slider][populate][0]': 'image',
+    });
+  }
 
   return {
     props: {
