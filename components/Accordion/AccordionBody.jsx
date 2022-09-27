@@ -1,17 +1,11 @@
-import { AccordionBody as Body } from '@material-tailwind/react';
-// import Collapse from '../reusable/Collapse';
+import Collapse from '../reusable/Collapse';
 
-const AccordionBody = ({ Component, data }) => {
+const AccordionBody = ({ Component, data, open = false }) => {
   return (
-    <Body>
+    <Collapse open={open} withoutButton maxHeight={0}>
       <Component data={data} />
-    </Body>
+    </Collapse>
   );
-  // return (
-  //   <div>
-  //     <Component data={data} />
-  //   </div>
-  // );
 };
 
 export default AccordionBody;

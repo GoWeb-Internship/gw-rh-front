@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import VideoCard from './VideoCard';
 import ButtonShow from '../reusable/ButtonShow';
 
-const VideoList = ({ listData, className = '', btnShowMore, btnShowLess }) => {
+const VideoList = ({
+  listData,
+  className = '',
+  btnShowMore = '',
+  btnShowLess = '',
+}) => {
   const [itemsToShow, setItemsToShow] = useState(2);
 
   const showmore = () => {
