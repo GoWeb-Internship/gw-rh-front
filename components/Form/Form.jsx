@@ -9,12 +9,13 @@ import Input from './Input';
 const isBrowser = typeof window !== 'undefined';
 
 const Form = ({ inputsData, textareaMsg, btn, errorMessage }) => {
+
   const schema = yup.object({
     text: yup
       .string()
       .required(errorMessage.required)
       .min(3, `${errorMessage.min} 3 ${errorMessage.symbol}`)
-      .max(10, `${errorMessage.max} 10 ${errorMessage.symbol} `)
+      .max(50, `${errorMessage.max} 50 ${errorMessage.symbol} `)
       .matches(
         /^[а-яА-ЯёЁa-zA-ZіІїЇґҐєЄ]{1}[а-яА-ЯёЁa-zA-ZіІїЇґҐєЄ0-9' ]+$/,
         errorMessage.validName,
@@ -23,8 +24,8 @@ const Form = ({ inputsData, textareaMsg, btn, errorMessage }) => {
       .string()
       .required(errorMessage.required)
       .email(errorMessage.validEmail)
-      .min(3, `${errorMessage.min} 3 ${errorMessage.symbol}`)
-      .max(16, `${errorMessage.max} 10 ${errorMessage.symbol} `)
+      .min(10, `${errorMessage.min} 10 ${errorMessage.symbol}`)
+      .max(50, `${errorMessage.max} 50 ${errorMessage.symbol} `)
       .matches(
         /^[a-zA-Z0-9+_.]+[a-zA-Z0-9+_.-/]+[a-zA-Z0-9+_./-]+@[a-zA-Z0-9_.-]+$/,
         errorMessage.validEmail,
@@ -76,15 +77,10 @@ const Form = ({ inputsData, textareaMsg, btn, errorMessage }) => {
           <textarea
             id="message"
             type="text"
-            className="resize-none w-full h-36 py-5 px-4 text-sm border border-blue rounded-sm"
+            placeholder={textareaMsg}
+            className="resize-none w-full h-36 py-5 px-4 text-sm border border-blue rounded-sm placeholder:text-main"
             {...register('message')}
           />
-          <label
-            htmlFor="message"
-            className="absolute left-[15px] top-5 lg:top-4 "
-          >
-            {textareaMsg}
-          </label>
         </div>
         <button className="btn btnPrimary" type="submit">
           {btn}

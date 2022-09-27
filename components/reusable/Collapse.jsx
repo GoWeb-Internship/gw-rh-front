@@ -50,7 +50,7 @@ const Collapse = ({
       {!withoutButton && (
         <button
           type="button"
-          className="text-lg leading-[21px] font-semibold text-brand1 underline flex mr-auto py-3"
+          className="text-lg leading-[21px] font-semibold text-brand1 underline flex mr-auto py-3 hover:text-blue focus:text-blue transition-colors duration-200"
           onClick={() => {
             setShowBlock(p => !p);
           }}
