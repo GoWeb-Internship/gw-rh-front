@@ -5,6 +5,7 @@ import Vlog from '../components/Vlog/Vlog';
 import Afisha from '../components/Afisha/Afisha';
 import Contacts from '../components/pages/Contacts';
 import Consultation from '../components/Consultation/Consultation';
+import Traveling from '../components/pages/Traveling';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
@@ -19,33 +20,20 @@ const Pages = ({ dataPage, translation }) => {
 
   return (
     <>
-      {dataPage.slug === 'vlog' && (
-        <Vlog
-          data={dataPage.content}
-          btnShowMore={translation.readMore}
-          btnShowLess={translation.readLess}
-        />
-      )}
-      {dataPage.slug === 'announcements' && (
-        <Afisha
-          data={dataPage.content}
-          btn={translation.callbackBtn}
-          text={translation.afishaConsult}
-          btnShowMore={translation.readMore}
-          btnShowLess={translation.readLess}
-        />
-      )}
+      {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
+      {dataPage.slug === 'announcements' && <Afisha data={dataPage.content} />}
       {dataPage.slug === 'contact-us' && (
         <Contacts data={dataPage.content} btn={translation.sendBtn} />
       )}
       {dataPage.slug === 'consultations' && (
-        <Consultation
-          data={dataPage.content}
-          translation={translation.signToConsultBtn}
-        />
+        <Consultation data={dataPage.content} />
       )}
       {dataPage.slug === 'soul' && (
         <Soul data={dataPage.content.attributes.Soul} />
+      )}
+
+      {dataPage.slug === 'travels' && (
+        <Traveling data={dataPage.content.attributes} />
       )}
     </>
   );
@@ -54,7 +42,6 @@ const Pages = ({ dataPage, translation }) => {
 export default withLayout(Pages);
 
 export const getStaticProps = async ({ locale, locales, params }) => {
-
   if (!params.slug) {
     return {
       notFound: true,
@@ -107,6 +94,13 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     });
   }
 
+  if (params.slug === 'travels') {
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('travel', {
+      'populate[video]': '*',
+      'populate[slider][populate][0]': 'image',
+    });
+  }
   return {
     props: {
       locale,
