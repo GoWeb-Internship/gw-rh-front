@@ -1,5 +1,4 @@
-import { useEffect, useContext, useMemo } from 'react';
-import { PageFormatContext } from '../../../context/PageFormatContext';
+import { useEffect, useMemo } from 'react';
 import useShowElement from '../../../hooks/useShowElement';
 
 import Container from 'components/reusable/Container';
@@ -12,10 +11,11 @@ import IconButton from '../../reusable/IconButton';
 import LogoIcon from 'public/logo-header.svg';
 import BurgerIcon from 'public/burgerBtn.svg';
 import Link from 'next/link';
+import useMedia from '../../../hooks/useMedia';
 
 const Header = ({ navData = [], translation }) => {
   const [render, show, , onToggle] = useShowElement('slow');
-  const pageFormat = useContext(PageFormatContext);
+  const pageFormat = useMedia();
 
   const isDesktop = pageFormat === 'desktop';
 
