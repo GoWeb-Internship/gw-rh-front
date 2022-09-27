@@ -10,6 +10,10 @@ const useTranslations = key => {
 
   let tr = null;
 
+  if (typeof key === 'string') {
+    tr = translation[key];
+  }
+
   if (Array.isArray(key)) {
     tr = key.reduce((acc, item) => {
       // if (translation[item] === undefined) {
@@ -17,10 +21,6 @@ const useTranslations = key => {
       // }
       return { ...acc, [item]: translation[item] };
     }, {});
-  }
-
-  if (typeof key === 'string') {
-    tr = translation[key];
   }
 
   return tr;

@@ -17,8 +17,6 @@ const Projects = ({ projectData, translation }) => {
     return 'Loading...';
   }
 
-  console.log('accordionData', accordionData);
-
   return (
     <div>
       <Overview overviewData={overview} translation={translation} />

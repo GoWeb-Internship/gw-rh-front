@@ -2,7 +2,7 @@ import ReviewCard from './ReviewCard';
 import Slider from '../reusable/Slider';
 
 import { SwiperSlide } from 'swiper/react';
-import useMedia from '../../hooks/useMedia';
+import useMedia from '../../hooks/useMediaCore';
 import { getMediaQueries } from '../../helpers/mediaServices';
 import { useEffect, useState } from 'react';
 
