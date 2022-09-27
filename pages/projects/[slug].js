@@ -19,7 +19,7 @@ const Projects = ({ projectData, translation }) => {
 
   return (
     <div>
-      <Overview overviewData={overview} translation={translation}/>
+      <Overview overviewData={overview} translation={translation} />
       {!!accordionData.length && (
         <AccordionComponent accordionData={accordionData} />
       )}
@@ -51,7 +51,9 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       'populate[seminar][populate][0]': 'videoList,page_module',
       'populate[review][populate][0]':
         'videoList,textReviewsList.photo.url,page_module',
+      'populate[contact][populate][0]': 'page_module',
       'populate[price][populate][0]': 'page_module',
+      'pagination[pageSize]': 50,
     }),
   ]);
 

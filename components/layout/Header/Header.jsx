@@ -1,16 +1,17 @@
+import { useEffect, useContext, useMemo } from 'react';
+import { PageFormatContext } from '../../../context/PageFormatContext';
+import useShowElement from '../../../hooks/useShowElement';
+
 import Container from 'components/reusable/Container';
 import LangSwitcher from './langSwitcher/LangSwitcher';
 import NavMenu from './navigation/NavMenu';
+import MobileMenu from '../../MobileMenu/MobileMenu';
+import Backdrop from '../../reusable/BackDrop';
+import IconButton from '../../reusable/IconButton';
 
 import LogoIcon from 'public/logo-header.svg';
 import BurgerIcon from 'public/burgerBtn.svg';
-import MobileMenu from '../../MobileMenu/MobileMenu';
-import IconButton from '../../reusable/IconButton';
-import useShowElement from '../../../hooks/useShowElement';
-import Backdrop from '../../reusable/BackDrop';
-import { useEffect } from 'react';
-import { useContext } from 'react';
-import { PageFormatContext } from '../../../context/PageFormatContext';
+import Link from 'next/link';
 
 const Header = ({ navData = [], translation }) => {
   const [render, show, , onToggle] = useShowElement('slow');
@@ -26,19 +27,26 @@ const Header = ({ navData = [], translation }) => {
     }
   }, [render]);
 
-  const mobileMenuData = navData.reduce((acc, item) => {
-    if (item.id !== 'more') {
-      return [...acc, item];
-    }
-    return [...acc, ...item.subMenu];
-  }, []);
+  const mobileMenuData = useMemo(
+    () =>
+      navData.reduce((acc, item) => {
+        if (item.id !== 'more') {
+          return [...acc, item];
+        }
+        return [...acc, ...item.subMenu];
+      }, []),
+    [navData],
+  );
 
   return (
     <>
       <header className="bg-brand1 fixed top-0 w-full z-[1000]">
         <Container className="flex items-center py-7 md:py-7">
-          <LogoIcon className="mr-auto" />
-
+          <Link href="/">
+            <a className="mr-auto">
+              <LogoIcon />
+            </a>
+          </Link>
           <NavMenu navData={navData} className="hidden lg:block mr-12" />
           <button
             type="button"
