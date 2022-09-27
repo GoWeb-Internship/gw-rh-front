@@ -2,8 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 
 const getMaxHeight = height => (!height ? '1000px' : `${height + 100}px`);
 
-const Collapse = ({ children, maxHeight = 252, className = '', translate }) => {
-  const {readMore, readLess } = translate;
+const Collapse = ({
+  children,
+  maxHeight = 252,
+  className = '',
+  translate,
+  withoutButton = false,
+  open,
+}) => {
+  const { readMore, readLess } = translate;
   const [containerHeight, setContainerHeight] = useState(0);
   const [showBlock, setShowBlock] = useState(false);
   const container = useRef(null);
@@ -12,6 +19,11 @@ const Collapse = ({ children, maxHeight = 252, className = '', translate }) => {
     if (!container.current) return;
     setContainerHeight(container?.current?.children[0].offsetHeight ?? 0);
   }, []);
+
+  useEffect(() => {
+    if (open === undefined) return;
+    setShowBlock(open);
+  }, [open]);
 
   const styles = {
     maxHeight: showBlock ? getMaxHeight(containerHeight) : `${maxHeight}px`,
@@ -35,15 +47,17 @@ const Collapse = ({ children, maxHeight = 252, className = '', translate }) => {
           } left-0 z-10`}
         ></div>
       </div>
-      <button
-        type="button"
-        className="text-lg leading-[21px] font-semibold text-brand1 underline flex mr-auto py-3"
-        onClick={() => {
-          setShowBlock(p => !p);
-        }}
-      >
-        {!showBlock ? `${readMore}` : `${readLess}`}
-      </button>
+      {!withoutButton && (
+        <button
+          type="button"
+          className="text-lg leading-[21px] font-semibold text-brand1 underline flex mr-auto py-3"
+          onClick={() => {
+            setShowBlock(p => !p);
+          }}
+        >
+          {!showBlock ? `${readMore}` : `${readLess}`}
+        </button>
+      )}
     </div>
   );
 };
