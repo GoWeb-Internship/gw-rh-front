@@ -32,9 +32,12 @@ module.exports = {
         bb1: '0px 4px 10px rgba(106, 161, 193, 0.25)',
         sh2: 'inset 0px -1px 2px rgba(0, 0, 0, 0.32), inset -1px -2px 4px rgba(7, 33, 50, 0.16)',
         btnSh:
-          'inset 0px -1px 2px rgba(0, 0, 0, 0.32), inset -1px -2px 4px rgba(7, 33, 50, 0.16)',
+          'inset 0px -1px 2px rgba(7, 33, 50, 0.32), inset -1px -2px 4px rgba(7, 33, 50, 0.16)',
         accordion:
           'inset 0px -4px 8px rgba(7, 27, 77, 0.24), inset 0px -16px 24px rgba(7, 27, 77, 0.16)',
+      },
+      dropShadow: {
+        arrow: 'inset 0px -1px 2px rgba(7, 33, 50, 0.32), inset -1px -2px 4px rgba(7, 33, 50, 0.16)',
       },
       fontSize: {
         qqBase: ['16px', '24px'],
@@ -55,8 +58,8 @@ module.exports = {
         brand2: '#3497D8',
         brand3: '#FFB35B',
         light: '#FCFCFA',
-        black: '#00090E',
         bgHero: '#E4F0F6',
+        red: '#D11414',
       },
       typography: theme => ({
         DEFAULT: {
