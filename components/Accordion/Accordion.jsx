@@ -7,6 +7,7 @@ import BenefitsBlock from '../projects/BenefitsBlock';
 import ModulesBlock from '../projects/ModulesBlock';
 import SeminarsBlock from '../projects/SeminarsBlock';
 import ReviewsBlock from '../projects/ReviewsBlock';
+import ContactBlock from '../projects/ContactBlock';
 import PriceBlock from '../projects/PriceBlock';
 import AccordionBody from './AccordionBody';
 
@@ -17,6 +18,7 @@ const config = {
   seminar: SeminarsBlock,
   review: ReviewsBlock,
   price: PriceBlock,
+  contact: ContactBlock,
 };
 
 const theme = {
@@ -24,7 +26,7 @@ const theme = {
     styles: {
       base: {
         body: {
-          padding: 'pt-0 pb-[100px]',
+          padding: 'py-0',
         },
         header: {
           initial: {

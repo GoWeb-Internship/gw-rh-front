@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
-const Backdrop = ({ onClose, transparent }) => {
+const Backdrop = ({ onClose, transparent, className = '' }) => {
   useEffect(() => {
     const handleEscape = e => {
       if (e.code !== 'Escape') return;
@@ -18,9 +17,11 @@ const Backdrop = ({ onClose, transparent }) => {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full h-full z-10 bg-black/60 ${classnames(
-        { 'opacity-0': transparent },
-      )}`}
+      className={[
+        'fixed top-0 left-0 w-full h-full z-10 bg-black/40',
+        transparent ? 'opacity-0' : '',
+        className,
+      ].join(' ')}
       onClick={onClose}
     ></div>
   );

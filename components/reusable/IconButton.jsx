@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 const IconButton = ({
   IconComponent,
-  text,
+  text = '',
   reverse,
   className,
   onClick,
@@ -22,12 +22,14 @@ const IconButton = ({
       {...props}
     >
       {text && <span>{text}</span>}
-      <IconComponent
-        className={classnames(
-          { 'stroke-light': light },
-          { 'stroke-main': !light },
-        )}
-      />
+      {IconComponent && (
+        <IconComponent
+          className={classnames(
+            { 'stroke-light': light },
+            { 'stroke-main': !light },
+          )}
+        />
+      )}
     </button>
   );
 };

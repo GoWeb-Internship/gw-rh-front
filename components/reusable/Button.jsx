@@ -10,15 +10,21 @@ const Button = ({
   ...props
 }) => {
   return (
-    <Link
-      href={linkTo}
-      {...props}
-    >
-      <a className={classnames([
-        "btn",
-        buttonTheme === 'primary' ? "btnPrimary" : "btnSecondary",
-        className,
-      ])}>{text}</a>
+    <Link href={linkTo} {...props}>
+      <a
+        className={classnames([
+          'btn',
+          {
+            btnPrimary: buttonTheme === 'primary',
+            btnSecondary: buttonTheme === 'secondary',
+            type3: buttonTheme === 'type3',
+            type4: buttonTheme === 'type4',
+          },
+          className,
+        ])}
+      >
+        {text}
+      </a>
     </Link>
   );
 };
