@@ -13,7 +13,6 @@ import Soul from '../components/pages/Soul';
 const Pages = ({ dataPage, translation }) => {
   const router = useRouter();
   const { isFallback } = router;
-
   if (isFallback) {
     return 'Loading... или какой-то спиннер нацепить';
   }
@@ -55,6 +54,7 @@ const Pages = ({ dataPage, translation }) => {
 export default withLayout(Pages);
 
 export const getStaticProps = async ({ locale, locales, params }) => {
+
   if (!params.slug) {
     return {
       notFound: true,

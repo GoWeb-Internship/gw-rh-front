@@ -9,26 +9,29 @@ const Input = ({
   errorMessage,
 }) => {
   const borderColor = classnames(
-    { 'border-red-500': hasError },
+    { 'border-red': hasError },
     { 'border-blue': !hasError },
+  );
+  const textColor = classnames(
+    errorMessage && 'text-red'
   );
   const placeholderMsg = hasError ? errorMessage : placeholder;
 
   return (
     <>
       <input
-        className={`${borderColor} w-full py-5 px-4 border rounded-sm `}
+        className={`${borderColor} w-full py-5 px-4 border rounded-sm [&:focus_+_label]:-translate-y-5 [&:focus_+_label]:-translate-x-2 [&:focus_+_label]:text-[11px] [&:not(:placeholder-shown)_+_label]:-translate-x-2 [&:not(:placeholder-shown)_+_label]:-translate-y-5 [&:not(:placeholder-shown)_+_label]:text-[11px]`}
         type={type}
         id={type}
         name={type}
-        placeholder=""
+        placeholder=" "
         {...register(`${type}`)}
       />
       <label
         htmlFor={type}
-        className="absolute left-4 top-1/2 -translate-y-1/2  text-base lg:text-sm hover:text-[11px] focus:text-[11px] hover:top-1 hover:translate-y-0"
+        className={`${textColor} absolute left-4 top-5 text-base lg:text-sm transition-transform duration-200`}
       >
-        <span>{placeholderMsg}</span>
+        {placeholderMsg}
       </label>
     </>
   );
