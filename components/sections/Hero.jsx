@@ -25,7 +25,10 @@ const Hero = ({ data, translation }) => {
             {data.description}
           </p>
           <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-5 lg:space-x-12">
-            <Button linkTo="/contact-us" text={translation.signToConsultBtn} />
+            <Button linkTo={{
+            pathname: "/contact-us",
+            query: { clickFrom: 'my-post' },
+          }} text={translation.signToConsultBtn} />
             <Button
               linkTo="/projects"
               text={translation.projectsBtn}
@@ -40,9 +43,9 @@ const Hero = ({ data, translation }) => {
             width={476}
             height={540}
           />
-          <DialogWindow classNameDiv={`w-[216px] h-[82px] top-[94px] -left-[94px] lg:top-[118px] lg:-left-[68px] dialogOne`} text={translation.consultMore}/>
-          <DialogWindow classNameDiv={`w-[202px] h-[99px] top-[140px] -right-[110px] lg:top-[130px] lg:-right-[44px] dialogTwo`} text={translation.actionYears}/>
-          <DialogWindow classNameDiv={`w-[194px] h-[99px] top-[245px] -left-[110px] lg:top-[300px] lg:-left-[140px] dialogThree`} text={translation.learnInfo}/>
+          <DialogWindow classNameDiv={`top-[94px] -left-[94px] lg:top-[118px] lg:-left-[68px] after:right-5 arrow`} text={translation.consultMore}/>
+          <DialogWindow classNameDiv={`top-[140px] -right-[110px] lg:top-[130px] lg:-right-[44px] after:left-5 arrow`} text={translation.actionYears}/>
+          <DialogWindow classNameDiv={`top-[245px] -left-[110px] lg:top-[300px] lg:-left-[140px] after:right-5 arrow`} text={translation.learnInfo}/>
         </div>
       </Container>
     </Section>
