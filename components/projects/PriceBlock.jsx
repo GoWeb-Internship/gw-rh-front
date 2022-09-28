@@ -4,8 +4,8 @@ import Container from '../reusable/Container';
 const PriceBlock = ({ data }) => {
   const { title, price, description, buttonText, locale } = data;
   return (
-    <section>
-      <Container className="project-container">
+    <section className="sections-py">
+      <Container>
         <h2 className="visually-hidden">{title}</h2>
         <div className="border-2 border-brand1 w-[280px] mx-auto md:flex md:w-full lg:w-[1136px]">
           <p className="py-12 flex justify-center items-center text-[48px] leading-none font-bold bg-brand1 text-light md:px-[42px] md:shrink-0 lg:px-[60px]">
