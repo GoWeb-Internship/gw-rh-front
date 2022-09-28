@@ -20,8 +20,11 @@ const Afisha = ({ data }) => {
           text={data.attributes.title}
           className="uppercase font-semibold text-t2444 mb-4 md:mb-6"
         />
-        <ImageList dataList={data.attributes.imageCard} />
-        <div className="md:flex md:justify-between lg:justify-start">
+        <ImageList
+          dataList={data.attributes.imageCard}
+          mediaOptions={{ mobile: 2, tablet: 6, desktop: 8, fullHd: 8 }}
+        />
+        <div className="mt-8 md:mt-20 md:flex md:justify-between lg:justify-start">
           <Button
             linkTo={{
               pathname: '/contact-us',

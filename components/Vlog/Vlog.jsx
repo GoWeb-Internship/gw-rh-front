@@ -22,7 +22,7 @@ const Vlog = ({ data }) => {
           />
           <VideoList
             listData={data.attributes.video}
-            // listDataLength={data.attributes.video.length}
+            mediaOptions={{ mobile: 2, tablet: 6, desktop: 8, fullHd: 8 }}
           />
         </>
       </Container>

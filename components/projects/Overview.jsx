@@ -20,13 +20,9 @@ const Overview = ({ overviewData, translation }) => {
         </p>
         <Collapse translate={translation} maxHeight={504}>
           <div>
-            <ProjectContentBox>
-              <ReactMarkdown className={`prose left-container`}>
-                {textContent}
-              </ReactMarkdown>
-
+            <ProjectContentBox reverse>
               {!!quotes.length && (
-                <div className="hidden mt-6 lg:block lg:mt-0 lg:shrink-0">
+                <div className="mb-4 md:mb-6 lg:block lg:mb-0 lg:shrink-0">
                   {quotes.map(({ id, item }) => (
                     <Quote
                       key={id}
@@ -36,6 +32,9 @@ const Overview = ({ overviewData, translation }) => {
                   ))}
                 </div>
               )}
+              <ReactMarkdown className={`prose left-container`}>
+                {textContent}
+              </ReactMarkdown>
             </ProjectContentBox>
             {optionalSections.length ? (
               <>
