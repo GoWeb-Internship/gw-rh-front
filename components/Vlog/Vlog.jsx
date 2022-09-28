@@ -20,7 +20,10 @@ const Vlog = ({ data }) => {
             text={data.attributes.title}
             className="uppercase font-semibold text-t2444 mb-4 md:mb-6"
           />
-          <VideoList listData={data.attributes.video} />
+          <VideoList
+            listData={data.attributes.video}
+            mediaOptions={{ mobile: 2, tablet: 6, desktop: 8, fullHd: 8 }}
+          />
         </>
       </Container>
     </section>
