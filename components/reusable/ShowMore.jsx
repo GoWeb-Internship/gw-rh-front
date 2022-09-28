@@ -1,17 +1,53 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import useMedia from '../../hooks/useMedia';
 import useTranslations from '../../hooks/useTranslations';
 import ButtonShow from './ButtonShow';
 
-const ShowMoreContext = createContext(0);
+// const ShowMoreContext = createContext(0);
+const ShowMoreContext = createContext({
+  listDataLength: 0,
+  itemsToShow: 0,
+  changeListDataLength: () => {},
+  changeItemsToShow: () => {},
+});
 
-export const useShowMore = listData => {
-  const itemsToShow = useContext(ShowMoreContext);
+export const useShowMore = (listData = []) => {
+  const [normalizedListData, setNormalizedListData] = useState(listData);
+  const {
+    itemsToShow,
+    listDataLength,
+    changeListDataLength,
+    changeItemsToShow,
+  } = useContext(ShowMoreContext);
 
-  const normalizedListData =
-    itemsToShow !== -1 ? listData.slice(0, itemsToShow) : [...listData];
+  useEffect(() => {
+    if (!itemsToShow) return;
+    const normalizedListData =
+      listData.length > itemsToShow
+        ? listData.slice(0, itemsToShow)
+        : [...listData];
+    setNormalizedListData(normalizedListData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [itemsToShow]);
 
-  return normalizedListData;
+  useEffect(() => {
+    if (!listData.length) return;
+    changeListDataLength(listData.length);
+  }, [changeListDataLength, listData.length]);
+
+  return {
+    normalizedListData,
+    itemsToShow,
+    listDataLength,
+    // changeListDataLength,
+    changeItemsToShow,
+  };
 };
 
 const defaultOptions = { mobile: 2, tablet: 2, desktop: 4, fullHd: 4 };
@@ -19,69 +55,97 @@ const defaultOptions = { mobile: 2, tablet: 2, desktop: 4, fullHd: 4 };
 const ShowMore = ({
   children,
   mediaOptions = { mobile: 2, tablet: 4, desktop: 4, fullHd: 4 },
+  // listDataLength = -1,
 }) => {
-  const [itemsToShow, setItemsToShow] = useState(-1);
   const [showAll, setShowAll] = useState(false);
   const pageFormat = useMedia();
   const { readLess, readMore } = useTranslations(['readLess', 'readMore']);
+  const { changeItemsToShow, listDataLength, itemsToShow } = useShowMore();
 
   useEffect(() => {
     if (!pageFormat) return;
-    setItemsToShow(mediaOptions[pageFormat] ?? defaultOptions[pageFormat]);
-    return () => {};
+    changeItemsToShow(mediaOptions[pageFormat] ?? defaultOptions[pageFormat]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageFormat]);
 
   const showMore = () => {
-    setItemsToShow(-1);
+    changeItemsToShow(listDataLength);
     setShowAll(true);
   };
 
   const showLess = () => {
-    setItemsToShow(mediaOptions[pageFormat] ?? defaultOptions[pageFormat]);
+    changeItemsToShow(mediaOptions[pageFormat] ?? defaultOptions[pageFormat]);
     setShowAll(false);
   };
 
-  const showBtnBlock = showAll || itemsToShow !== -1;
+  // setItemsToShow(mediaOptions[pageFormat] ?? defaultOptions[pageFormat]);
+  // (showAll || itemsToShow !== -1) && listDataLength > itemsToShow;
+
+  // console.log(
+  //   'listDataLength > itemsToShow',
+  //   listDataLength > itemsToShow,
+  //   listDataLength,
+  //   itemsToShow,
+  // );
 
   return (
     <>
-      <ShowMoreContext.Provider value={itemsToShow}>
-        {children}
+      {/* <ShowMoreContext.Provider value={itemsToShow}> */}
+      {children}
 
-        {showBtnBlock && (
-          <>
-            {showAll ? (
-              <ButtonShow
-                onClick={showLess}
-                className={'mt-7 md:mt-[60px] lg:mt-[84px]'}
-              >
-                {readLess}
-              </ButtonShow>
-            ) : (
-              <ButtonShow
-                onClick={showMore}
-                className={'mt-7 md:mt-[60px] lg:mt-[84px]'}
-              >
-                {readMore}
-              </ButtonShow>
-            )}
-          </>
-        )}
-      </ShowMoreContext.Provider>
+      {(listDataLength > itemsToShow || showAll) && (
+        <>
+          {showAll ? (
+            <ButtonShow
+              onClick={showLess}
+              className={'block mx-auto mt-7 md:mt-[60px] lg:mt-[84px] lg:mx-0'}
+            >
+              {readLess}
+            </ButtonShow>
+          ) : (
+            <ButtonShow
+              onClick={showMore}
+              className={'block mx-auto mt-7 md:mt-[60px] lg:mt-[84px] lg:mx-0'}
+            >
+              {readMore}
+            </ButtonShow>
+          )}
+        </>
+      )}
+      {/* </ShowMoreContext.Provider> */}
     </>
   );
 };
 
 const withShowMore = Component => {
-  const withShowMoreComponent = props => {
+  const WithShowMoreComponent = props => {
+    const [listDataLength, setListDataLength] = useState(0);
+    const [itemsToShow, setItemsToShow] = useState(0);
+
+    const changeListDataLength = useCallback(value => {
+      setListDataLength(value);
+    }, []);
+
+    const changeItemsToShow = useCallback(value => {
+      setItemsToShow(value);
+    }, []);
+
     return (
-      <ShowMore {...props}>
-        <Component {...props} />
-      </ShowMore>
+      <ShowMoreContext.Provider
+        value={{
+          listDataLength,
+          itemsToShow,
+          changeListDataLength,
+          changeItemsToShow,
+        }}
+      >
+        <ShowMore {...props}>
+          <Component {...props} />
+        </ShowMore>
+      </ShowMoreContext.Provider>
     );
   };
-  return withShowMoreComponent;
+  return WithShowMoreComponent;
 };
 
 export default withShowMore;

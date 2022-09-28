@@ -21,14 +21,14 @@ const config = {
 };
 
 const AccordionComponent = ({ accordionData }) => {
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState([]);
 
   const handleClick = idx => {
-    if (idx === open) {
-      setOpen(-1);
-      return;
+    if (!open.includes(idx)) {
+      setOpen(p => [...p, idx]);
+    } else {
+      setOpen(p => p.filter(i => i !== idx));
     }
-    setOpen(idx);
   };
 
   return (
@@ -40,12 +40,12 @@ const AccordionComponent = ({ accordionData }) => {
               title={pageModuleTitle}
               idx={idx}
               onClick={handleClick}
-              open={open}
+              open={open.includes(idx)}
             />
             <AccordionBody
               Component={config[pageModuleIdentifier]}
               data={data}
-              open={open === idx}
+              open={open.includes(idx)}
             />
           </div>
         ),
