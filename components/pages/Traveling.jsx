@@ -13,8 +13,14 @@ const Traveling = ({ data }) => {
             <h1 className="uppercase text-4xl mb-4 md:mb-6">{title}</h1>
             <p>{subTitle}</p>
           </div>
-          <WithVideo videoData={video} />
-          <WithImg sliderDate={slider} />
+          <WithVideo
+            videoData={video}
+            mediaOptions={{ mobile: 1, tablet: 2, desktop: 2, fullHd: 3 }}
+          />
+          <WithImg
+            sliderDate={slider}
+            mediaOptions={{ mobile: 2, tablet: 2, desktop: 3, fullHd: 2 }}
+          />
         </div>
       </Container>
     </Section>
