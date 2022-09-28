@@ -14,7 +14,7 @@ export const useShowMore = listData => {
   return normalizedListData;
 };
 
-const defaultOptions = { mobile: 2, tablet: 2, desktop: 4, fullHd: 4 };
+const defaultOptions = { mobile: 2, tablet: 4, desktop: 4, fullHd: 4 };
 
 const ShowMore = ({
   children,

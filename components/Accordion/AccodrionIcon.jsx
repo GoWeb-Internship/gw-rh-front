@@ -4,10 +4,14 @@ const AccodrionIcon = ({ idx, open }) => {
   return (
     <div className={`${idx === open ? 'rotate-180' : ''} relative h-8 w-8 `}>
       <div
-        className={`${classes} rotate-90 ${idx === open ? 'rotate-0' : ''}`}
+        className={`${classes} rounded-sm rotate-90 ${
+          idx === open ? 'rotate-0' : ''
+        }`}
       ></div>
       <div
-        className={`${classes} rotate-180 ${idx === open ? 'rotate-0' : ''}`}
+        className={`${classes} rounded-sm rotate-180 ${
+          idx === open ? 'rotate-0' : ''
+        }`}
       ></div>
     </div>
   );
