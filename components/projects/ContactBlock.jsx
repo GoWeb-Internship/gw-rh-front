@@ -13,13 +13,19 @@ const ContactBlock = ({ data }) => {
         </p>
         <div className="md:flex md:gap-x-[18px]">
           <Button
-            linkTo={'/contact-us/'}
+            linkTo={{
+              pathname: '/contact-us',
+              query: { clickFrom: `${buttonText1}` },
+            }}
             text={buttonText1}
             buttonTheme="type3"
             className="mb-6 md:mb-0"
           />
           <Button
-            linkTo={'contact-us/'}
+            linkTo={{
+              pathname: '/contact-us',
+              query: { clickFrom: `${buttonText2}` },
+            }}
             text={buttonText2}
             buttonTheme="type4"
           />

@@ -4,8 +4,8 @@ import NotFound from 'components/pages/NotFound.jsx';
 import { getNavigation } from 'helpers/navigation';
 import { getData } from 'helpers/apiServices';
 
-const NotFoundPage = ({ translation }) => {
-  return <NotFound translation={translation} />;
+const NotFoundPage = () => {
+  return <NotFound />;
 };
 
 export default withLayout(NotFoundPage);

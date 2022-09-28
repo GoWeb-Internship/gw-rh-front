@@ -23,7 +23,10 @@ const Afisha = ({ data }) => {
         <ImageList dataList={data.attributes.imageCard} />
         <div className="md:flex md:justify-between lg:justify-start">
           <Button
-            linkTo="/contuct-us"
+            linkTo={{
+              pathname: '/contact-us',
+              query: { clickFrom: `${button.callbackBtn}` },
+            }}
             text={button.callbackBtn}
             className="my-0 mx-auto mb-6 md:m-0 lg:mr-[33px]"
           />
