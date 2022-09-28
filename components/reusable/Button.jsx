@@ -10,7 +10,7 @@ const Button = ({
   ...props
 }) => {
   return (
-    <Link href={linkTo} {...props}>
+    <Link href={linkTo} as={linkTo.pathname} {...props}>
       <a
         className={classnames([
           'btn',
@@ -30,7 +30,7 @@ const Button = ({
 };
 
 Button.propTypes = {
-  linkTo: PropTypes.string.isRequired,
+  linkTo: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   text: PropTypes.string.isRequired,
   buttonTheme: PropTypes.string,
   className: PropTypes.string,

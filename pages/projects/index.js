@@ -3,10 +3,10 @@ import { getNavigation } from 'helpers/navigation';
 import { getData } from 'helpers/apiServices';
 import AllProjects from 'components/pages/AllProjects';
 
-const ProjectsPage = ({projects, translation}) => {
+const ProjectsPage = ({all, projects}) => {
 
   return (
-    <AllProjects data={projects} translation={translation}/>
+    <AllProjects title={all} data={projects}/>
   );
 };
 
@@ -14,10 +14,11 @@ export default withLayout(ProjectsPage);
 
 export const getStaticProps = async ({ locale, locales }) => {
   
-  const [navData, translation, projects, footer] = await Promise.all([
+  const [navData, translation, all, projects, footer] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
-    getData('all-project', { locale, populate: '*' }),
+    getData('all-project', {locale}),
+    getData('projects', { locale, populate: '*'}),
     getData('footer', { locale, populate: '*' }),
   ]);
 
@@ -27,8 +28,9 @@ export const getStaticProps = async ({ locale, locales }) => {
       locales,
       navData,
       translation: translation.attributes,
+      all: all.attributes,
       footer: footer.attributes,
-      projects: projects.attributes,
+      projects,
     },
   };
 };
