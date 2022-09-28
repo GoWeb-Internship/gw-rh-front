@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-const ButtonShow = ({ children, onClick }) => {
+const ButtonShow = ({ children, onClick, className }) => {
   return (
     <button
       type="button"
-      className="text-t1821 text-brand1 font-medium underline font-semibold"
+      className={['text-t1821 text-brand1 underline font-semibold', className].join(' ')}
       onClick={onClick}
     >
       {children}

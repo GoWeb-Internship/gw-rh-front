@@ -1,6 +1,6 @@
 import Container from 'components/reusable/Container';
 import Heading from '../reusable/Heading';
-import VideoList from '../VideoList/VideoList';
+import VideoList from '../VideoList/VideoList2';
 
 const Vlog = ({ data }) => {
   return (

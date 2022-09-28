@@ -7,8 +7,8 @@ const ReviewsBlock = ({ data }) => {
   const { title, textReviewTitle, videoList, textReviewsList } = data;
 
   return (
-    <section>
-      <Container className="project-container">
+    <section className="sections-py">
+      <Container>
         {!!videoList.length && (
           <>
             <Head title={title} className={'mb-6 lg:mb-14'} />
