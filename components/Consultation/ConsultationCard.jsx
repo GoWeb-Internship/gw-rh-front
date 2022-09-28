@@ -21,7 +21,13 @@ const ConsultationCard = ({ data }) => {
         <ReactMarkdown className="prose mb-6 lg:mb-8">
           {data.videoBody}
         </ReactMarkdown>
-        <Button linkTo="/contuct-us" text={button} />
+        <Button
+          linkTo={{
+            pathname: '/contact-us',
+            query: { clickFrom: `${button}` },
+          }}
+          text={button}
+        />
       </div>
     </>
   );

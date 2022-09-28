@@ -41,7 +41,7 @@ const nextConfig = {
     return config;
   },
   i18n: {
-    locales: ['en', 'ru', 'uk', 'cs'],
+    locales: ['en', 'ru', 'uk'],
     defaultLocale: 'ru',
   },
   images: {
