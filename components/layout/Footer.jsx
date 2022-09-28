@@ -35,7 +35,7 @@ const Footer = ({ footer }) => {
               </ul>
             </div>
             <Social />
-            <div className="text-center mt-[67px] md:text-right md:mt-[70px]">
+            <div className="text-center mt-[67px] md:text-right md:mt-[70px] font-medium text-sm">
               <Link href="/policy">
                 <a>{footer.policyName}</a>
               </Link>
