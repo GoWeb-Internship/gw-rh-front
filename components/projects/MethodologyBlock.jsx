@@ -6,8 +6,8 @@ const MethodologyBlock = ({ data }) => {
   return (
     <>
       {sections.length ? (
-        <section>
-          <Container className="project-container">
+        <section className="sections-py">
+          <Container>
             {sections.map(sectionData => (
               <SectionType1
                 key={sectionData.id}

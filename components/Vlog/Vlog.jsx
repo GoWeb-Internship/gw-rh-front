@@ -1,8 +1,8 @@
 import Container from 'components/reusable/Container';
 import Heading from '../reusable/Heading';
-import VideoList from '../VideoList/VideoList';
+import VideoList from '../VideoList/VideoList2';
 
-const Vlog = ({ data, btnShowMore, btnShowLess }) => {
+const Vlog = ({ data }) => {
   return (
     <section
       className={
@@ -20,11 +20,7 @@ const Vlog = ({ data, btnShowMore, btnShowLess }) => {
             text={data.attributes.title}
             className="uppercase font-semibold text-t2444 mb-4 md:mb-6"
           />
-          <VideoList
-            listData={data.attributes.video}
-            btnShowLess={btnShowLess}
-            btnShowMore={btnShowMore}
-          />
+          <VideoList listData={data.attributes.video} />
         </>
       </Container>
     </section>

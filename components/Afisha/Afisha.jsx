@@ -3,8 +3,11 @@ import Container from 'components/reusable/Container';
 import Heading from '../reusable/Heading';
 import Button from '../reusable/Button';
 import ImageList from '../ImageList/ImageList';
+import useTranslations from '../../hooks/useTranslations';
 
-const Afisha = ({ data, btn, text, btnShowMore, btnShowLess }) => {
+const Afisha = ({ data }) => {
+  const button = useTranslations(['callbackBtn', 'afishaConsult']);
+
   return (
     <Section className="pt-[152px] pb-8 md:pt-[184px] md:pb-[64px] lg:pt-[244px] lg:pb-[124px]">
       <Container>
@@ -17,19 +20,18 @@ const Afisha = ({ data, btn, text, btnShowMore, btnShowLess }) => {
           text={data.attributes.title}
           className="uppercase font-semibold text-t2444 mb-4 md:mb-6"
         />
-        <ImageList
-          dataList={data.attributes.imageCard}
-          btnShowLess={btnShowLess}
-          btnShowMore={btnShowMore}
-        />
+        <ImageList dataList={data.attributes.imageCard} />
         <div className="md:flex md:justify-between lg:justify-start">
           <Button
-            linkTo="/contuct-us"
-            text={btn}
+            linkTo={{
+              pathname: '/contact-us',
+              query: { clickFrom: `${button.callbackBtn}` },
+            }}
+            text={button.callbackBtn}
             className="my-0 mx-auto mb-6 md:m-0 lg:mr-[33px]"
           />
           <p className="text-brand1 text-lg font-semibold md:w-[310px] lg:w-[464px]">
-            {text}
+            {button.afishaConsult}
           </p>
         </div>
       </Container>

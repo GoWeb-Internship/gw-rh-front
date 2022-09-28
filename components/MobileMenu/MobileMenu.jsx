@@ -36,7 +36,7 @@ const MobileMenu = ({ onClose, showMenu, navData = [] }) => {
               {!!navData.length &&
                 navData.map(item => (
                   <li key={item.id} className="relative">
-                    <MobileMenuItem navItemData={item} />
+                    <MobileMenuItem navItemData={item} onClose={onClose} />
                   </li>
                 ))}
             </ul>

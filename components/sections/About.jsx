@@ -4,8 +4,11 @@ import Section from '../reusable/Section';
 import Container from '../reusable/Container';
 import Collapse from '../reusable/Collapse';
 import LinkToBook from '../reusable/LinkToBook';
+import useTranslations from '../../hooks/useTranslations';
 
-const About = ({ data, translation }) => {
+const About = ({ data }) => {
+  const linkToBook = useTranslations('linkToBook');
+
   return (
     <Section className="py-9 lg:py-20" id="about author">
       <Container>
@@ -17,13 +20,13 @@ const About = ({ data, translation }) => {
             {data.quote}
           </p>
           <div>
-            <Collapse translate={translation}>
+            <Collapse>
               <ReactMarkdown className="prose prose-em:text-blue prose-em:not-italic w-[656px]">
                 {data.body}
               </ReactMarkdown>
             </Collapse>
 
-            <LinkToBook text={translation.linkToBook}/>
+            <LinkToBook text={linkToBook}/>
           </div>
         </div>
       </Container>

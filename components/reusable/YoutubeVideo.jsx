@@ -41,9 +41,9 @@ const YoutubeVideo = ({ data }) => {
 
   const handleClick = () => {
     if (isPlaying) {
-      videoPlayer.current.pauseVideo();
+      videoPlayer.current?.pauseVideo();
     } else {
-      videoPlayer.current.playVideo();
+      videoPlayer.current?.playVideo();
     }
   };
 

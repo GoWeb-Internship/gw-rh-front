@@ -11,39 +11,45 @@ const Overview = ({ overviewData, translation }) => {
 
   return (
     <section className="pt-[120px]">
-      <Container className="project-container">
+      <Container className="sections-py">
         <h1 className="mb-6 text-t3642 font-semibold text-brand1 left-container">
           {title.toUpperCase()}
         </h1>
         <p className="mb-4 font-semibold text-brand1 lg:mb-14 left-container">
           {subTitle}
         </p>
-        <ProjectContentBox>
-          <Collapse translate={translation}>
-            <ReactMarkdown className={`prose left-container`}>
-              {textContent}
-            </ReactMarkdown>
-          </Collapse>
+        <Collapse translate={translation} maxHeight={504}>
+          <div>
+            <ProjectContentBox>
+              <ReactMarkdown className={`prose left-container`}>
+                {textContent}
+              </ReactMarkdown>
 
-          {!!quotes.length && (
-            <div className="hidden mt-6 lg:block lg:mt-0 lg:shrink-0">
-              {quotes.map(({ id, item }) => (
-                <Quote key={id} quote={item} />
-              ))}
-            </div>
-          )}
-        </ProjectContentBox>
-        {optionalSections.length ? (
-          <>
-            {optionalSections.map(sectionData => (
-              <SectionType1
-                key={sectionData.id}
-                data={sectionData}
-                firstElementClass={'mt-8 md:mt-14 lg:mt-14'}
-              />
-            ))}
-          </>
-        ) : null}
+              {!!quotes.length && (
+                <div className="hidden mt-6 lg:block lg:mt-0 lg:shrink-0">
+                  {quotes.map(({ id, item }) => (
+                    <Quote
+                      key={id}
+                      quote={item}
+                      className="mb-6 last:mb-0 lg:mb-[124px]"
+                    />
+                  ))}
+                </div>
+              )}
+            </ProjectContentBox>
+            {optionalSections.length ? (
+              <>
+                {optionalSections.map(sectionData => (
+                  <SectionType1
+                    key={sectionData.id}
+                    data={sectionData}
+                    firstElementClass={'mt-8 md:mt-14 lg:mt-14'}
+                  />
+                ))}
+              </>
+            ) : null}
+          </div>
+        </Collapse>
       </Container>
     </section>
   );
