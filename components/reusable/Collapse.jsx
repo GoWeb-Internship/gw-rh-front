@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import useTranslations from '../../hooks/useTranslations';
 
 const getMaxHeight = height => (!height ? '1000px' : `${height + 100}px`);
 
@@ -6,11 +7,10 @@ const Collapse = ({
   children,
   maxHeight = 252,
   className = '',
-  translate,
   withoutButton = false,
   open,
 }) => {
-  const { readMore, readLess } = translate;
+  const { readMore, readLess } = useTranslations(['readMore', 'readLess']);
   const [containerHeight, setContainerHeight] = useState(0);
   const [showBlock, setShowBlock] = useState(false);
   const container = useRef(null);

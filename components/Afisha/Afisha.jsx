@@ -24,7 +24,10 @@ const Afisha = ({ data, btn, text, btnShowMore, btnShowLess }) => {
         />
         <div className="md:flex md:justify-between lg:justify-start">
           <Button
-            linkTo="/contuct-us"
+            linkTo={{
+              pathname: '/contact-us',
+              query: { clickFrom: `${btn}` },
+            }}
             text={btn}
             className="my-0 mx-auto mb-6 md:m-0 lg:mr-[33px]"
           />

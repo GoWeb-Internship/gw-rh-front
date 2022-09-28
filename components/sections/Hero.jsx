@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import useTranslations from '../../hooks/useTranslations';
+
 import Button from '../reusable/Button';
 import Section from '../reusable/Section';
 import Container from '../reusable/Container';
@@ -8,7 +10,16 @@ import DialogWindow from '../reusable/DialogWindow';
 import ArrowDown from '../../public/hero/arrowDown.svg';
 import ArrowUp from '../../public/hero/arrowUp.svg';
 
-const Hero = ({ data, translation }) => {
+const Hero = ({ data }) => {
+  const { signToConsultBtn, projectsBtn, consultMore, actionYears, learnInfo } =
+    useTranslations([
+      'signToConsultBtn',
+      'projectsBtn',
+      'consultMore',
+      'actionYears',
+      'learnInfo',
+    ]);
+
   return (
     <Section
       className="pt-[152px] pb-7 bg-bgHero md:pt-[184px] md:pb-16 lg:pt-[236px] lg:pb-[124px] lg:!w-screen"
@@ -25,13 +36,16 @@ const Hero = ({ data, translation }) => {
             {data.description}
           </p>
           <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-5 lg:space-x-12">
-            <Button linkTo={{
-            pathname: "/contact-us",
-            query: { clickFrom: 'my-post' },
-          }} text={translation.signToConsultBtn} />
+            <Button
+              linkTo={{
+                pathname: '/contact-us',
+                query: { clickFrom: `${signToConsultBtn}` },
+              }}
+              text={signToConsultBtn}
+            />
             <Button
               linkTo="/projects"
-              text={translation.projectsBtn}
+              text={projectsBtn}
               buttonTheme="secondary"
             />
           </div>
@@ -43,9 +57,18 @@ const Hero = ({ data, translation }) => {
             width={476}
             height={540}
           />
-          <DialogWindow classNameDiv={`top-[94px] -left-[94px] lg:top-[118px] lg:-left-[68px] after:right-5 arrow`} text={translation.consultMore}/>
-          <DialogWindow classNameDiv={`top-[140px] -right-[110px] lg:top-[130px] lg:-right-[44px] after:left-5 arrow`} text={translation.actionYears}/>
-          <DialogWindow classNameDiv={`top-[245px] -left-[110px] lg:top-[300px] lg:-left-[140px] after:right-5 arrow`} text={translation.learnInfo}/>
+          <DialogWindow
+            classNameDiv={`top-[94px] -left-[94px] lg:top-[118px] lg:-left-[68px] after:right-5 arrow`}
+            text={consultMore}
+          />
+          <DialogWindow
+            classNameDiv={`top-[140px] -right-[110px] lg:top-[130px] lg:-right-[44px] after:left-5 arrow`}
+            text={actionYears}
+          />
+          <DialogWindow
+            classNameDiv={`top-[245px] -left-[110px] lg:top-[300px] lg:-left-[140px] after:right-5 arrow`}
+            text={learnInfo}
+          />
         </div>
       </Container>
     </Section>
