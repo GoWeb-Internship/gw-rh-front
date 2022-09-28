@@ -9,12 +9,18 @@ const Traveling = ({ data }) => {
     <Section className="pt-[154px] pb-9 md:pt-[184px] md:pb-10 lg:pt-[244px] lg:pb-32">
       <Container>
         <div>
-          <div className="w-[280px] md:w-full text-left text-brand1 font-semibold pb-8 lg:pb-16 md:pb-14">
+          <div className="w-[280px] md:w-[656px] text-left text-brand1 font-semibold pb-8 lg:pb-16 md:pb-14">
             <h1 className="uppercase text-4xl mb-4 md:mb-6">{title}</h1>
             <p>{subTitle}</p>
           </div>
-          <WithVideo videoData={video} />
-          <WithImg sliderDate={slider} />
+          <WithVideo
+            videoData={video}
+            mediaOptions={{ mobile: 1, tablet: 2, desktop: 2, fullHd: 3 }}
+          />
+          <WithImg
+            sliderDate={slider}
+            mediaOptions={{ mobile: 2, tablet: 2, desktop: 3, fullHd: 2 }}
+          />
         </div>
       </Container>
     </Section>
