@@ -7,7 +7,7 @@ const SeminarsBlock = ({ data }) => {
   return (
     <section>
       <Container className="project-container">
-        <Head title={title} className={'mb-6 lg:mb-14'} />
+        <Head title={title} className={'max-w-full mb-6 lg:mb-14'} />
         {!!videoList.length && (
           <VideoList
             listData={videoList}

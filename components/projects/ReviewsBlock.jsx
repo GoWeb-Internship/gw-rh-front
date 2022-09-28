@@ -11,7 +11,7 @@ const ReviewsBlock = ({ data }) => {
       <Container className="project-container">
         {!!videoList.length && (
           <>
-            <Head title={title} className={'mb-6 lg:mb-14'} />
+            <Head title={title} className={'max-w-full mb-6 lg:mb-14'} />
             <VideoList
               listData={videoList}
               className={'mb-16 md:mb-14 lg:mb-[124px]'}
@@ -21,12 +21,12 @@ const ReviewsBlock = ({ data }) => {
 
         {!!textReviewsList.length && (
           <>
-            <ReviewList listData={textReviewsList} />
             <Head
               title={textReviewTitle}
               className={'mb-6 lg:mb-14'}
               Tag={'h3'}
             />
+            <ReviewList listData={textReviewsList} />
           </>
         )}
       </Container>
