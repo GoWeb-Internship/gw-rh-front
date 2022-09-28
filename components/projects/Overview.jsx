@@ -11,7 +11,7 @@ const Overview = ({ overviewData, translation }) => {
 
   return (
     <section className="pt-[120px]">
-      <Container className="project-container">
+      <Container className="sections-py">
         <h1 className="mb-6 text-t3642 font-semibold text-brand1 left-container">
           {title.toUpperCase()}
         </h1>

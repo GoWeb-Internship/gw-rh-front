@@ -2,14 +2,17 @@ import Link from 'next/link';
 import ArrowIcon from 'public/dropdownArrow.svg';
 import MobileMenuSubMenu from './MobileMenuSubMenu';
 
-const MobileMenuItem = ({ navItemData }) => {
+const MobileMenuItem = ({ navItemData, onClose }) => {
   const { subMenu, slug, name } = navItemData;
 
   return (
     <>
       {!subMenu ? (
         <Link href={`/${slug !== 'index' ? slug : ''}`}>
-          <a className="block font-navigation py-[10px] text-main after">
+          <a
+            className="block font-navigation py-[10px] text-main after"
+            onClick={onClose}
+          >
             {name}
           </a>
         </Link>
