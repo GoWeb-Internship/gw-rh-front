@@ -26,7 +26,11 @@ const About = ({ data }) => {
               </ReactMarkdown>
             </Collapse>
 
+<<<<<<< HEAD
             <LinkToBook text={linkToBook}/>
+=======
+            <LinkToBook text={translation.linkToBook} />
+>>>>>>> dev
           </div>
         </div>
       </Container>

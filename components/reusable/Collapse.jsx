@@ -1,4 +1,6 @@
+import { useMemo } from 'react';
 import { useEffect, useRef, useState } from 'react';
+import useMedia from '../../hooks/useMedia';
 import useTranslations from '../../hooks/useTranslations';
 
 const getMaxHeight = height => (!height ? '1000px' : `${height + 100}px`);
@@ -10,25 +12,32 @@ const Collapse = ({
   withoutButton = false,
   open,
 }) => {
-  const { readMore, readLess } = useTranslations(['readMore', 'readLess']);
   const [containerHeight, setContainerHeight] = useState(0);
   const [showBlock, setShowBlock] = useState(false);
   const container = useRef(null);
 
+  const pageFormat = useMedia();
+
+  const { readMore, readLess } = useTranslations(['readMore', 'readLess']);
+
   useEffect(() => {
     if (!container.current) return;
+    if (!pageFormat) return;
     setContainerHeight(container?.current?.children[0].offsetHeight ?? 0);
-  }, []);
+  }, [pageFormat]);
 
   useEffect(() => {
     if (open === undefined) return;
     setShowBlock(open);
   }, [open]);
 
-  const styles = {
-    maxHeight: showBlock ? getMaxHeight(containerHeight) : `${maxHeight}px`,
-    padding: showBlock ? null : 0,
-  };
+  const styles = useMemo(
+    () => ({
+      maxHeight: showBlock ? getMaxHeight(containerHeight) : `${maxHeight}px`,
+      padding: showBlock ? null : 0,
+    }),
+    [containerHeight, maxHeight, showBlock],
+  );
 
   return (
     <div>
