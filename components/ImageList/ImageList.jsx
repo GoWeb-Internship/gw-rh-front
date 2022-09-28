@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ImageCard from './ImageCard';
 import withShowMore, { useShowMore } from '../reusable/ShowMore';
 
