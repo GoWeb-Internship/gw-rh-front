@@ -45,7 +45,6 @@ export const useShowMore = (listData = []) => {
     normalizedListData,
     itemsToShow,
     listDataLength,
-    // changeListDataLength,
     changeItemsToShow,
   };
 };
@@ -78,19 +77,8 @@ const ShowMore = ({
     setShowAll(false);
   };
 
-  // setItemsToShow(mediaOptions[pageFormat] ?? defaultOptions[pageFormat]);
-  // (showAll || itemsToShow !== -1) && listDataLength > itemsToShow;
-
-  // console.log(
-  //   'listDataLength > itemsToShow',
-  //   listDataLength > itemsToShow,
-  //   listDataLength,
-  //   itemsToShow,
-  // );
-
   return (
     <>
-      {/* <ShowMoreContext.Provider value={itemsToShow}> */}
       {children}
 
       {(listDataLength > itemsToShow || showAll) && (
@@ -112,7 +100,6 @@ const ShowMore = ({
           )}
         </>
       )}
-      {/* </ShowMoreContext.Provider> */}
     </>
   );
 };
