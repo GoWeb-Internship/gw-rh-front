@@ -23,7 +23,7 @@ const ReviewsBlock = ({ data }) => {
           <>
             <Head
               title={textReviewTitle}
-              className={'mb-6 lg:mb-14'}
+              className={'mt-[68px] md:mt-[60px] mb-6 lg:mb-14'}
               Tag={'h3'}
             />
             <ReviewList listData={textReviewsList} />

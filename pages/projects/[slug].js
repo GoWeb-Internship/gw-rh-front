@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+
 import withLayout from 'components/layout/Layout';
 // import ReactMarkdown from 'react-markdown';
 
@@ -18,12 +20,18 @@ const Projects = ({ projectData, translation }) => {
   }
 
   return (
-    <div>
-      <Overview overviewData={overview} translation={translation} />
-      {!!accordionData.length && (
-        <AccordionComponent accordionData={accordionData} />
-      )}
-    </div>
+    <>
+      <Head>
+        <title>{overview.title}</title>
+        <meta name="description" content={overview.subTitle} />
+      </Head>
+      <div>
+        <Overview overviewData={overview} translation={translation} />
+        {!!accordionData.length && (
+          <AccordionComponent accordionData={accordionData} />
+        )}
+      </div>
+    </>
   );
 };
 

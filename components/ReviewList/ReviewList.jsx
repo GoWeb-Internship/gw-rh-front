@@ -26,7 +26,7 @@ const ReviewList = ({ listData }) => {
   return (
     <Slider
       slidesPerView={slidesPerView}
-      className={'md:w-[500px] lg:w-[844px] mx-auto'}
+      className={'lg:w-[844px] xl:w-[1000px] mx-auto'}
       spaceBetween={spaceBetween}
       btnClass={'fill-brand3'}
       innerButtons={false}

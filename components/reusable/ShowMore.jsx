@@ -98,14 +98,14 @@ const ShowMore = ({
           {showAll ? (
             <ButtonShow
               onClick={showLess}
-              className={'block mx-auto mt-7 md:mt-[60px] lg:mt-[84px] lg:mx-0'}
+              className={'block mx-auto mt-7 lg:mx-0'}
             >
               {readLess}
             </ButtonShow>
           ) : (
             <ButtonShow
               onClick={showMore}
-              className={'block mx-auto mt-7 md:mt-[60px] lg:mt-[84px] lg:mx-0'}
+              className={'block mx-auto mt-7 lg:mx-0'}
             >
               {readMore}
             </ButtonShow>

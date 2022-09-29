@@ -10,9 +10,9 @@ const About = ({ data }) => {
   const linkToBook = useTranslations('linkToBook');
 
   return (
-    <Section className="py-9 lg:py-20" id="about author">
+    <Section className="py-9 md:py-[124px]" id="about author">
       <Container>
-        <h2 className="mb-6 md:mb-[52px] lg:mb-14 text-28 font-semibold text-left md:text-right md:pr-[130px] lg:text-center lg:pr-0 uppercase">
+        <h2 className="mb-6 md:mb-[52px] lg:mb-14 text-28 font-semibold text-left md:text-right md:pr-[130px] lg:pr-[500px] uppercase">
           {data.aboutTitle}
         </h2>
         <div className="lg:flex lg:justify-between">
