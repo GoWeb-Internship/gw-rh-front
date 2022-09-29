@@ -22,6 +22,7 @@ const Form = ({
     handleSubmit,
     watch,
     reset,
+    control,
     setValue,
     formState: { errors },
   } = useForm({
@@ -71,6 +72,7 @@ const Form = ({
             return (
               <div key={type} className="relative mb-4">
                 <Input
+                  control={control}
                   hasError={hasError}
                   type={type}
                   placeholder={placeholder}
@@ -85,7 +87,7 @@ const Form = ({
             id="message"
             type="text"
             placeholder={textareaMsg}
-            className="resize-none w-full h-36 py-5 px-4 text-sm border border-blue rounded-sm placeholder:text-main"
+            className="resize-none w-full h-36 py-5 px-4 text-sm border-2 border-blue rounded-sm placeholder:text-main"
             {...register('message')}
           />
         </div>
@@ -102,5 +104,4 @@ export default Form;
 Form.propTypes = {
   inputsData: PropTypes.arrayOf(PropTypes.object),
   textareaMsg: PropTypes.string.isRequired,
-  btn: PropTypes.string.isRequired,
 };

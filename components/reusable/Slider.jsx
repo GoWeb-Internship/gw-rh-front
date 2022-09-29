@@ -3,6 +3,7 @@ import { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Arrow from 'public/slider-arrow.svg';
+import classNames from 'classnames';
 
 const Slider = ({
   children,
@@ -18,6 +19,11 @@ const Slider = ({
 }) => {
   const modules =
     pageFormat === 'mobile' ? [Navigation, Pagination] : [Navigation];
+
+  const arrowFormat = classNames(
+    { 'block inner': innerButtons },
+    { 'hidden outer': !innerButtons },
+  );
 
   return (
     <div className={`${className} relative`}>
@@ -42,8 +48,8 @@ const Slider = ({
       <>
         <div
           className={[
-            `hidden prev-slider swiper-button-disabled md:block desk-nav-btn`,
-            innerButtons ? 'inner' : 'outer',
+            ` prev-slider swiper-button-disabled md:block desk-nav-btn`,
+            arrowFormat,
           ].join(' ')}
           role={'button'}
         >
@@ -51,8 +57,8 @@ const Slider = ({
         </div>
         <div
           className={[
-            `hidden next-slider swiper-button-disabled md:block desk-nav-btn`,
-            innerButtons ? 'inner' : 'outer',
+            ` next-slider swiper-button-disabled md:block desk-nav-btn`,
+            arrowFormat,
           ].join(' ')}
           role={'button'}
         >
