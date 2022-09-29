@@ -13,12 +13,12 @@ const Afisha = ({ data }) => {
       <Container>
         <Heading
           text={data.attributes.mainTitle}
-          className="uppercase font-semibold text-t3642 text-brand1 mb-4 md:mb-14"
+          className="uppercase font-semibold text-28 text-brand1 mb-4 md:text-t3642 md:mb-14"
         />
         <Heading
           tag="h2"
           text={data.attributes.title}
-          className="uppercase font-semibold text-t2444 mb-4 md:mb-6"
+          className="uppercase font-semibold text-lg tracking-[0.005em] mb-4 md:text-t2444 md:tracking-normal md:mb-6"
         />
         <ImageList
           dataList={data.attributes.imageCard}

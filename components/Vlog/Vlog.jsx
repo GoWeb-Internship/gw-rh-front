@@ -13,12 +13,12 @@ const Vlog = ({ data }) => {
         <>
           <Heading
             text={data.attributes.mainTitle}
-            className="uppercase font-semibold text-t3642 text-brand1 mb-4 md:mb-14"
+            className="uppercase font-semibold text-28 text-brand1 mb-4 md:text-t3642 md:mb-14"
           />
           <Heading
             tag="h2"
             text={data.attributes.title}
-            className="uppercase font-semibold text-t2444 mb-4 md:mb-6"
+            className="text-lg tracking-[0.005em] uppercase font-semibold mb-4 md:tracking-normal md:text-t2444 md:mb-6"
           />
           <VideoList
             listData={data.attributes.video}
