@@ -18,7 +18,6 @@ const ContactBlock = ({ data }) => {
               query: { clickFrom: `${buttonText1}` },
             }}
             text={buttonText1}
-            buttonTheme="type3"
             className="mb-6 md:mb-0"
           />
           <Button
@@ -27,7 +26,7 @@ const ContactBlock = ({ data }) => {
               query: { clickFrom: `${buttonText2}` },
             }}
             text={buttonText2}
-            buttonTheme="type4"
+            buttonTheme="secondary"
           />
         </div>
       </Container>
