@@ -25,7 +25,7 @@ const AccordionHeader = ({ title, idx, open, onClick }) => {
         <span className="font-semibold text-light text-left text-[1.2rem] leading-[2.2rem] md:text-28 uppercase">
           {title}
         </span>
-        <AccodrionIcon idx={idx} open={open} />
+        <AccodrionIcon open={open} />
       </Container>
     </button>
   );

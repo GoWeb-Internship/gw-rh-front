@@ -1,7 +1,7 @@
 import Container from '../reusable/Container';
 import Head from '../reusable/Head';
 import ReviewList from '../ReviewList/ReviewList';
-import VideoList from '../VideoList/VideoList';
+import VideoList from '../VideoList/VideoList2';
 
 const ReviewsBlock = ({ data }) => {
   const { title, textReviewTitle, videoList, textReviewsList } = data;

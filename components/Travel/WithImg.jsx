@@ -11,7 +11,7 @@ const WithImg = ({ sliderDate }) => {
   const [imageWidth, setImageWidth] = useState(280);
   const [imageHeight, setImageHeight] = useState(174);
 
-  const normalizedDate = useShowMore(sliderDate);
+  const {normalizedListData} = useShowMore(sliderDate);
   const media = useMedia();
 
   useEffect(() => {
@@ -32,8 +32,8 @@ const WithImg = ({ sliderDate }) => {
 
   return (
     <div>
-      {normalizedDate &&
-        normalizedDate.map(
+      {normalizedListData &&
+        normalizedListData.map(
           ({ id, date, eventTitle, aboutEvent, image: { data } }) => {
             return (
               <div

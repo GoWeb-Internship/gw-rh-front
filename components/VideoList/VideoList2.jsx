@@ -3,7 +3,7 @@ import withShowMore, { useShowMore } from '../reusable/ShowMore';
 import VideoCard from './VideoCard';
 
 const VideoList = ({ listData, className = '' }) => {
-  const normalizedListData = useShowMore(listData);
+  const { normalizedListData } = useShowMore(listData);
 
   return (
     <>

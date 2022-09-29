@@ -44,9 +44,9 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       locale,
       'filters[slug][$eq]': params.slug,
       'populate[page_modules][populate][0]': 'id',
-      'populate[overview][populate][0]': 'optionalSections,quotes',
-      'populate[methodology][populate][0]': 'sections,page_module',
-      'populate[benefit][populate][0]': 'section,page_module',
+      'populate[overview][populate][0]': 'optionalSections.quotes,quotes',
+      'populate[methodology][populate][0]': 'sections.quotes,page_module',
+      'populate[benefit][populate][0]': 'section.quotes,page_module',
       'populate[modules_section][populate][0]': 'module,page_module',
       'populate[seminar][populate][0]': 'videoList,page_module',
       'populate[review][populate][0]':
