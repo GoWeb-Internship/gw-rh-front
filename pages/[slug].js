@@ -11,7 +11,7 @@ import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
 import Soul from '../components/pages/Soul';
 
-const Pages = ({ dataPage, translation }) => {
+const Pages = ({ dataPage }) => {
   const router = useRouter();
   const { isFallback } = router;
   if (isFallback) {
@@ -22,9 +22,7 @@ const Pages = ({ dataPage, translation }) => {
     <>
       {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
       {dataPage.slug === 'announcements' && <Afisha data={dataPage.content} />}
-      {dataPage.slug === 'contact-us' && (
-        <Contacts data={dataPage.content} btn={translation.sendBtn} />
-      )}
+      {dataPage.slug === 'contact-us' && <Contacts data={dataPage.content} />}
       {dataPage.slug === 'consultations' && (
         <Consultation data={dataPage.content} />
       )}

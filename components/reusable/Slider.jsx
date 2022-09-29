@@ -42,7 +42,7 @@ const Slider = ({
       <>
         <div
           className={[
-            'hidden prev-slider swiper-button-disabled md:block desk-nav-btn',
+            `hidden prev-slider swiper-button-disabled md:block desk-nav-btn`,
             innerButtons ? 'inner' : 'outer',
           ].join(' ')}
           role={'button'}
@@ -51,7 +51,7 @@ const Slider = ({
         </div>
         <div
           className={[
-            'hidden next-slider swiper-button-disabled md:block desk-nav-btn',
+            `hidden next-slider swiper-button-disabled md:block desk-nav-btn`,
             innerButtons ? 'inner' : 'outer',
           ].join(' ')}
           role={'button'}

@@ -1,5 +1,8 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import PhoneInput from 'react-phone-input-2';
+
+import 'react-phone-input-2/lib/style.css';
 
 const Input = ({
   type,
@@ -12,11 +15,9 @@ const Input = ({
     { 'border-red': hasError },
     { 'border-blue': !hasError },
   );
-  const textColor = classnames(
-    errorMessage && 'text-red'
-  );
+  const textColor = classnames(errorMessage && 'text-red');
   const placeholderMsg = hasError ? errorMessage : placeholder;
-
+  // console.log(type);
   return (
     <>
       <input
