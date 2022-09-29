@@ -5,7 +5,7 @@ import Heading from '../reusable/Heading';
 
 const Team = ({ teams }) => {
   return (
-    <Section className="pt-8 pb-1 md:pt-16 md:pb-32 lg:pt-[124px] lg:pb-[124px]">
+    <Section className="pt-8 pb-16 md:pt-16 md:pb-32 lg:pt-[124px] lg:pb-[124px]">
       <Container>
         <>
           <Heading
