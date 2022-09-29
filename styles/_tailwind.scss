@@ -52,4 +52,12 @@
       background-size: 1240px 660px;
     }
   }
+
+  .review::-webkit-scrollbar-thumb {
+    @apply bg-[#B4D8EF] rounded-lg w-2;
+   }
+
+  .review::-webkit-scrollbar {
+    @apply bg-[#F0F6FA] rounded-lg w-2;
+  }
 }
