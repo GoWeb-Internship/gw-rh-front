@@ -58,15 +58,15 @@ const Hero = ({ data }) => {
             height={540}
           />
           <DialogWindow
-            classNameDiv={`top-[94px] -left-[94px] lg:top-[118px] lg:-left-[68px] after:right-5 arrow`}
+            classNameDiv={`top-[94px] -left-[94px] lg:top-[118px] lg:-left-[68px] after:right-5 arrow-quote`}
             text={consultMore}
           />
           <DialogWindow
-            classNameDiv={`top-[140px] -right-[110px] lg:top-[130px] lg:-right-[44px] after:left-5 arrow`}
+            classNameDiv={`top-[140px] -right-[110px] lg:top-[130px] lg:-right-[44px] after:left-5 arrow-quote`}
             text={actionYears}
           />
           <DialogWindow
-            classNameDiv={`top-[245px] -left-[110px] lg:top-[300px] lg:-left-[140px] after:right-5 arrow`}
+            classNameDiv={`top-[245px] -left-[110px] lg:top-[300px] lg:-left-[140px] after:right-5 arrow-quote`}
             text={learnInfo}
           />
         </div>
