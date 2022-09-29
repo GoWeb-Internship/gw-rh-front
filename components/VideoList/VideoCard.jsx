@@ -27,7 +27,7 @@ const VideoCard = ({ video, videoWrapperClass }) => {
       <Heading
         tag="h3"
         text={video.videoTitle}
-        className="uppercase mt-2 text-lg tracking-[0.005em] font-semibold md:mt-4 lg:mt-2"
+        className="uppercase mt-2 text-base font-semibold md:text-lg md:tracking-[0.005em] md:mt-4 lg:mt-2"
       />
       <div className="flex mt-2 text-t1416 font-normal">
         <p>{video.location}</p>

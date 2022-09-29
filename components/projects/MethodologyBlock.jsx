@@ -3,6 +3,7 @@ import SectionType1 from '../sections/SectionType1';
 
 const MethodologyBlock = ({ data }) => {
   const { sections } = data;
+
   return (
     <>
       {sections.length ? (

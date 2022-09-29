@@ -12,7 +12,7 @@ const About = ({ data }) => {
   return (
     <Section className="py-9 md:py-[124px]" id="about author">
       <Container>
-        <h2 className="mb-6 md:mb-[52px] lg:mb-14 text-28 font-semibold text-left md:text-right md:pr-[130px] lg:pr-[500px] uppercase">
+        <h2 className="mb-6 md:mb-[52px] lg:mb-14 text-28 font-semibold text-left md:pl-[350px] lg:pl-[480px] uppercase">
           {data.aboutTitle}
         </h2>
         <div className="lg:flex lg:justify-between">

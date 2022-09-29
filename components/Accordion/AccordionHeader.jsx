@@ -17,12 +17,12 @@ const AccordionHeader = ({ title, idx, open, onClick }) => {
   return (
     <button
       type="button"
-      className="py-9 bg-brand2 shadow-accordion w-full"
+      className="py-4 md:py-9 bg-brand2 shadow-accordion w-full"
       onClick={handleClick}
       ref={buttonRef}
     >
       <Container className="flex justify-between items-center ">
-        <span className="font-semibold text-light text-left text-[1.2rem] leading-[2.2rem] md:text-28 uppercase">
+        <span className="font-semibold text-light text-left text-t2444 md:text-28 uppercase">
           {title}
         </span>
         <AccodrionIcon open={open} />
