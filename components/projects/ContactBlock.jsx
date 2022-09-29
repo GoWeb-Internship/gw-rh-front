@@ -1,9 +1,12 @@
 import Button from '../reusable/Button';
 import Container from '../reusable/Container';
 import Head from '../reusable/Head';
+import useTranslations from '../../hooks/useTranslations';
 
 const ContactBlock = ({ data }) => {
-  const { title, subTitle, buttonText1, buttonText2 } = data;
+  const { title, subTitle } = data;
+  const button = useTranslations(['signToProjectBtn', 'sendMessageBtn']);
+
   return (
     <section className="sections-py">
       <Container>
@@ -15,17 +18,17 @@ const ContactBlock = ({ data }) => {
           <Button
             linkTo={{
               pathname: '/contact-us',
-              query: { clickFrom: `${buttonText1}` },
+              query: { clickFrom: `${button.signToProjectBtn}` },
             }}
-            text={buttonText1}
+            text={button.signToProjectBtn}
             className="mb-6 md:mb-0"
           />
           <Button
             linkTo={{
               pathname: '/contact-us',
-              query: { clickFrom: `${buttonText2}` },
+              query: { clickFrom: `${button.sendMessageBtn}` },
             }}
-            text={buttonText2}
+            text={button.sendMessageBtn}
             buttonTheme="secondary"
           />
         </div>
