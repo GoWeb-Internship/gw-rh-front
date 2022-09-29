@@ -1,10 +1,10 @@
 import ReactMarkdown from 'react-markdown';
-import Quote from '../Quote/Quote';
 import Head from '../reusable/Head';
 import ProjectContentBox from '../reusable/ProjectContentBox';
+import Quotes from '../reusable/Quotes/Quotes';
 
 const SectionType1 = ({ data, Tag = 'h2', firstElementClass }) => {
-  const { title, showTitle, body, quote } = data;
+  const { title, showTitle, body, quotes } = data;
   return (
     <>
       <Head
@@ -14,7 +14,7 @@ const SectionType1 = ({ data, Tag = 'h2', firstElementClass }) => {
         className={[firstElementClass, 'mb-6 lg:mb-14'].join(' ')}
       />
       <ProjectContentBox reverse>
-        {quote && <Quote quote={quote} className="mb-6 lg:mb-0" />}
+        {!!quotes.length && <Quotes quotesList={quotes} />}
         <ReactMarkdown className="prose left-container mr-auto">
           {body}
         </ReactMarkdown>

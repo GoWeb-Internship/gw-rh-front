@@ -1,9 +1,9 @@
 import ReactMarkdown from 'react-markdown';
-import Quote from '../Quote/Quote';
 import Container from '../reusable/Container';
 import ProjectContentBox from '../reusable/ProjectContentBox';
 import SectionType1 from '../sections/SectionType1';
 import Collapse from '../reusable/Collapse';
+import Quotes from '../reusable/Quotes/Quotes';
 
 const Overview = ({ overviewData, translation }) => {
   const { title, subTitle, textContent, quotes, optionalSections } =
@@ -21,17 +21,7 @@ const Overview = ({ overviewData, translation }) => {
         <Collapse translate={translation} maxHeight={504}>
           <div>
             <ProjectContentBox reverse>
-              {!!quotes.length && (
-                <div className="mb-4 md:mb-6 lg:block lg:mb-0 lg:shrink-0">
-                  {quotes.map(({ id, item }) => (
-                    <Quote
-                      key={id}
-                      quote={item}
-                      className="mb-6 last:mb-0 lg:mb-[124px]"
-                    />
-                  ))}
-                </div>
-              )}
+              {!!quotes.length && <Quotes quotesList={quotes} />}
               <ReactMarkdown className={`prose left-container`}>
                 {textContent}
               </ReactMarkdown>
