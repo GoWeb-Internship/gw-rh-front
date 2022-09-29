@@ -26,8 +26,8 @@ const Hero = ({ data }) => {
       id="hero"
     >
       <Container className="lg:flex lg:justify-between">
-        <ArrowDown className="hidden md:block absolute top-[425px] right-3 lg:-top-8 lg:right-11 xl:right-[200px]" />
-        <ArrowUp className="hidden md:block absolute top-[360px] left-0 lg:top-[457px] lg:left-[60px]" />
+        <ArrowDown className="hidden md:block absolute top-[425px] right-3 lg:-top-8 lg:right-20 xl:right-[220px]" />
+        <ArrowUp className="hidden md:block absolute top-[360px] left-0 lg:top-[488px] lg:left-[60px]" />
         <div className="md:mb-[140px] lg:mb-0 xl:mr-[200px]">
           <h1 className="w-[280px] mb-10 font-semibold text-4xl text-brand1 uppercase md:w-[464px] md:mb-8 md:text-52 md:font-bold lg:mt-2 lg:mb-[72px] after:content-[''] after:block after:bg-[url('/hero/surname.svg')] after:bg-no-repeat after:bg-cover after:w-[168px] after:h-[13px] md:after:w-[236px] md:after:h-[18px]">
             {data.heroTitle}
