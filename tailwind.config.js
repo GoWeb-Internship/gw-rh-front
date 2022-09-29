@@ -37,7 +37,8 @@ module.exports = {
           'inset 0px -4px 8px rgba(7, 27, 77, 0.24), inset 0px -16px 24px rgba(7, 27, 77, 0.16)',
       },
       dropShadow: {
-        arrow: 'inset 0px -1px 2px rgba(7, 33, 50, 0.32), inset -1px -2px 4px rgba(7, 33, 50, 0.16)',
+        arrow:
+          'inset 0px -1px 2px rgba(7, 33, 50, 0.32), inset -1px -2px 4px rgba(7, 33, 50, 0.16)',
       },
       fontSize: {
         qqBase: ['16px', '24px'],
@@ -47,6 +48,7 @@ module.exports = {
         t1821: ['18px', '21px'],
         t1824: ['18px', '24px'],
         t1828: ['18px', '28px'],
+        t2030: ['20px', '30px'],
         t2444: ['24px', '44px'],
         28: ['28px', '33px'],
         52: ['52px', '61px'],
