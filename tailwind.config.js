@@ -37,7 +37,8 @@ module.exports = {
           'inset 0px -4px 8px rgba(7, 27, 77, 0.24), inset 0px -16px 24px rgba(7, 27, 77, 0.16)',
       },
       dropShadow: {
-        arrow: 'inset 0px -1px 2px rgba(7, 33, 50, 0.32), inset -1px -2px 4px rgba(7, 33, 50, 0.16)',
+        arrow:
+          'inset 0px -1px 2px rgba(7, 33, 50, 0.32), inset -1px -2px 4px rgba(7, 33, 50, 0.16)',
       },
       fontSize: {
         qqBase: ['16px', '24px'],
@@ -60,6 +61,7 @@ module.exports = {
         light: '#FCFCFA',
         bgHero: '#E4F0F6',
         red: '#D11414',
+        treeBtn: '#D9E1E8',
       },
       typography: theme => ({
         DEFAULT: {
