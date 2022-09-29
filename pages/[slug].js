@@ -23,10 +23,24 @@ const Pages = ({ dataPage }) => {
 
   return (
     <>
-      <Head>
-        <title>{dataPage.content.attributes.mainTitle ? dataPage.content.attributes.mainTitle : dataPage.content.attributes.title}</title>
-        <meta name="description" content={dataPage.content.attributes.subTitle? dataPage.content.attributes.subTitle : dataPage.content.attributes.title} />
-      </Head>
+      {!dataPage.slug === 'how-to-open-love-in-you' && (
+        <Head>
+          <title>
+            {dataPage.content.attributes.mainTitle
+              ? dataPage.content.attributes.mainTitle
+              : dataPage.content.attributes.title}
+          </title>
+          <meta
+            name="description"
+            content={
+              dataPage.content.attributes.subTitle
+                ? dataPage.content.attributes.subTitle
+                : dataPage.content.attributes.title
+            }
+          />
+        </Head>
+      )}
+
       {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
       {dataPage.slug === 'announcements' && <Afisha data={dataPage.content} />}
       {dataPage.slug === 'contact-us' && <Contacts data={dataPage.content} />}
