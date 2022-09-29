@@ -14,7 +14,7 @@ const PolicyPage = ({ policy }) => {
         <Heading
           tag="h1"
           text={policy.mainTitle}
-          className="text-t2444 mb-4 uppercase font-semibold text-brand1 md:text-t3642 md:mb-6 lg:mb-8"
+          className="text-28 mb-4 uppercase font-semibold text-brand1 md:text-t3642 md:mb-6 lg:mb-8"
         />
         <ReactMarkdown className="prose">{policy.body}</ReactMarkdown>
         {policy.section.length ? (

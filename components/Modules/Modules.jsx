@@ -20,7 +20,9 @@ const Modules = ({ modules }) => {
                 Tag="h3"
                 className="text-brand1 lg:text-main mb-2"
               />
-              <p className="text-brand1 font-semibold mb-6">{subTitle}</p>
+              <p className="text-brand1 opacity-[0.64] font-semibold mb-6">
+                {subTitle}
+              </p>
               <ReactMarkdown className="prose mb-6">{body}</ReactMarkdown>
             </div>
             <div className="rounded bg-slate-400 flex items-center w-[280px] h-[158px] sm:w-full sm:h-[248px] md:h-[360px] lg:shrink-0 lg:w-[560px] lg:h-[315px] xl:w-[794px] xl:h-[446px]">
