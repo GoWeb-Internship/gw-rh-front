@@ -1,3 +1,4 @@
+
 # Project structure:
 
 ```
@@ -42,3 +43,11 @@
   | ------------- | ------------- | ------------- |
   | `listData` | `-` | data for video list |
   | `className` | `-` | styles for video list |
+
+
+- ### ModalBackdrop ✅
+
+  | Prop       | Default | Description                        |
+  | ---------- | :-----: | ---------------------------------- |
+  | `children` |   `-`   | only as text element or component. |
+

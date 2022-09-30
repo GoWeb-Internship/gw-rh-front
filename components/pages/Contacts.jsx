@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 
 import useTranslation from 'hooks/useTranslations.js';
 
@@ -59,3 +60,12 @@ const Contacts = ({ data: { attributes } }) => {
 };
 
 export default Contacts;
+
+Contacts.propTypes = {
+  attributes: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+    validation: PropTypes.string.isRequired,
+    error: PropTypes.object.isRequired,
+  }),
+};
