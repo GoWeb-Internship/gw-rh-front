@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const MobileMenuSubMenu = ({ from = '', navData = [] }) => {
+const MobileMenuSubMenu = ({ from = '', navData = [], onClose }) => {
   const hrefFrom = from ? `/${from}` : '';
 
   return (
@@ -10,6 +10,7 @@ const MobileMenuSubMenu = ({ from = '', navData = [] }) => {
           <li key={id}>
             <Link href={`${hrefFrom}/${slug}`}>
               <a
+                onClick={onClose}
                 className={`font-navigation block px-4 py-[10px] duration-100 transition-colors after`}
               >
                 {name}

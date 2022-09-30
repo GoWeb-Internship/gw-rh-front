@@ -19,7 +19,10 @@ const MobileMenuItem = ({ navItemData, onClose }) => {
       ) : (
         <>
           <Link href={`/${slug !== 'index' ? slug : ''}`}>
-            <a className="font-navigation py-[10px] flex items-center after">
+            <a
+              className="font-navigation py-[10px] flex items-center after"
+              onClick={onClose}
+            >
               <span className="mr-3">{name}</span>
               <ArrowIcon className="stroke-main" />
             </a>
@@ -28,7 +31,7 @@ const MobileMenuItem = ({ navItemData, onClose }) => {
             <span className="mr-3">{name}</span>
             <ArrowIcon className="stroke-main" />
           </p> */}
-          <MobileMenuSubMenu navData={subMenu} from={slug} />
+          <MobileMenuSubMenu navData={subMenu} from={slug} onClose={onClose} />
         </>
       )}
     </>
