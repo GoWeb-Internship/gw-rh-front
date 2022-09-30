@@ -7,7 +7,7 @@ const Quotes = ({ quotesList }) => {
         <Quote
           key={id}
           quote={item}
-          className="hidden first:block lg:block mb-6 last:mb-0 lg:mb-[472px]"
+          className="hidden first:block lg:block mb-6 last:mb-0 lg:mb-[200px]"
         />
       ))}
     </div>

@@ -49,6 +49,7 @@ const WithImg = ({ sliderDate }) => {
                     'md:w-[310px] lg:w-[560px] h-[174px] lg:h-[315px] mr-auto'
                   }
                   btnClass={'fill-white'}
+                  id={id + 'img'}
                 >
                   {data.map(({ attributes }, index) => {
                     const { alternativeText, url } = attributes;
