@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Container from 'components/reusable/Container';
 import Heading from '../reusable/Heading';
 import VideoList from '../VideoList/VideoList2';
@@ -28,6 +29,10 @@ const Vlog = ({ data }) => {
       </Container>
     </section>
   );
+};
+
+Vlog.propTypes = {
+  data: PropTypes.object,
 };
 
 export default Vlog;
