@@ -19,6 +19,7 @@ const Modules = ({ modules }) => {
                 title={title}
                 Tag="h3"
                 className="text-brand1 lg:text-main mb-2"
+                isColor
               />
               <p className="text-brand1 opacity-[0.64] font-semibold mb-6">
                 {subTitle}

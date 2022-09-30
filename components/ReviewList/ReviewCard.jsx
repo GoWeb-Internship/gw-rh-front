@@ -19,9 +19,11 @@ const ReviewCard = ({ itemData }) => {
   }, [overflow, reviewText]);
 
   return (
-    <div className="flex flex-col justify-between h-full max-w-[280px] my-0 mx-auto sm:max-w-none sm:w-[340px] md:w-[230px] lg:w-[366px]">
-      <p className={`${overflow} review mb-4 md:pr-2 md:mb-8 md:max-h-[234px]`}>{reviewText}</p>
-      <div className="mb-4 flex items-center gap-x-3">
+    <div className="pb-10 lg:pb-0 flex flex-col justify-between h-full max-w-[280px] my-0 mx-auto sm:max-w-none sm:w-[340px] md:w-[230px] lg:w-[366px]">
+      <p className={`${overflow} review mb-4 md:pr-2 md:mb-8 max-h-[234px]`}>
+        {reviewText}
+      </p>
+      <div className="flex items-center gap-x-3">
         <Image
           src={photo.data.attributes.url}
           alt={name}
@@ -39,4 +41,3 @@ const ReviewCard = ({ itemData }) => {
 };
 
 export default ReviewCard;
-

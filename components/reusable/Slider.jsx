@@ -16,6 +16,7 @@ const Slider = ({
   btnClass = 'fill-main',
   innerButtons = false,
   pageFormat = 'mobile',
+  id = '',
 }) => {
   const modules =
     pageFormat === 'mobile' ? [Navigation, Pagination] : [Navigation];
@@ -37,8 +38,8 @@ const Slider = ({
         onSwiper={onSwiper}
         style={style}
         navigation={{
-          nextEl: '.next-slider',
-          prevEl: '.prev-slider',
+          nextEl: `.next-slider-navigation-${id}`,
+          prevEl: `.prev-slider-navigation-${id}`,
         }}
         loop={true}
       >
@@ -49,6 +50,7 @@ const Slider = ({
         <div
           className={[
             ` prev-slider swiper-button-disabled md:block desk-nav-btn`,
+            `prev-slider-navigation-${id}`,
             arrowFormat,
           ].join(' ')}
           role={'button'}
@@ -58,6 +60,7 @@ const Slider = ({
         <div
           className={[
             ` next-slider swiper-button-disabled md:block desk-nav-btn`,
+            `next-slider-navigation-${id}`,
             arrowFormat,
           ].join(' ')}
           role={'button'}
