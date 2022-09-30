@@ -28,6 +28,15 @@ module.exports = {
     },
 
     extend: {
+      animation: {
+        tree: 'tree 5s linear infinite',
+      },
+      keyframes: {
+        tree: {
+          '0%, 60%, 100%': { transform: 'scale(1)' },
+          '80%': { transform: 'scale(1.05)' },
+        },
+      },
       boxShadow: {
         bb1: '0px 4px 10px rgba(106, 161, 193, 0.25)',
         sh2: 'inset 0px -1px 2px rgba(0, 0, 0, 0.32), inset -1px -2px 4px rgba(7, 33, 50, 0.16)',
@@ -62,6 +71,7 @@ module.exports = {
         bgHero: '#E4F0F6',
         red: '#D11414',
         treeBtn: '#D9E1E8',
+        treeBtnAccent: '#C9D2D9',
       },
       typography: theme => ({
         DEFAULT: {

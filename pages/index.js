@@ -8,16 +8,11 @@ import { getNavigation } from 'helpers/navigation';
 import Team from 'components/Team/Team';
 import Hero from 'components/sections/Hero';
 import About from 'components/sections/About';
-import Container from 'components/reusable/Container.jsx';
-
-import Tree from 'public/tree.svg';
-// import Tree2 from 'public/tree2.svg';
-// import Bird from 'public/bird.svg';
 
 import { getData } from 'helpers/apiServices';
-import Link from 'next/link';
+import Tree from '../components/Tree/Tree';
 
-const Home = ({ teams, home }) => {
+const Home = ({ teams, home, projects }) => {
   return (
     <>
       <Head>
@@ -26,96 +21,8 @@ const Home = ({ teams, home }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero data={home} />
-      <section className="py-8 md:pt-[68px] md:pb-[90px] lg:pt-[125px] lg:pb-[125px]">
-        <Container className="pl-[63px] pr-0 md:px-0 w-full max-w-full overflow-hidden md:overflow-visible">
-          {/* <div className="w-full relative overflow-hidden md:w-auto  md:overflow-auto"> */}
-
-          <div className="relative md:pl-0 w-[500px] h-[448px] mx-auto md:w-[640px] md:h-[578px] lg:w-[712px] lg:h-[640px]">
-            <Tree />
-            <div className="absolute top-0 -left-[43px] h-full flex items-start flex-col justify-between md:block">
-              <Link href={'/'}>
-                <a
-                  className={[
-                    'py-2 px-4 md:px-6 bg-treeBtn rounded-3xl font-semibold uppercase text-qqBase md:text-t1828 tracking-[0.005] block md:absolute md:-translate-y-1/2',
-                    'translate-x-0 md:-translate-x-1/2 md:left-[9%] md:top-[22%] lg:left-[11%] lg:top-[20%]',
-                    'transition animate-pulse',
-                  ].join(' ')}
-                >
-                  Мысль
-                </a>
-              </Link>
-              <Link href={'/'}>
-                <a
-                  className={[
-                    'py-2 px-4 md:px-6 bg-treeBtn rounded-3xl font-semibold uppercase text-qqBase md:text-t1828 tracking-[0.005] block md:absolute md:-translate-y-1/2',
-                    'translate-x-0 md:-translate-x-1/2 -left-[43px] md:left-[19%] md:top-[42%] lg:left-[20%] lg:top-[38%]',
-                    'transition animate-pulse',
-                  ].join(' ')}
-                >
-                  Взаимоотношения
-                </a>
-              </Link>
-              <Link href={'/'}>
-                <a
-                  className={[
-                    'py-2 px-4 md:px-6 bg-treeBtn rounded-3xl font-semibold uppercase text-qqBase md:text-t1828 tracking-[0.005] block md:absolute md:-translate-y-1/2',
-                    'translate-x-0 md:-translate-x-1/2 md:left-1/2 md:top-[42%] lg:top-[38%]',
-                    'transition animate-pulse',
-                  ].join(' ')}
-                >
-                  Дар
-                </a>
-              </Link>
-              <Link href={'/'}>
-                <a
-                  className={[
-                    'py-2 px-4 md:px-6 bg-treeBtn rounded-3xl font-semibold uppercase text-qqBase md:text-t1828 tracking-[0.005] block md:absolute md:-translate-y-1/2',
-                    'translate-x-0 md:translate-x-1/2 md:right-[14%] md:top-[42%] lg:right-[16%] lg:top-[38%]',
-                    'transition animate-pulse',
-                  ].join(' ')}
-                >
-                  Таланты
-                </a>
-              </Link>
-              <Link href={'/'}>
-                <a
-                  className={[
-                    'py-2 px-4 md:px-6 bg-treeBtn rounded-3xl font-semibold uppercase text-qqBase md:text-t1828 tracking-[0.005] block md:absolute md:-translate-y-1/2',
-                    'translate-x-0 md:-translate-x-1/2 md:left-1/2 md:top-[67%] lg:top-[61%]',
-                    'transition animate-pulse',
-                  ].join(' ')}
-                >
-                  Любовь
-                </a>
-              </Link>
-              <Link href={'/'}>
-                <a
-                  className={[
-                    'py-2 px-4 md:px-6 bg-treeBtn rounded-3xl font-semibold uppercase text-qqBase md:text-t1828 tracking-[0.005] block md:absolute md:-translate-y-1/2',
-                    'translate-x-0 md:translate-x-1/2 md:top-[83%] md:right-[22%] lg:top-[87%] lg:right-[22%]',
-                    'transition animate-pulse',
-                  ].join(' ')}
-                >
-                  Род
-                </a>
-              </Link>
-              <Link href={'/'}>
-                <a
-                  className={[
-                    'py-2 px-4 md:px-6 bg-treeBtn rounded-3xl font-semibold uppercase text-qqBase md:text-t1828 tracking-[0.005] block md:absolute md:-translate-y-1/2',
-                    'translate-x-0 md:-translate-x-1/2 md:left-1/2 md:top-[101%] lg:top-full',
-                    'transition animate-pulse',
-                  ].join(' ')}
-                >
-                  Душа
-                </a>
-              </Link>
-            </div>
-          </div>
-          {/* </div> */}
-        </Container>
-      </section>
       <About data={home} />
+      <Tree projects={projects} />
       <Team teams={teams} />
     </>
   );
@@ -124,13 +31,15 @@ const Home = ({ teams, home }) => {
 export default withLayout(Home);
 
 export const getStaticProps = async ({ locale }) => {
-  const [navData, translation, homePage, teams, footer] = await Promise.all([
-    getNavigation('pages', { locale, sort: 'navPosition' }, 5),
-    getData('translation', { locale }),
-    getData('home-page', { locale, populate: '*' }),
-    getData('section-team', { locale, populate: 'teams.foto' }),
-    getData('footer', { locale, populate: '*' }),
-  ]);
+  const [navData, translation, homePage, teams, footer, projects] =
+    await Promise.all([
+      getNavigation('pages', { locale, sort: 'navPosition' }, 5),
+      getData('translation', { locale }),
+      getData('home-page', { locale, populate: '*' }),
+      getData('section-team', { locale, populate: 'teams.foto' }),
+      getData('footer', { locale, populate: '*' }),
+      getData('projects', { locale }),
+    ]);
 
   return {
     props: {
@@ -138,6 +47,10 @@ export const getStaticProps = async ({ locale }) => {
       home: homePage.attributes,
       translation: translation.attributes,
       teams: teams.attributes,
+      projects: projects.map(({ attributes }) => {
+        const { locale, treeTitle, slug } = attributes;
+        return { locale, treeTitle, slug };
+      }),
       footer: footer.attributes,
     },
   };
