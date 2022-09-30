@@ -5,14 +5,14 @@ import { getNavigation } from 'helpers/navigation';
 import { getData } from 'helpers/apiServices';
 import AllProjects from 'components/pages/AllProjects';
 
-const ProjectsPage = ({ all, projects }) => {
+const ProjectsPage = ({ all, projects, links }) => {
   return (
     <>
       <Head>
         <title>{all.title}</title>
         <meta name="description" content={all.description} />
       </Head>
-      <AllProjects title={all} data={projects} />
+      <AllProjects title={all} data={projects} link={links.bookStore}/>
     </>
   );
 };

@@ -3,7 +3,7 @@ import Container from 'components/reusable/Container';
 import Head from 'components/reusable/Head';
 import ShortProject from 'components/reusable/ShortProject';
 
-const AllProjects = ({ title, data }) => {
+const AllProjects = ({ title, data, link }) => {
 
   return (
     <Section className="pt-[152px] pb-8 md:pt-[184px] md:pb-[124px] lg:pt-[244px]">
@@ -13,7 +13,7 @@ const AllProjects = ({ title, data }) => {
         <ul>
           {data &&
             data.map((pr) => (
-              <ShortProject data={pr} key={pr.id} />
+              <ShortProject data={pr} key={pr.id} link={link}/>
             ))}
         </ul>
       </Container>

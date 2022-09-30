@@ -3,17 +3,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // webpack(config) {
-  //   const fileLoaderRule = config.module.rules.find(
-  //     rule => rule.test && rule.test.test('.svg'),
-  //   );
-  //   fileLoaderRule.exclude = /\.svg$/;
-  //   config.module.rules.push({
-  //     test: /\.svg$/,
-  //     loader: require.resolve('@svgr/webpack'),
-  //   });
-  //   return config;
-  // },
   webpack(config) {
     config.module.rules.push({
       loader: '@svgr/webpack',
@@ -47,7 +36,15 @@ const nextConfig = {
   images: {
     loader: 'default',
     domains: ['res.cloudinary.com'],
-    // domains: ['powerful-brushlands-30427.herokuapp.com', 'localhost'],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/how-to-open-love-in-you',
+        destination: 'https://lovebook.rizhenko.com/',
+        permanent: true,
+      },
+    ];
   },
 };
 

@@ -11,7 +11,7 @@ import Traveling from '../components/pages/Traveling';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
-import Soul from '../components/pages/Soul';
+// import LinkTo from '../components/pages/LinkTo';
 
 const Pages = ({ dataPage }) => {
   const router = useRouter();
@@ -23,7 +23,11 @@ const Pages = ({ dataPage }) => {
 
   return (
     <>
-      {!dataPage.slug === 'how-to-open-love-in-you' && (
+      {dataPage.slug === 'how-to-open-love-in-you' ? (
+        <Head>
+          <meta httpEquiv="refresh" content="0; URL=https://lovebook.rizhenko.com/" />
+        </Head>
+      ) : (
         <Head>
           <title>
             {dataPage.content.attributes.mainTitle
@@ -43,14 +47,11 @@ const Pages = ({ dataPage }) => {
 
       {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
       {dataPage.slug === 'announcements' && <Afisha data={dataPage.content} />}
+      {/* {dataPage.slug === 'how-to-open-love-in-you' && <LinkTo link={links.bookStore}/> } */}
       {dataPage.slug === 'contact-us' && <Contacts data={dataPage.content} />}
       {dataPage.slug === 'consultations' && (
         <Consultation data={dataPage.content} />
       )}
-      {dataPage.slug === 'soul' && (
-        <Soul data={dataPage.content.attributes.Soul} />
-      )}
-
       {dataPage.slug === 'travels' && (
         <Traveling data={dataPage.content.attributes} />
       )}

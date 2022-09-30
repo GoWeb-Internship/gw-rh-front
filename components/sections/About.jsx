@@ -6,7 +6,7 @@ import Collapse from '../reusable/Collapse';
 import LinkToBook from '../reusable/LinkToBook';
 import useTranslations from '../../hooks/useTranslations';
 
-const About = ({ data }) => {
+const About = ({ data, link }) => {
   const linkToBook = useTranslations('linkToBook');
 
   return (
@@ -26,7 +26,7 @@ const About = ({ data }) => {
               </ReactMarkdown>
             </Collapse>
 
-            <LinkToBook text={linkToBook}/>
+            <LinkToBook text={linkToBook} link={link}/>
           </div>
         </div>
       </Container>
