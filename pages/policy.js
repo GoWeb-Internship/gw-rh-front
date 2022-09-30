@@ -41,17 +41,19 @@ const PolicyPage = ({ policy }) => {
 export default withLayout(PolicyPage);
 
 export const getStaticProps = async ({ locale }) => {
-  const [navData, translation, policy, footer] = await Promise.all([
+  const [navData, translation, policy, footer, links] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
     getData('policy', { locale, populate: '*' }),
     getData('footer', { locale, populate: '*' }),
+    getData('link'),
   ]);
 
   return {
     props: {
       navData,
       translation: translation.attributes,
+      links: links.attributes,
       policy: policy.attributes,
       footer: footer.attributes,
     },
