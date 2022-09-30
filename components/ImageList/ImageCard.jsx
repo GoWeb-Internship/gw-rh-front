@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import { format } from 'date-fns';
 import { enGB, ru, uk, cs } from 'date-fns/locale';
-import PropTypes from 'prop-types';
 
 import NextImage from '../reusable/Image';
 import Heading from '../reusable/Heading';
@@ -36,10 +35,6 @@ const ImageCard = ({ data }) => {
       </div>
     </>
   );
-};
-
-ImageCard.propTypes = {
-  data: PropTypes.object.isRequired,
 };
 
 export default ImageCard;

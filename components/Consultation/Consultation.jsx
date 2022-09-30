@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import Section from 'components/reusable/Section';
 import Container from 'components/reusable/Container';
 import Heading from '../reusable/Heading';
@@ -16,10 +15,6 @@ const Consultation = ({ data }) => {
       </Container>
     </Section>
   );
-};
-
-Consultation.propTypes = {
-  data: PropTypes.object.isRequired,
 };
 
 export default Consultation;

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ImageCard from './ImageCard';
 import withShowMore, { useShowMore } from '../reusable/ShowMore';
 
@@ -19,10 +18,6 @@ const ImageList = ({ dataList }) => {
       </ul>
     </>
   );
-};
-
-ImageList.propTypes = {
-  dataList: PropTypes.array.isRequired,
 };
 
 export default withShowMore(ImageList);
