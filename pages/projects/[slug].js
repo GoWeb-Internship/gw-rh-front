@@ -44,7 +44,7 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     };
   }
 
-  const [navData, translation, footer, projects] = await Promise.all([
+  const [navData, translation, footer, projects, links] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
     getData('footer', { locale, populate: '*' }),
@@ -63,6 +63,7 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       'populate[price][populate][0]': 'page_module',
       'pagination[pageSize]': 50,
     }),
+    getData('link'),
   ]);
 
   const data = projects[0].attributes;
@@ -88,6 +89,7 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       locales,
       navData,
       translation: translation.attributes,
+      links: links.attributes,
       slug: params.slug,
       projectData,
       footer: footer.attributes,

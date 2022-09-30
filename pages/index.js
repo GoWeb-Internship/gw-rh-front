@@ -31,7 +31,7 @@ const Home = ({ teams, home, projects }) => {
 export default withLayout(Home);
 
 export const getStaticProps = async ({ locale }) => {
-  const [navData, translation, homePage, teams, footer, projects] =
+  const [navData, translation, homePage, teams, footer, projects, links] =
     await Promise.all([
       getNavigation('pages', { locale, sort: 'navPosition' }, 5),
       getData('translation', { locale }),
@@ -39,6 +39,7 @@ export const getStaticProps = async ({ locale }) => {
       getData('section-team', { locale, populate: 'teams.foto' }),
       getData('footer', { locale, populate: '*' }),
       getData('projects', { locale }),
+      getData('link'),
     ]);
 
   return {
@@ -46,6 +47,7 @@ export const getStaticProps = async ({ locale }) => {
       navData,
       home: homePage.attributes,
       translation: translation.attributes,
+      links: links.attributes,
       teams: teams.attributes,
       projects: projects.map(({ attributes }) => {
         const { locale, treeTitle, slug } = attributes;

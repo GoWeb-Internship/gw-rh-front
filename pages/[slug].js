@@ -66,10 +66,11 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       notFound: true,
     };
   }
-  const [navData, translation, footer] = await Promise.all([
+  const [navData, translation, footer, links] = await Promise.all([
     getNavigation('pages', { locale, sort: 'navPosition' }, 5),
     getData('translation', { locale }),
     getData('footer', { locale, populate: '*' }),
+    getData('link'),
   ]);
   let dataPage = { slug: '', content: null };
 
@@ -126,6 +127,7 @@ export const getStaticProps = async ({ locale, locales, params }) => {
       locales,
       navData,
       translation: translation.attributes,
+      links: links.attributes,
       dataPage,
       footer: footer.attributes,
     },
