@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NextImage from '../reusable/Image';
 
 const CardTeam = ({ team }) => {
-  // console.log('teamFoto', team);
+  console.log('teamFoto', team);
   return (
     <div>
       <NextImage
@@ -18,6 +19,10 @@ const CardTeam = ({ team }) => {
       </p>
     </div>
   );
+};
+
+CardTeam.propTypes = {
+  team: PropTypes.object,
 };
 
 export default CardTeam;

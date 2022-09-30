@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import PropTypes from 'prop-types';
 import YoutubeVideo from '../reusable/YoutubeVideo';
 import Heading from '../reusable/Heading';
 import Button from '../reusable/Button';
@@ -31,6 +32,10 @@ const ConsultationCard = ({ data }) => {
       </div>
     </>
   );
+};
+
+ConsultationCard.propTypes = {
+  data: PropTypes.object.isRequired,
 };
 
 export default ConsultationCard;

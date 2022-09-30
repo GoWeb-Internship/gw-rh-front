@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ConsultationCard from './ConsultationCard';
 
 const ConsultationList = ({ dataList }) => {
@@ -13,6 +14,10 @@ const ConsultationList = ({ dataList }) => {
       ))}
     </ul>
   );
+};
+
+ConsultationList.propTypes = {
+  dataList: PropTypes.array.isRequired,
 };
 
 export default ConsultationList;
