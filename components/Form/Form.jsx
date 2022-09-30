@@ -104,4 +104,9 @@ export default Form;
 Form.propTypes = {
   inputsData: PropTypes.arrayOf(PropTypes.object),
   textareaMsg: PropTypes.string.isRequired,
+  errorMessage: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  ).isRequired,
+  openModal: PropTypes.func.isRequired,
+  fromForm: PropTypes.string.isRequired,
 };

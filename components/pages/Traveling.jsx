@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import Section from '../reusable/Section';
 import Container from '../reusable/Container';
 import WithVideo from '../Travel/WithVideo';
@@ -28,3 +30,12 @@ const Traveling = ({ data }) => {
 };
 
 export default Traveling;
+
+Traveling.propTepes = {
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    subTitle: PropTypes.string.isRequired,
+    video: PropTypes.arrayOf(PropTypes.object).isRequired,
+    slider: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }),
+};

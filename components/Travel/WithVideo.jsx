@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import AboutTraveling from './AboutTravel';
 import YoutubeVideo from '../reusable/YoutubeVideo';
 import withShowMore, { useShowMore } from '../reusable/ShowMore';
@@ -31,3 +33,7 @@ const WithVideo = ({ videoData }) => {
 };
 
 export default withShowMore(WithVideo);
+
+WithVideo.propTypes = {
+  videoData: PropTypes.array.isRequired,
+};

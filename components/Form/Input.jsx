@@ -19,7 +19,13 @@ const Input = ({
   );
 
   const textColor = classnames(errorMessage && 'text-red');
+  const opacity = classnames(
+    { 'opacity-100 left-[9px] top-[0.5px]': errorMessage },
+    { 'opacity-0 left-4 top-5': !errorMessage },
+  );
+
   const placeholderMsg = hasError ? errorMessage : placeholder;
+  const placeMsg = hasError ? (placeholder = '') : placeholder;
 
   if (type !== 'tel') {
     return (
@@ -45,27 +51,27 @@ const Input = ({
   if (type === 'tel') {
     return (
       <>
+        <label
+          htmlFor={type}
+          className={`${textColor} ${opacity} absolute  z-[100] text-[11px] transition-transform duration-200`}
+        >
+          {placeholderMsg}
+        </label>
+
         <Controller
           name={type}
           control={control}
           rules={{ required: true }}
           render={({ field }) => (
             <PhoneInput
-              placeholder=" "
-              preferredCountries={['ua', 'gb']}
+              placeholder={placeMsg}
               disableSearchIcon="true"
               buttonClass={'hidden'}
-              inputClass={`${borderColor} !w-full !px-4 !py-5 !h-[66px]  !border-2 !rounded-sm ![&:focus_+label]:-translate-y-5 ![&:focus_+label]:-translate-x-2 ![&:focus_+label]:text-[11px] ![&:not(:placeholder-shown)_+label]:-translate-x-2 ![&:not(:placeholder-shown)_+label]:-translate-y-5 ![&:not(:placeholder-shown)_+label]:text-[11px]`}
+              inputClass={`${borderColor} !w-full !px-4 !py-5 !h-[66px] placeholder:text-black target:placeholder:hidden !border-2 !rounded-sm`}
               {...field}
             />
           )}
         />
-        <label
-          htmlFor={type}
-          className={`${textColor} absolute left-4 top-5 text-base lg:text-sm transition-transform duration-200`}
-        >
-          {placeholderMsg}
-        </label>
       </>
     );
   }
@@ -78,4 +84,6 @@ Input.propTypes = {
   register: PropTypes.func.isRequired,
   hasError: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string.isRequired,
+  control: PropTypes.object.isRequired,
+  placeholder: PropTypes.string.isRequired,
 };
