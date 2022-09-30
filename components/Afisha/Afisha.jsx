@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Section from 'components/reusable/Section';
 import Container from 'components/reusable/Container';
 import Heading from '../reusable/Heading';
@@ -40,6 +41,10 @@ const Afisha = ({ data }) => {
       </Container>
     </Section>
   );
+};
+
+Afisha.propTypes = {
+  data: PropTypes.object,
 };
 
 export default Afisha;
