@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import NextImage from '../reusable/Image';
 
 const CardTeam = ({ team }) => {
-  console.log('teamFoto', team);
   return (
     <div>
       <NextImage
