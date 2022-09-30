@@ -1,8 +1,11 @@
+import PropTypes from 'prop-types';
+
 import useTranslations from '../../hooks/useTranslations';
 
 const ModalReport = ({ show }) => {
   const translation = useTranslations(['thankYou', 'connect']);
   const opacity = show ? 'opacity-1' : 'opacity-0';
+
   return (
     <div
       className={`${opacity}  fixed flex items-center justify-center z-[1500] inset-0 bg-[#065A92] bg-opacity-25 transition-opacity duration-1000 overflow-y-hidden  `}
@@ -16,3 +19,7 @@ const ModalReport = ({ show }) => {
 };
 
 export default ModalReport;
+
+ModalReport.propTypes = {
+  show: PropTypes.bool.isRequired,
+};

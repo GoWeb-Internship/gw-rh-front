@@ -1,12 +1,7 @@
 import NextImage from 'next/image';
+import PropTypes from 'prop-types';
 
-const Image = ({
-  image,
-  className,
-  // style,
-  alt,
-}) => {
-  // console.log('image', image);
+const Image = ({ image, className, alt }) => {
   const { url, width, height } = image.data.attributes;
   return (
     <NextImage
@@ -19,6 +14,12 @@ const Image = ({
       className={className}
     />
   );
+};
+
+Image.propTypes = {
+  image: PropTypes.object.isRequired,
+  className: PropTypes.string,
+  alt: PropTypes.string,
 };
 
 export default Image;

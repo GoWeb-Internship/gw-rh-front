@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 const AboutTraveling = ({ date, eventTitle, aboutEvent, video = false }) => {
   const isVideo = classNames({
@@ -34,3 +35,10 @@ const AboutTraveling = ({ date, eventTitle, aboutEvent, video = false }) => {
 };
 
 export default AboutTraveling;
+
+AboutTraveling.propTypes = {
+  video: PropTypes.bool.isRequired,
+  date: PropTypes.string.isRequired,
+  eventTitle: PropTypes.string.isRequired,
+  aboutEvent: PropTypes.string.isRequired,
+};

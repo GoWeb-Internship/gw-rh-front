@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Section from 'components/reusable/Section';
 import Container from 'components/reusable/Container';
 import CardTeam from './CardTeam';
@@ -29,4 +30,9 @@ const Team = ({ teams }) => {
     </Section>
   );
 };
+
+Team.propTypes = {
+  teams: PropTypes.object.isRequired,
+};
+
 export default Team;

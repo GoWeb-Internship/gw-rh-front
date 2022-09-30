@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import YouTube from 'react-youtube';
+import PropTypes from 'prop-types';
 
 import ArrowYoutube from 'public/arrowYoutube.svg';
 import useObserver from '../../hooks/useObserver';
@@ -85,4 +86,9 @@ const YoutubeVideo = ({ data }) => {
     </>
   );
 };
+
+YoutubeVideo.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
 export default YoutubeVideo;

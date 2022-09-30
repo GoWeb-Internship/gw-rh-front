@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import NextImage from 'next/image';
+import PropTypes from 'prop-types';
 
 import AboutTraveling from './AboutTravel';
 import Slider from '../reusable/Slider';
@@ -66,6 +67,7 @@ const WithImg = ({ sliderDate }) => {
                   })}
                 </Slider>
                 <AboutTraveling
+                  video={false}
                   date={date}
                   eventTitle={eventTitle}
                   aboutEvent={aboutEvent}
@@ -79,3 +81,7 @@ const WithImg = ({ sliderDate }) => {
 };
 
 export default withShowMore(WithImg);
+
+WithImg.propTypes = {
+  sliderDate: PropTypes.array.isRequired,
+};
