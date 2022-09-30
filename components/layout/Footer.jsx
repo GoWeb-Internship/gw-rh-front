@@ -5,7 +5,7 @@ import Container from '../reusable/Container';
 import Social from '../Social';
 import LogoIcon from 'public/logo-header.svg';
 
-const Footer = ({ footer }) => {
+const Footer = ({ footer, links }) => {
   return (
     <footer className="bg-brand1  w-full">
       <Container className="footer pt-8 px-5 pb-6 md:pt-16 md:px-16  lg:pt-14  lg:px-[152px] md:text-base md:font-semibold">
@@ -36,7 +36,7 @@ const Footer = ({ footer }) => {
                 })}
               </ul>
             </div>
-            <Social />
+            <Social links={links} />
             <div className="text-center mt-[67px] md:text-right md:mt-[70px] font-medium text-sm">
               <Link href="/policy">
                 <a>{footer.policyName}</a>
