@@ -3,8 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: $main-font;
-  // font-size: 20px;
-  height: 100%;
+  height: 100vh;
   scroll-padding-top: 120px;
   scroll-behavior: smooth;
   background-color: #fcfcfa;
@@ -28,17 +27,3 @@ a {
 * {
   box-sizing: border-box;
 }
-
-@media (prefers-color-scheme: light) {
-  html {
-    color-scheme: light;
-  }
-  body {
-    color: black;
-    background: white;
-  }
-}
-
-// span {
-//   @apply text-[#065A92]
-// }

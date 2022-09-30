@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+
 import withLayout from 'components/layout/Layout';
 
 import Vlog from '../components/Vlog/Vlog';
@@ -11,20 +13,37 @@ import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
 import Soul from '../components/pages/Soul';
 
-const Pages = ({ dataPage, translation }) => {
+const Pages = ({ dataPage }) => {
   const router = useRouter();
   const { isFallback } = router;
+
   if (isFallback) {
     return 'Loading... или какой-то спиннер нацепить';
   }
 
   return (
     <>
+      {!dataPage.slug === 'how-to-open-love-in-you' && (
+        <Head>
+          <title>
+            {dataPage.content.attributes.mainTitle
+              ? dataPage.content.attributes.mainTitle
+              : dataPage.content.attributes.title}
+          </title>
+          <meta
+            name="description"
+            content={
+              dataPage.content.attributes.subTitle
+                ? dataPage.content.attributes.subTitle
+                : dataPage.content.attributes.title
+            }
+          />
+        </Head>
+      )}
+
       {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
       {dataPage.slug === 'announcements' && <Afisha data={dataPage.content} />}
-      {dataPage.slug === 'contact-us' && (
-        <Contacts data={dataPage.content} btn={translation.sendBtn} />
-      )}
+      {dataPage.slug === 'contact-us' && <Contacts data={dataPage.content} />}
       {dataPage.slug === 'consultations' && (
         <Consultation data={dataPage.content} />
       )}

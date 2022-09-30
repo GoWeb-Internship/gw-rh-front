@@ -16,7 +16,7 @@ const ConsultationCard = ({ data }) => {
         <Heading
           tag="h3"
           text={data.videoTitle}
-          className="uppercase font-semibold text-t2444 mt-4 mb-2 md:mt-6 md:mb-4 lg:mt-0 lg:mb-6"
+          className="uppercase font-semibold text-lg tracking-[0.005em] mt-4 mb-2 md:tracking-normal md:text-t2444 md:mt-6 md:mb-4 lg:mt-0 lg:mb-6"
         />
         <ReactMarkdown className="prose mb-6 lg:mb-8">
           {data.videoBody}

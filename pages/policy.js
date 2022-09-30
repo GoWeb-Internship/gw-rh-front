@@ -9,12 +9,12 @@ import { getData } from 'helpers/apiServices';
 
 const PolicyPage = ({ policy }) => {
   return (
-    <Section className="pt-[152px] pb-8 md:pt-[184px] md:pb-[64px] lg:pt-[244px] lg:pb-[124px]">
+    <Section className="pt-[152px]  pb-8 md:pt-[184px] md:pb-[64px] lg:pt-[244px] lg:pb-[124px]">
       <Container>
         <Heading
           tag="h1"
           text={policy.mainTitle}
-          className="text-t2444 mb-4 uppercase font-semibold text-brand1 md:text-t3642 md:mb-6 lg:mb-8"
+          className="text-t2030 tracking-[0.005em] mb-4 uppercase font-semibold text-brand1 md:tracking-normal md:text-t3642 md:mb-6 lg:mb-8"
         />
         <ReactMarkdown className="prose">{policy.body}</ReactMarkdown>
         {policy.section.length ? (

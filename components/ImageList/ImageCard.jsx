@@ -25,7 +25,7 @@ const ImageCard = ({ data }) => {
       <Heading
         tag="h3"
         text={data.titleImg}
-        className="uppercase mt-2 text-lg tracking-[0.005em] font-semibold md:mt-4 lg:mt-2"
+        className="uppercase mt-2 text-base tracking-[0.005em] font-semibold md:text-lg md:mt-4 lg:mt-2"
       />
       <div className="flex mt-2 text-t1416 font-normal">
         <p className="mr-4">

@@ -16,7 +16,7 @@
     @apply relative after:content-[''] after:opacity-0 after:duration-200 after:transition-opacity after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-brand1 hover:after:opacity-100 focus:after:opacity-100 z-50;
   }
 
-  .arrow::after {
+  .arrow-quote::after {
     content: '';
     position: absolute;
     width: 80px;
@@ -51,5 +51,13 @@
       background-position: bottom 12px center;
       background-size: 1240px 660px;
     }
+  }
+
+  .review::-webkit-scrollbar-thumb {
+    @apply bg-[#B4D8EF] rounded-lg w-2;
+   }
+
+  .review::-webkit-scrollbar {
+    @apply bg-[#F0F6FA] rounded-lg w-2;
   }
 }
