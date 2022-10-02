@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 
 import Section from '../reusable/Section';
@@ -6,11 +7,11 @@ import Collapse from '../reusable/Collapse';
 import LinkToBook from '../reusable/LinkToBook';
 import useTranslations from '../../hooks/useTranslations';
 
-const About = ({ data }) => {
+const About = ({ data, link }) => {
   const linkToBook = useTranslations('linkToBook');
 
   return (
-    <Section className="py-9 md:py-[124px]" id="about author">
+    <Section className="py-9 md:py-[124px]" id="about_author">
       <Container>
         <h2 className="mb-6 md:mb-[52px] lg:mb-14 text-28 font-semibold text-left md:pl-[350px] lg:pl-[480px] uppercase">
           {data.aboutTitle}
@@ -26,12 +27,21 @@ const About = ({ data }) => {
               </ReactMarkdown>
             </Collapse>
 
-            <LinkToBook text={linkToBook}/>
+            <LinkToBook text={linkToBook} link={link}/>
           </div>
         </div>
       </Container>
     </Section>
   );
+};
+
+About.propTypes = {
+  data: PropTypes.shape({
+    aboutTitle: PropTypes.string.isRequired,
+    quote: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+  }),
+  link: PropTypes.string.isRequired,
 };
 
 export default About;

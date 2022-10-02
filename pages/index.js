@@ -12,7 +12,7 @@ import About from 'components/sections/About';
 import { getData } from 'helpers/apiServices';
 import Tree from '../components/Tree/Tree';
 
-const Home = ({ teams, home, projects }) => {
+const Home = ({ teams, home, projects, links }) => {
   return (
     <>
       <Head>
@@ -21,7 +21,7 @@ const Home = ({ teams, home, projects }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero data={home} />
-      <About data={home} />
+      <About data={home} link={links.bookStore}/>
       <Tree projects={projects} />
       <Team teams={teams} />
     </>

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 
 import useTranslations from 'hooks/useTranslations.js';
@@ -8,7 +9,7 @@ import Head from 'components/reusable/Head';
 import ProjectsBg from 'public/projectsBg.svg';
 import LinkToBook from './LinkToBook';
 
-const ShortProject = ({ data }) => {
+const ShortProject = ({ data, link }) => {
 
   const { linkToBook, signToProjectBtn, moreBtn } = useTranslations([
     'linkToBook',
@@ -26,7 +27,7 @@ const ShortProject = ({ data }) => {
           {data.attributes.projectShort.projectDescription}
         </ReactMarkdown>
         {data.attributes.projectShort.showLink && (
-          <LinkToBook className="mb-8 md:mb-14" text={linkToBook} />
+          <LinkToBook className="mb-8 md:mb-14" text={linkToBook} link={link}/>
         )}
         <div className="flex flex-col space-y-5 md:flex-row md:space-y-0 md:space-x-12 lg:space-x-12">
           <Button
@@ -45,6 +46,22 @@ const ShortProject = ({ data }) => {
       </div>
     </li>
   );
+};
+
+ShortProject.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    attributes: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      projectShort: PropTypes.shape({
+        projectIdea: PropTypes.string.isRequired,
+        projectDescription: PropTypes.string.isRequired,
+        showLink: PropTypes.bool,
+      })
+    }),
+  }),
+  link: PropTypes.string.isRequired,
 };
 
 export default ShortProject;

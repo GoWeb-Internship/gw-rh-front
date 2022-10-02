@@ -67,7 +67,7 @@ const Input = ({
               placeholder={placeMsg}
               disableSearchIcon="true"
               buttonClass={'hidden'}
-              inputClass={`${borderColor} !w-full !px-4 !py-5 !h-[66px] placeholder:text-black target:placeholder:hidden !border-2 !rounded-sm`}
+              inputClass={`${borderColor} !w-full !px-4 !py-5 !h-[66px] placeholder:text-main target:placeholder:hidden !border-2 !rounded-sm`}
               {...field}
             />
           )}

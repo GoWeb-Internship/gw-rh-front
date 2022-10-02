@@ -9,7 +9,7 @@
   |-- hooks -> custom users hooks
   |-- pages -> pages and routing
       |-- projects -> pages and routing for projects
-  |-- public -> images та svg, that are required to work
+  |-- public -> images and svg, that are required to work
     |-- favicon -> favicon for the site
   |-- styles -> global styles
 ```
@@ -46,8 +46,34 @@
 
 
 - ### ModalBackdrop ✅
-
   | Prop       | Default | Description                        |
   | ---------- | :-----: | ---------------------------------- |
   | `children` |   `-`   | only as text element or component. |
 
+  - ### Button ✅
+  | Prop | Default | Description |
+  | ------------- | ------------- | ------------- |
+  | `linkTo` | `-` | link to another page |
+  | `text` | `-` | button text |
+   | `buttonTheme` | `primary` | choose button theme you need: `primary`, `secondary`, `type3` or `type4` |
+  | `className` | `-` | button styles |
+
+    -  ### DialogWindow ✅
+  | Prop | Default | Description |
+  | ------------- | ------------- | ------------- |
+  | `classNameDiv` | `-` | container styles |
+  | `classNameP` | `-` | text styles |
+  | `text` | `-` | text for dialog window |
+
+    -  ### LinkToBook ✅
+  | Prop | Default | Description |
+  | ------------- | ------------- | ------------- |
+  | `className` | ` ` | link text styles |
+  | `text` | `-` | text for link |
+  | `link` | `-` | link to another site to buy book |
+
+    - ### ShortProject ✅
+  | Prop | Default | Description |
+  | ------------- | ------------- | ------------- |
+  | `data` | `-` | projects data |
+  | `link` | `-` | link to another site to buy book |

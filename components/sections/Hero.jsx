@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 
 import useTranslations from '../../hooks/useTranslations';
 
@@ -58,21 +59,37 @@ const Hero = ({ data }) => {
             height={540}
           />
           <DialogWindow
-            classNameDiv={`top-[94px] -left-[94px] lg:top-[118px] lg:-left-[68px] after:right-5 arrow-quote`}
+            classNameDiv={`top-[94px] -left-[94px] lg:top-[118px] lg:-left-[68px] after:right-5`}
             text={consultMore}
           />
           <DialogWindow
-            classNameDiv={`top-[140px] -right-[110px] lg:top-[130px] lg:-right-[44px] after:left-5 arrow-quote`}
+            classNameDiv={`top-[140px] -right-[110px] lg:top-[130px] lg:-right-[44px] after:left-5`}
             text={actionYears}
           />
           <DialogWindow
-            classNameDiv={`top-[245px] -left-[110px] lg:top-[300px] lg:-left-[140px] after:right-5 arrow-quote`}
+            classNameDiv={`top-[245px] -left-[110px] lg:top-[300px] lg:-left-[140px] after:right-5`}
             text={learnInfo}
           />
         </div>
       </Container>
     </Section>
   );
+};
+
+Hero.propTypes = {
+  data: PropTypes.shape({
+    heroTitle: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    photoAlt: PropTypes.string.isRequired,
+    photo: PropTypes.shape({
+      data: PropTypes.shape({
+        id: PropTypes.number,
+        attributes: PropTypes.shape({
+          url: PropTypes.string.isRequired,
+        })
+      })
+    })
+  })
 };
 
 export default Hero;
