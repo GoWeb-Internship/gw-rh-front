@@ -2,20 +2,13 @@ import ReviewCard from './ReviewCard';
 import Slider from '../reusable/Slider';
 
 import { SwiperSlide } from 'swiper/react';
-import useMedia from '../../hooks/useMediaCore';
-import { getMediaQueries } from '../../helpers/mediaServices';
+import useMedia from '../../hooks/useMedia';
 import { useEffect, useState } from 'react';
-
-const mediaQueries = getMediaQueries();
 
 const ReviewList = ({ listData }) => {
   const [slidesPerView, setSlidesPerView] = useState(1);
   const [spaceBetween, setSpaceBetween] = useState(1);
-  const pageFormat = useMedia(
-    Object.values(mediaQueries),
-    Object.keys(mediaQueries),
-    null,
-  );
+  const pageFormat = useMedia();
 
   useEffect(() => {
     if (!pageFormat) return;

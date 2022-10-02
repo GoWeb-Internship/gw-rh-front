@@ -16,9 +16,6 @@ const useTranslations = key => {
 
   if (Array.isArray(key)) {
     tr = key.reduce((acc, item) => {
-      // if (translation[item] === undefined) {
-      //   return { ...acc };
-      // }
       return { ...acc, [item]: translation[item] };
     }, {});
   }

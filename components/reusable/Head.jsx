@@ -3,7 +3,7 @@ const Head = ({
   title = '',
   showTitle = true,
   isColor,
-  className,
+  className = '',
 }) => (
   <Tag
     className={

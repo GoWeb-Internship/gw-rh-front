@@ -40,7 +40,7 @@ const Collapse = ({
   );
 
   return (
-    <div>
+    <>
       <div
         ref={container}
         style={styles}
@@ -67,7 +67,7 @@ const Collapse = ({
           {!showBlock ? `${readMore}` : `${readLess}`}
         </button>
       )}
-    </div>
+    </>
   );
 };
 
