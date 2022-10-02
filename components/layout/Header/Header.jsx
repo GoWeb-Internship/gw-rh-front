@@ -48,12 +48,13 @@ const Header = ({ navData = [], translation }) => {
             </a>
           </Link>
           <NavMenu navData={navData} className="hidden lg:block mr-12" />
-          <button
-            type="button"
-            className="font-navigation text-light py-3 hidden lg:block"
-          >
-            {translation.contacts}
-          </button>
+          <Link href="#footer">
+            <a
+              className="font-navigation text-light py-3 hidden lg:block"
+            >
+              {translation.contacts}
+            </a>
+          </Link>
           <LangSwitcher className="ml-auto" />
           <IconButton
             IconComponent={BurgerIcon}

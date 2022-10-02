@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 
 import useTranslations from 'hooks/useTranslations.js';
@@ -45,6 +46,22 @@ const ShortProject = ({ data, link }) => {
       </div>
     </li>
   );
+};
+
+ShortProject.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    attributes: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      projectShort: PropTypes.shape({
+        projectIdea: PropTypes.string.isRequired,
+        projectDescription: PropTypes.string.isRequired,
+        showLink: PropTypes.bool,
+      })
+    }),
+  }),
+  link: PropTypes.string.isRequired,
 };
 
 export default ShortProject;

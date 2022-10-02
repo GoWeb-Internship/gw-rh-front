@@ -11,9 +11,9 @@ import Traveling from '../components/pages/Traveling';
 
 import { getNavigation } from '../helpers/navigation';
 import { getData } from '../helpers/apiServices';
-// import LinkTo from '../components/pages/LinkTo';
+import LinkTo from '../components/pages/LinkTo';
 
-const Pages = ({ dataPage }) => {
+const Pages = ({ dataPage, links }) => {
   const router = useRouter();
   const { isFallback } = router;
 
@@ -23,11 +23,6 @@ const Pages = ({ dataPage }) => {
 
   return (
     <>
-      {dataPage.slug === 'how-to-open-love-in-you' ? (
-        <Head>
-          <meta httpEquiv="refresh" content="0; URL=https://lovebook.rizhenko.com/" />
-        </Head>
-      ) : (
         <Head>
           <title>
             {dataPage.content.attributes.mainTitle
@@ -43,11 +38,10 @@ const Pages = ({ dataPage }) => {
             }
           />
         </Head>
-      )}
 
       {dataPage.slug === 'vlog' && <Vlog data={dataPage.content} />}
       {dataPage.slug === 'announcements' && <Afisha data={dataPage.content} />}
-      {/* {dataPage.slug === 'how-to-open-love-in-you' && <LinkTo link={links.bookStore}/> } */}
+      {dataPage.slug === 'how-to-open-love-in-you' && <LinkTo data={dataPage.content} link={links.bookStore}/> }
       {dataPage.slug === 'contact-us' && <Contacts data={dataPage.content} />}
       {dataPage.slug === 'consultations' && (
         <Consultation data={dataPage.content} />
@@ -88,6 +82,14 @@ export const getStaticProps = async ({ locale, locales, params }) => {
     dataPage.content = await getData('afisha', {
       locale,
       populate: 'imageCard.image',
+    });
+  }
+
+  if (params.slug === 'how-to-open-love-in-you') {
+    dataPage.slug = params.slug;
+    dataPage.content = await getData('link-to', {
+      locale,
+      populate: '*',
     });
   }
 

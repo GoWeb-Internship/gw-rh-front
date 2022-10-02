@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import Section from 'components/reusable/Section';
 import Container from 'components/reusable/Container';
 import Head from 'components/reusable/Head';
@@ -19,6 +21,15 @@ const AllProjects = ({ title, data, link }) => {
       </Container>
     </Section>
   );
+};
+
+AllProjects.propTypes = {
+  title: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }),
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  link: PropTypes.string.isRequired,
 };
 
 export default AllProjects;

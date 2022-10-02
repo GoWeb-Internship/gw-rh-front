@@ -37,15 +37,6 @@ const nextConfig = {
     loader: 'default',
     domains: ['res.cloudinary.com'],
   },
-  async redirects() {
-    return [
-      {
-        source: '/how-to-open-love-in-you',
-        destination: 'https://lovebook.rizhenko.com/',
-        permanent: true,
-      },
-    ];
-  },
 };
 
 module.exports = nextConfig;

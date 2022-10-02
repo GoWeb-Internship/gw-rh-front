@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import PropTypes from 'prop-types';
 
 const LinkToBook = ({ className = '', text, link }) => {
   return (
@@ -8,6 +9,12 @@ const LinkToBook = ({ className = '', text, link }) => {
       </a>
     </Link>
   );
+};
+
+LinkToBook.propTypes = {
+  className: PropTypes.string,
+  text: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
 };
 
 export default LinkToBook;
