@@ -9,13 +9,14 @@ import useMedia from '../../hooks/useMedia';
 import useTranslations from '../../hooks/useTranslations';
 import ButtonShow from './ButtonShow';
 
-// const ShowMoreContext = createContext(0);
 const ShowMoreContext = createContext({
   listDataLength: 0,
   itemsToShow: 0,
   changeListDataLength: () => {},
   changeItemsToShow: () => {},
 });
+
+// хук необходимо использовать в компоненте, к которому подключается ShowMore
 
 export const useShowMore = (listData = []) => {
   const [normalizedListData, setNormalizedListData] = useState(listData);
@@ -54,7 +55,6 @@ const defaultOptions = { mobile: 2, tablet: 4, desktop: 4, fullHd: 4 };
 const ShowMore = ({
   children,
   mediaOptions = { mobile: 2, tablet: 4, desktop: 4, fullHd: 4 },
-  // listDataLength = -1,
 }) => {
   const [showAll, setShowAll] = useState(false);
   const pageFormat = useMedia();
@@ -103,6 +103,10 @@ const ShowMore = ({
     </>
   );
 };
+
+// HOC, который подключает к компоненту списку, который рендерится на основе перебора массива, Компонент ShowMore.
+
+// Создаётся контекст который контролирует состояние ShowMore.
 
 const withShowMore = Component => {
   const WithShowMoreComponent = props => {

@@ -145,6 +145,10 @@ npm run dev
 
 Страницы создаються с учётом локализации.
 
-### Бэкенд
+### ENV
 
-в `.env` необходимо добавить `SERVER_URL` адрес бэкенда на Heroku
+SERVER_URL= LOCAL_SERVER_URL= NEXT_TOKEN= NEXT_CHAT_ID=
+
+### Доки по работе с админ-панелью
+
+https://docs.google.com/document/d/12DMBk70eWbpIqNhDe7tKyhl_R16qmFe09XYEGs30Qx8/edit?usp=sharing
